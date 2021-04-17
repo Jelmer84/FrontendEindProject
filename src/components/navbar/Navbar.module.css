@@ -1,0 +1,33 @@
+.nav-container {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    width: 100%;
+    background-color: #a7d5c1;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+}
+
+ul {
+    list-style-type: none;
+    flex-basis: 550px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.active-link {
+    border-bottom: 2px solid #d5a7bb;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-left: 10px;
+}

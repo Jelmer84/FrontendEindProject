@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    margin: 50px;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+input {
+    margin: 5px;
+    border: solid black 2px;
+    border-radius: 1rem;
+}
+
+::placeholder {
+    text-align: center;
+}
+

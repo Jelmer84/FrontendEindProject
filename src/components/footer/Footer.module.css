@@ -1,0 +1,19 @@
+/*footer {*/
+/*    width: 1000px;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    background-color: #a7d5c1;*/
+/*    height: 60px;*/
+/*}*/
+
+.footer-container {
+    background-color: #a7d5c1;
+    display: flex;
+}
+
+.copyright {
+    margin-left: -30px;
+}
+
+
