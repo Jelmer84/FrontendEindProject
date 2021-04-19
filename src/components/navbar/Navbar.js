@@ -32,7 +32,7 @@ function Navbar() {
                     </li>
 
                     <li>
-                        <Link onClick={logout} >Uitloggen</Link>
+                        <Link to="/" onClick={logout} >Uitloggen</Link>
                     </li>
                 </ul>
             </div>

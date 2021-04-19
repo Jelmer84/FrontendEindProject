@@ -36,8 +36,8 @@ function AuthContextProvider({children}) {
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('Token')
-        if (token !== undefined && authState.user === null) {
+        const token = localStorage.getItem('token')
+        if (token !== null && authState.user === null) {
             fetchUserData(token);
 
         } else {
@@ -48,23 +48,20 @@ function AuthContextProvider({children}) {
         }
     }, [])
 
-
     async function loginFunction(JWToken) {
         // console.log(JWToken)
         // console.log("DECODED", decoded)
-        localStorage.setItem('Token', JWToken);
+        localStorage.setItem('token', JWToken);
 
         fetchUserData(JWToken);
         history.push('/profile');
     }
 
     function logoutFunction() {
+        console.log("LOGOUT")
         localStorage.clear();
-        setAuthState({
-            user: null,
-            status: "done"
-        });
-        history.push("/")
+        setAuthState({user: null, status: "done"});
+        // history.push("/")
     }
 
     const data = {
