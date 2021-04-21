@@ -2,29 +2,14 @@ import React, {useState, useRef} from "react";
 import {useForm} from "react-hook-form";
 import {useHistory} from 'react-router-dom'
 import axios from "axios";
+import InputForm from "../../components/InputForm/InputForm";
+
 
 function Register() {
     const [loading, toggleLoading] = useState(false)
     const [registerSuccess, toggleRegisterSuccess] = useState(false)
     const history = useHistory();
     const {handleSubmit, formState: {errors}, register, watch} = useForm()
-
-    // const password = useRef({})
-    // password.current = watch("password", "")
-    // const onSubmit = async data => {
-    //     alert(JSON.stringify(data));
-    // };
-
-
-// X 1. installeer axios
-// X 2. importeer axios
-// X 3. asynchrone functie
-// X 4. try / catch blok
-// X --- error state en loading state aanmaken en communiceren aan gebruiker
-// X 5. in try: post request maken naar endpoint:  http://localhost:3000/register//
-// X 6. axios post request krijgt de url en het data object mee (deze moet in dit geval minimaal email en password bevatten)
-// X 7. Succesmelding tonen aan de gebruiker (stukje state voor maken!)
-
     const password = useRef()
     password.current = watch("password", "");
 
@@ -45,23 +30,43 @@ function Register() {
     }
 
     return (
+
         <form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="firstname">
-                <input
-                    type="text"
-                    name="firstname"
-                    id="firstname"
-                    placeholder="Voornaam"
-                    {...register('firstname', {
-                            required: {
-                                value: true,
-                                message: "Voornaam is verplicht",
-                            }
+
+
+            <InputForm
+                type="tex"
+                name="firstname"
+                placeholder="Voornaam"
+                fieldRef = {register("firstname",
+                    {
+                        required: {
+                            value: true,
+                            message: "Voornaam is verplicht",
                         }
-                    )}
-                />
-            </label>
-            {errors.firstname && <p>⚠️{errors.firstname.message}</p>}
+                    }
+                )}
+                errors={errors}
+            />
+            
+
+
+            {/*<label htmlFor="firstname">*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        name="firstname"*/}
+            {/*        id="firstname"*/}
+            {/*        placeholder="Voornaam"*/}
+            {/*        {...register('firstname', {*/}
+            {/*                required: {*/}
+            {/*                    value: true,*/}
+            {/*                    message: "Voornaam is verplicht",*/}
+            {/*                }*/}
+            {/*            }*/}
+            {/*        )}*/}
+            {/*    />*/}
+            {/*</label>*/}
+            {/*{errors.firstname && <p>⚠️{errors.firstname.message}</p>}*/}
 
             <label htmlFor="lastname">
                 <input
@@ -165,5 +170,11 @@ function Register() {
 export default Register
 
 
-
-
+// X 1. installeer axios
+// X 2. importeer axios
+// X 3. asynchrone functie
+// X 4. try / catch blok
+// X --- error state en loading state aanmaken en communiceren aan gebruiker
+// X 5. in try: post request maken naar endpoint:  http://localhost:3000/register//
+// X 6. axios post request krijgt de url en het data object mee (deze moet in dit geval minimaal email en password bevatten)
+// X 7. Succesmelding tonen aan de gebruiker (stukje state voor maken!)

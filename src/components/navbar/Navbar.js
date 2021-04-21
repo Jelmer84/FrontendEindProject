@@ -24,6 +24,10 @@ function Navbar() {
                     </li>
 
                     <li>
+                        <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>
+                    </li>
+
+                    <li>
                         <NavLink to="/register" activeClassName={styles["active-link"]}>Registeren</NavLink>
                     </li>
 
