@@ -32,13 +32,11 @@ function Register() {
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
-
-
             <InputForm
                 type="tex"
                 name="firstname"
                 placeholder="Voornaam"
-                fieldRef = {register("firstname",
+                fieldRef={register("firstname",
                     {
                         required: {
                             value: true,
@@ -48,8 +46,6 @@ function Register() {
                 )}
                 errors={errors}
             />
-            
-
 
             {/*<label htmlFor="firstname">*/}
             {/*    <input*/}
@@ -68,96 +64,148 @@ function Register() {
             {/*</label>*/}
             {/*{errors.firstname && <p>⚠️{errors.firstname.message}</p>}*/}
 
-            <label htmlFor="lastname">
-                <input
-                    type="text"
-                    name="lastname"
-                    id="lastname"
-                    placeholder="Achternaam"
-                    {...register('lastname', {
-                            required: {
-                                value: true,
-                                message: "Achternaam is verplicht"
-                            }
-                        }
-                    )}
-                />
-            </label>
-            {errors.lastname && <p>⚠️{errors.lastname.message}</p>}
 
-            <label htmlFor="email">
-                <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="E-mail adres"
-                    {...register('email', {
-                            required: {
-                                value: true,
-                                message: "E-mail is vereist"
-                            },
-                            pattern: {
-                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message: "Vul een correct email adres in"
-                            },
+            <InputForm
+                type="tex"
+                name="lastname"
+                placeholder="Achternaam"
+                fieldRef={register("lastname",
+                    {
+                        required: {
+                            value: true,
+                            message: "Achternaam is verplicht",
                         }
-                    )}
-                />
-            </label>
-            {errors.email && <p>⚠️{errors.email.message}</p>}
+                    }
+                )}
+                errors={errors}
+            />
 
-            <label htmlFor="username">
-                <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Gebruikers naam"
-                    {...register('username', {
-                            required: {
-                                value: true,
-                                message: "Gebruikers naam is verplicht"
-                            }
-                        }
-                    )}
-                />
-            </label>
-            {errors.username && <p>⚠️{errors.username.message}</p>}
+            {/*<label htmlFor="lastname">*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        name="lastname"*/}
+            {/*        id="lastname"*/}
+            {/*        placeholder="Achternaam"*/}
+            {/*        {...register('lastname', {*/}
+            {/*                required: {*/}
+            {/*                    value: true,*/}
+            {/*                    message: "Achternaam is verplicht"*/}
+            {/*                }*/}
+            {/*            }*/}
+            {/*        )}*/}
+            {/*    />*/}
+            {/*</label>*/}
+            {/*{errors.lastname && <p>⚠️{errors.lastname.message}</p>}*/}
 
-            <label htmlFor="password">
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Wachtwoord"
-                    {...register('password', {
-                            required: {
-                                value: true,
-                                message: "Een wachtwoord is vereist"
-                            },
-                            pattern: {
-                                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/,
-                                message: "Een wachtwoord moet bestaan uit tenminste 8 karakters, bestaand uit 6 letters, 1 kleine letter, 1 grote letter, 1 nummer en een speciaal karakter"
-                            },
-                        }
-                    )}
-                />
-            </label>
-            {errors.password && <p>⚠️{errors.password.message}</p>}
 
-            <label htmlFor="repeatpassword">
-                <input
-                    type="password"
-                    name="repeatpassword"
-                    id="repeatpassword"
-                    placeholder="Herhaal Wachtwoord"
-                    {...register('repeatpassword', {
-                            validate: value =>
-                                value === password.current || "Het herhaal wachtwoord is niet gelijk aan wachtwoord"
-                        }
-                    )}
-                />
-            </label>
-            {errors.repeatpassword && <p>⚠️{errors.repeatpassword.message}</p>}
+            <InputForm
+                type="text"
+                name="email"
+                placeholder="E-mail adres"
+                fieldRef={register('email', {
+                        required: {
+                            value: true,
+                            message: "E-mail is vereist"
+                        },
+                        pattern: {
+                            value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message: "Vul een correct E-mail adres in"
+                        },
+                    }
+                )}
+                errors={errors}
+            />
+
+            {/*<label htmlFor="email">*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        name="email"*/}
+            {/*        id="email"*/}
+            {/*        placeholder="E-mail adres"*/}
+            {/*        {...register('email', {*/}
+            {/*                required: {*/}
+            {/*                    value: true,*/}
+            {/*                    message: "E-mail is vereist"*/}
+            {/*                },*/}
+            {/*                pattern: {*/}
+            {/*                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,*/}
+            {/*                    message: "Vul een correct email adres in"*/}
+            {/*                },*/}
+            {/*            }*/}
+            {/*        )}*/}
+            {/*    />*/}
+            {/*</label>*/}
+            {/*{errors.email && <p>⚠️{errors.email.message}</p>}*/}
+
+
+            <InputForm
+                type="password"
+                name="password"
+                placeholder="Wachtwoord"
+                fieldRef={register('password', {
+                        required: {
+                            value: true,
+                            message: "Een wachtwoord is vereist"
+                        },
+                        pattern: {
+                            value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/,
+                            message: "Een wachtwoord moet bestaan uit tenminste 8 karakters, bestaand uit 6 letters, 1 kleine letter, 1 grote letter, 1 nummer en een speciaal karakter"
+                        },
+                    }
+                )}
+                errors={errors}
+            />
+
+            {/*<label htmlFor="password">*/}
+            {/*    <input*/}
+            {/*        type="password"*/}
+            {/*        name="password"*/}
+            {/*        id="password"*/}
+            {/*        placeholder="Wachtwoord"*/}
+            {/*        {...register('password', {*/}
+            {/*                required: {*/}
+            {/*                    value: true,*/}
+            {/*                    message: "Een wachtwoord is vereist"*/}
+            {/*                },*/}
+            {/*                pattern: {*/}
+            {/*                    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/,*/}
+            {/*                    message: "Een wachtwoord moet bestaan uit tenminste 8 karakters, bestaand uit 6 letters, 1 kleine letter, 1 grote letter, 1 nummer en een speciaal karakter"*/}
+            {/*                },*/}
+            {/*            }*/}
+            {/*        )}*/}
+            {/*    />*/}
+            {/*</label>*/}
+            {/*{errors.password && <p>⚠️{errors.password.message}</p>}*/}
+
+
+
+
+            <InputForm
+                type="password"
+                name="repeatpassword"
+                placeholder="Herhaal Wachtwoord"
+                fieldRef={register('repeatpassword', {
+                        validate: value =>
+                            value === password.current || "Het herhaal wachtwoord is niet gelijk aan wachtwoord"
+                    }
+                )}
+                errors={errors}
+            />
+
+            {/*<label htmlFor="repeatpassword">*/}
+            {/*    <input*/}
+            {/*        type="password"*/}
+            {/*        name="repeatpassword"*/}
+            {/*        id="repeatpassword"*/}
+            {/*        placeholder="Herhaal Wachtwoord"*/}
+            {/*        {...register('repeatpassword', {*/}
+            {/*                validate: value =>*/}
+            {/*                    value === password.current || "Het herhaal wachtwoord is niet gelijk aan wachtwoord"*/}
+            {/*            }*/}
+            {/*        )}*/}
+            {/*    />*/}
+            {/*</label>*/}
+            {/*{errors.repeatpassword && <p>⚠️{errors.repeatpassword.message}</p>}*/}
 
             <button type="submit">Registeren</button>
             {registerSuccess === true && <p>Registeren is gelukt, je wordt nu door gestuurd naar de inlog pagina!</p>}

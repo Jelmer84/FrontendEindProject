@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import "./Login.module.css"
 import {AuthContext} from "../../context/AuthContext";
+import InputForm from "../../components/InputForm/InputForm";
 
 
 // X 1. importeer axios
@@ -33,40 +34,78 @@ function Login() {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="username">
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Gebruikers naam"
-                        // E-MAIL AANPASSEN NAAR USERNAME
-                        {...register('email', {
-                                required: {
-                                    value: true,
-                                    message: "Gebruikers naam is verplicht"
-                                }
-                            }
-                        )}
-                    />
-                </label>
-                {errors.username && <p>⚠️{errors.username.message}</p>}
 
-                <label htmlFor="password">
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Wachtwoord"
-                        {...register('password', {
-                                required: {
-                                    value: true,
-                                    message: "Wachtwoord is verplicht",
-                                }
-                            }
-                        )}
-                    />
-                </label>
-                {errors.password && <p>⚠️{errors.password.message}</p>}
+                <InputForm
+                    type="text"
+                    name="email"
+                    placeholder="E-mail adres"
+                    fieldRef={register('email', {
+                            required: {
+                                value: true,
+                                message: "E-mail is vereist"
+                            },
+                            pattern: {
+                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                message: "Vul een correct E-mail adres in"
+                            },
+                        }
+                    )}
+                    errors={errors}
+                />
+
+                {/*<label htmlFor="username">*/}
+                {/*    <input*/}
+                {/*        type="text"*/}
+                {/*        name="username"*/}
+                {/*        id="username"*/}
+                {/*        placeholder="Gebruikers naam"*/}
+                {/*        // E-MAIL AANPASSEN NAAR USERNAME*/}
+                {/*        {...register('email', {*/}
+                {/*                required: {*/}
+                {/*                    value: true,*/}
+                {/*                    message: "Gebruikers naam is verplicht"*/}
+                {/*                }*/}
+                {/*            }*/}
+                {/*        )}*/}
+                {/*    />*/}
+                {/*</label>*/}
+                {/*{errors.username && <p>⚠️{errors.username.message}</p>}*/}
+
+
+                <InputForm
+                    type="password"
+                    name="password"
+                    placeholder="Wachtwoord"
+                    fieldRef={register('password', {
+                            required: {
+                                value: true,
+                                message: "Een wachtwoord is vereist"
+                            },
+                            pattern: {
+                                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,30}$/,
+                                message: "Een wachtwoord moet bestaan uit tenminste 8 karakters, bestaand uit 6 letters, 1 kleine letter, 1 grote letter, 1 nummer en een speciaal karakter"
+                            },
+                        }
+                    )}
+                    errors={errors}
+                />
+                
+                {/*<label htmlFor="password">*/}
+                {/*    <input*/}
+                {/*        type="password"*/}
+                {/*        name="password"*/}
+                {/*        id="password"*/}
+                {/*        placeholder="Wachtwoord"*/}
+                {/*        {...register('password', {*/}
+                {/*                required: {*/}
+                {/*                    value: true,*/}
+                {/*                    message: "Wachtwoord is verplicht",*/}
+                {/*                }*/}
+                {/*            }*/}
+                {/*        )}*/}
+                {/*    />*/}
+                {/*</label>*/}
+                {/*{errors.password && <p>⚠️{errors.password.message}</p>}*/}
 
                 <button type="submit">Inloggen</button>
 

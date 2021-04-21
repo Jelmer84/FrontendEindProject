@@ -12,8 +12,8 @@ function InputForm({type,name,placeholder, fieldRef, errors}) {
                     placeholder={placeholder}
                     {...fieldRef}
                 />
-                {errors[name] && <p>⚠️{errors[name].message}</p>}
             </label>
+            {errors[name] && <p>⚠️{errors[name].message}</p>}
         </>
     )
 }
