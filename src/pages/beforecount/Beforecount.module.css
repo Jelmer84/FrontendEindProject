@@ -1,0 +1,39 @@
+.beverage {
+    max-width: 40px;
+    max-height: 40px;
+    border: solid transparent;
+    display: flex;
+    text-align: center;
+}
+
+.text {
+    font-weight: bold;
+}
+
+.black {
+    background-color: black;
+}
+
+.headerone {
+    top: 0;
+    position: sticky;
+}
+
+.headertwo {
+    top: 27px;
+    position: sticky;
+}
+
+.headerone, .headertwo, .headerthree {
+    background-color: #a7d5c1;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/*const [bottles, setBottles] =useState([{spaRoodBottle :"", spaBlauwBottle:"", pepsiBottle:"", pepsiMaxBottle:"", sisiBottle:"", iceTeaNormalBottle:"", iceTeaGreen110clBottle:"", iceTeaGreen150clBottle:"", redBullCan:"", redBullSugarFreeCan:"", redBullTropicalCan:"" }])*/
+
+

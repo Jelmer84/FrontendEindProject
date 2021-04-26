@@ -1,0 +1,39 @@
+[
+  {
+    "weekday": "Maandag",
+    "inkomEvents": [
+      {"nameEvent": "Opening"},
+      {"nameEvent": "Welcome to Maastricht"}
+    ]
+  },
+  {
+    "weekday": "Dinsdag",
+    "inkomEvents": [
+      {"nameEvent": "MECC Tuesday"},
+      {"nameEvent": "Festival"}
+
+    ]
+  },
+  {
+    "weekday": "Woensdag",
+    "inkomEvents": [
+      {"nameEvent": "Cantus"},
+      {"nameEvent": "Sportsevent"}
+    ]
+  },
+  {
+    "weekday": "Donderdag",
+    "inkomEvents": [
+      {"nameEvent": "Night at the Museum"},
+      {"nameEvent": "DDD"}
+    ]
+  },
+  {
+    "weekday": "Vrijdag",
+    "inkomEvents": [
+      {"nameEvent": "Heineken Night"},
+      {"nameEvent": "Aqua Lounge"},
+      {"nameEvent": "Meals on Wheels"}
+    ]
+  }
+]

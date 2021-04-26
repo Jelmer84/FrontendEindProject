@@ -1,4 +1,7 @@
 import React from "react";
+import './InputForm.module.css'
+import styles from "./InputForm.module.css";
+
 
 function InputForm({type,name,placeholder, fieldRef, errors}) {
 
@@ -6,6 +9,7 @@ function InputForm({type,name,placeholder, fieldRef, errors}) {
         <>
             <label htmlFor={name}>
                 <input
+                    className={styles.inputform}
                     type={type}
                     name={name}
                     id={name}
