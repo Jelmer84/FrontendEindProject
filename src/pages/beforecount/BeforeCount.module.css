@@ -1,0 +1,10 @@
+.container-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button-formBeforeCount {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+}

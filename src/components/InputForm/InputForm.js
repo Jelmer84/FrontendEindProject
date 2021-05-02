@@ -1,5 +1,4 @@
 import React from "react";
-import './InputForm.module.css'
 import styles from "./InputForm.module.css";
 
 
@@ -19,7 +18,7 @@ function InputForm({type,name,placeholder, fieldRef, errors}) {
             </label>
             {errors[name] && <p>⚠️{errors[name].message}</p>}
         </>
-    )
+    );
 }
 
 export default InputForm

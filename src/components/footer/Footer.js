@@ -15,6 +15,7 @@ function Footer() {
             {/*<NavLink to="/email" exact activeClassName={styles["active-link"]}>Contact</NavLink>*/}
             </li>
             </ul>
+
         </footer>
 
     )

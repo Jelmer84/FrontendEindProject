@@ -6,7 +6,7 @@ import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import Footer from "../components/footer/Footer";
-import Beforecount from "../pages/beforecount/Beforecount";
+import BeforeCount from "../pages/beforecount/BeforeCount";
 
 function App() {
     return (
@@ -21,8 +21,9 @@ function App() {
                     <Profile/>
                 </Route>
                 <Route path="/before-count">
-                    <div><Beforecount/>  </div>
+                    <div><BeforeCount/>  </div>
                 </Route>
+
                 <Route path="/register">
                     <Register/>
                 </Route>
