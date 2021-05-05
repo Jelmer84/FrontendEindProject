@@ -5,10 +5,9 @@ import styles from "../dropdownWeekday-Event/DropdownWeekday-Event.module.css";
 
 function DropdownStudentParty() {
     const [studentParty, setStudentParty] = useState(null);
+    const handleStudentPartyChange = (studentParty) => {setStudentParty(studentParty);};
 
-    const handleStudentPartyChange = (studentParty) => {
-        setStudentParty(studentParty);
-    };
+    console.log(studentParty)
 
     return (
         <>
@@ -20,9 +19,10 @@ function DropdownStudentParty() {
                 getOptionLabel={name => name.studentParty}
                 className={styles.dropdown}
             />
+
         </>
     );
-}
+}  
 
 export default DropdownStudentParty;
 

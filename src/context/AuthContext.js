@@ -54,7 +54,7 @@ function AuthContextProvider({children}) {
         localStorage.setItem('token', JWToken);
 
         fetchUserData(JWToken);
-        history.push('/profile');
+        history.push("/before-count");
     }
 
     function logoutFunction() {

@@ -16,12 +16,6 @@ function HomePage() {
                     Lucie: wellicht dat het handig is dat er op de homepagina meteen een inlog scherm staat voor de
                     verschillende functies, dus dat je daar alleen maar op hoeft te klikken en dan kan inloggen en
                     wellicht wat info over hoe de app werkt.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquam atque delectus,
-                    doloribus, id ipsam iure laudantium magnam magni nisi quo repellat unde. Eius nostrum placeat
-                    reiciendis repudiandae tenetur?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquam atque delectus,
-                    doloribus, id ipsam iure laudantium magnam magni nisi quo repellat unde. Eius nostrum placeat
-                    reiciendis repudiandae tenetur?</p>
             </div>
         </div>
     )

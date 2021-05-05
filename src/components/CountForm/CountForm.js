@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import styles from './CountForm.module.css'
+import {useForm} from "react-hook-form";
 
 function CountForm({nameList}) {
+    const {register} = useForm();
     const [bottles, setBottles] = useState([
         {
             Water_Rood: null,
@@ -273,6 +275,7 @@ function CountForm({nameList}) {
     return (
         <>
             <div>
+
                 <table border="2">
                     <thead>
                     <tr>
@@ -304,11 +307,16 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beverages[beverageIndex]}</td>
                             {bottles.map((fridge, index) => {
                                 return <>
-                                    <td><input className={styles.beverage} name={beveragesCrates[beverageIndex]}
+                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage}
+
+
+                                               name={beveragesCrates[beverageIndex]}
+
+
                                                placeholder="0"
                                                type="number" value={crates[index][beveragesCrates[beverageIndex]]}
                                                onChange={(event) => updateCrates(event, index)}/></td>
-                                    <td><input className={styles.beverage} name={beverages[beverageIndex]}
+                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beverages[beverageIndex]}
                                                placeholder="0"
                                                type="number" value={fridge[beverages[beverageIndex]]}
                                                onChange={(event) => updateBottles(event, index)}/></td>
@@ -337,11 +345,11 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beveragesKegs[beverageIndex]}</td>
                             {kegs.map((fridge, index) => {
                                 return <>
-                                    <td key={beveragesKegs}><input className={styles.beverage} name={beveragesKegs[beverageIndex]}
-                                               placeholder="0"
-                                               type="number" step="any"
-                                               value={kegs[index][beveragesKegs[beverageIndex]]}
-                                               onChange={(event) => updateKegs(event, index)}/>
+                                    <td key={beveragesKegs}><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beveragesKegs[beverageIndex]}
+                                                                   placeholder="0"
+                                                                   type="number" step="any"
+                                                                   value={kegs[index][beveragesKegs[beverageIndex]]}
+                                                                   onChange={(event) => updateKegs(event, index)}/>
                                     </td>
                                 </>
                             })}
@@ -365,7 +373,7 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beveragesTanks[beverageIndex]}</td>
                             {tanks.map((fridge, index) => {
                                 return <>
-                                    <td><input className={styles.beverage} name={beveragesTanks[beverageIndex]}
+                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beveragesTanks[beverageIndex]}
                                                placeholder="0"
                                                type="number" value={tanks[index][beveragesTanks[beverageIndex]]}
                                                onChange={(event) => updateTanks(event, index)}/>

@@ -1,19 +1,16 @@
 import React, {useContext} from "react";
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink} from "react-router-dom";
 import GeneralLogo from "../../assets/thumbnail_algemeen-logo2021.jpg"
 import styles from "./Navbar.module.css"
 import {AuthContext} from "../../context/AuthContext";
 
-
 function Navbar() {
-        const {logout}=useContext(AuthContext)
+    const {logout} = useContext(AuthContext)
     return (
         <nav>
             <div className={styles["nav-container"]}>
                 <img src={GeneralLogo} alt="INKOM"/>
 
-
-                {/*class kaas word styles.kaas*/}
                 <ul>
                     <li>
                         <NavLink to="/" exact activeClassName={styles["active-link"]}>Home</NavLink>
@@ -24,7 +21,19 @@ function Navbar() {
                     </li>
 
                     <li>
+                        <NavLink to="/administration" activeClassName={styles["active-link"]}>Admin</NavLink>
+                    </li>
+
+                    <li>
                         <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/after-count" activeClassName={styles["active-link"]}>Natelling</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/totals" activeClassName={styles["active-link"]}>Totalen</NavLink>
                     </li>
 
                     <li>
@@ -36,7 +45,7 @@ function Navbar() {
                     </li>
 
                     <li>
-                        <Link to="/" onClick={logout} >Uitloggen</Link>
+                        <Link to="/login" onClick={logout}>Uitloggen</Link>
                     </li>
                 </ul>
             </div>
@@ -46,4 +55,3 @@ function Navbar() {
 
 export default Navbar
 
-// Heeft u al een account? Klik <Link to="/sign-in">hier</Link> om in te loggen.
