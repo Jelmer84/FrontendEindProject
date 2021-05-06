@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
 import {useForm} from "react-hook-form";
-import {useHistory} from 'react-router-dom'
+import {useHistory} from "react-router-dom"
 import axios from "axios";
 import InputForm from "../../components/InputForm/InputForm";
 import {Link} from "react-router-dom";
@@ -32,7 +32,7 @@ function Register() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles["register-form"]} onSubmit={handleSubmit(onSubmit)}>
                 <InputForm
                     type="tex"
                     name="firstname"

@@ -10,6 +10,7 @@
 .footer-container {
     background-color: #a7d5c1;
     display: flex;
+    margin-top: 50px;
 }
 
 .copyright {

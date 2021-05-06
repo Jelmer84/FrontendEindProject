@@ -8,8 +8,8 @@ function Navbar() {
     const {logout} = useContext(AuthContext)
     return (
         <nav>
+            <img src={GeneralLogo} alt="INKOM"/>
             <div className={styles["nav-container"]}>
-                <img src={GeneralLogo} alt="INKOM"/>
 
                 <ul>
                     <li>

@@ -16,7 +16,7 @@ function AfterCount() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onFormSubmit)}>
+            <form className={styles["after-form"]} onSubmit={handleSubmit(onFormSubmit)}>
 
                 {/*<DropdownWeekdayEvent/>*/}
                 {/*<DropdownStudentParty/>*/}

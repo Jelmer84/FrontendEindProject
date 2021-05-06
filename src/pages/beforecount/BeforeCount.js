@@ -6,15 +6,11 @@ import CountForm from "../../components/CountForm/CountForm";
 import {useForm} from "react-hook-form";
 
 function BeforeCount() {
-    const {handleSubmit} = useForm();
 
-    function onFormSubmit(data) {
-        console.log(data, "Hoop dat dit werkt");
-    }
 
     return (
         <>
-            <form onSubmit={handleSubmit(onFormSubmit)}>
+            <div className={styles["before-container"]} >
 
                 <DropdownWeekdayEvent/>
                 <DropdownStudentParty/>
@@ -22,13 +18,8 @@ function BeforeCount() {
                     nameList="Voor"
                 />
 
-                <div className={styles["container-buttons"]}>
-                    <button className={styles["button-formBeforeCount"]} type="adjust">Aanpassen</button>
-                    <button className={styles["button-formBeforeCount"]} type="submit" id="buttonSubmit">Opslaan</button>
-                    <button className={styles["button-formBeforeCount"]} type="notAgreed">Niet Akkoord</button>
-                    <button className={styles["button-formBeforeCount"]} type="agreed">Akkoord</button>
-                </div>
-            </form>
+
+            </div>
            
         </>
     )

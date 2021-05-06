@@ -3,224 +3,224 @@ import styles from './CountForm.module.css'
 import {useForm} from "react-hook-form";
 
 function CountForm({nameList}) {
-    const {register} = useForm();
+    const {handleSubmit, register} = useForm();
     const [bottles, setBottles] = useState([
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         }
 
     ])
     const [crates, setCrates] = useState([
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
 
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         },
         {
-            Water_Rood: null,
-            Water_Blauw: null,
-            Pepsi: null,
-            Pepsi_Max: null,
-            Sisi: null,
-            Ice_Tea_Normal: null,
-            Ice_Tea_Green_110cl: null,
-            Ice_Tea_Green_150cl: null,
-            Red_Bull: null,
-            Red_Bull_Sugar_Free: null,
-            Red_Bull_Tropical: null,
-            Desperados: null
+            Water_Rood: 0,
+            Water_Blauw: 0,
+            Pepsi: 0,
+            Pepsi_Max: 0,
+            Sisi: 0,
+            Ice_Tea_Normal: 0,
+            Ice_Tea_Green_110cl: 0,
+            Ice_Tea_Green_150cl: 0,
+            Red_Bull: 0,
+            Red_Bull_Sugar_Free: 0,
+            Red_Bull_Tropical: 0,
+            Desperados: 0
         }
     ])
     const [kegs, setKegs] = useState([
         {
-            Fust_Jilz: null,
-            Fust_Radler: null,
-            Fust_Pils: null,
+            Fust_Jilz: 0,
+            Fust_Radler: 0,
+            Fust_Pils: 0,
         },
         {
-            Fust_Jilz: null,
-            Fust_Radler: null,
-            Fust_Pils: null,
+            Fust_Jilz: 0,
+            Fust_Radler: 0,
+            Fust_Pils: 0,
         }
     ])
 
     const [tanks, setTanks] = useState([{
-        Tankbier: null,
+        Tankbier: 0,
     }
     ])
     const beverages = Object.keys(bottles[0])
@@ -272,10 +272,13 @@ function CountForm({nameList}) {
         setTanks(updatedTanksState)
     }
 
+    function onFormSubmit(data) {
+        console.log(data, "DATA???");
+    }
+
     return (
         <>
-            <div>
-
+            <form onSubmit={handleSubmit(onFormSubmit)}>
                 <table border="2">
                     <thead>
                     <tr>
@@ -307,24 +310,31 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beverages[beverageIndex]}</td>
                             {bottles.map((fridge, index) => {
                                 return <>
-                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage}
+                                    <td>
 
+                                        <input
+                                            className={styles.beverage}
+                                            name={beveragesCrates[beverageIndex]}
+                                            placeholder="0"
+                                            value={crates[index][beveragesCrates[beverageIndex]]}
+                                            onChange={(event) => updateCrates(event, index)}
+                                            type="number"
+                                            {...register}
+                                        /> HIER
+                                    </td>
+                                    <td><input min="0" className={styles.beverage} name={beverages[beverageIndex]}
 
-                                               name={beveragesCrates[beverageIndex]}
-
-
-                                               placeholder="0"
-                                               type="number" value={crates[index][beveragesCrates[beverageIndex]]}
-                                               onChange={(event) => updateCrates(event, index)}/></td>
-                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beverages[beverageIndex]}
-                                               placeholder="0"
                                                type="number" value={fridge[beverages[beverageIndex]]}
                                                onChange={(event) => updateBottles(event, index)}/></td>
                                 </>
                             })}
 
                             <td>{crates.reduce(function (accumulator, crates) {
-                                return accumulator + crates[beveragesCrates[beverageIndex]];
+                                // console.log("LOGGEN", accumulator + crates[beveragesCrates[beverageIndex]])
+                                let totalCrates =   accumulator + crates[beveragesCrates[beverageIndex]];
+                                // console.log(totalCrates)
+                                return totalCrates
+
                             }, 0)}</td>
                             <td>{bottles.reduce(function (accumulator, bottles) {
                                 return accumulator + bottles[beverages[beverageIndex]];
@@ -345,7 +355,8 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beveragesKegs[beverageIndex]}</td>
                             {kegs.map((fridge, index) => {
                                 return <>
-                                    <td key={beveragesKegs}><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beveragesKegs[beverageIndex]}
+                                    <td key={beveragesKegs}><input min="0" className={styles.beverage}
+                                                                   name={beveragesKegs[beverageIndex]}
                                                                    placeholder="0"
                                                                    type="number" step="any"
                                                                    value={kegs[index][beveragesKegs[beverageIndex]]}
@@ -373,7 +384,7 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beveragesTanks[beverageIndex]}</td>
                             {tanks.map((fridge, index) => {
                                 return <>
-                                    <td><input min="0" onInput="validity.valid||(value='');" className={styles.beverage} name={beveragesTanks[beverageIndex]}
+                                    <td><input min="0" className={styles.beverage} name={beveragesTanks[beverageIndex]}
                                                placeholder="0"
                                                type="number" value={tanks[index][beveragesTanks[beverageIndex]]}
                                                onChange={(event) => updateTanks(event, index)}/>
@@ -386,14 +397,27 @@ function CountForm({nameList}) {
                             }, 0)}</td>
                         </tr>
                     })}
+
+
+
                     </tbody>
                 </table>
-            </div>
+                <div className={styles["container-buttons"]}>
+                    <button className={styles["button-formBeforeCount"]} type="adjust">Aanpassen</button>
+                    <button className={styles["button-formBeforeCount"]} type="submit" id="buttonSubmit">Opslaan</button>
+                    <button className={styles["button-formBeforeCount"]} type="notAgreed">Niet Akkoord</button>
+                    <button className={styles["button-formBeforeCount"]} type="agreed">Akkoord</button>
+                </div>
+            </form>
+
+
 
         </>
-    )
+    );
 }
 
 export default CountForm
 
 
+// onInput="validity.valid||(value='');"
+// zorgt ervoor dat de ingetypte waarde niet onder de nul kan, geeft error bij aanklikken button
