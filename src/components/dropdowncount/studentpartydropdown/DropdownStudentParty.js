@@ -8,6 +8,7 @@ function DropdownStudentParty() {
     const handleStudentPartyChange = (studentParty) => {setStudentParty(studentParty);};
 
     console.log(studentParty)
+    
 
     return (
         <>

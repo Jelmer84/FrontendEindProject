@@ -3,7 +3,6 @@ import styles from "./BeforeCount.module.css"
 import DropdownWeekdayEvent from "../../components/dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
 import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
 import CountForm from "../../components/CountForm/CountForm";
-import {useForm} from "react-hook-form";
 
 function BeforeCount() {
 

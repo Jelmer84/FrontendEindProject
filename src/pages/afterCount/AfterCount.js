@@ -16,7 +16,7 @@ function AfterCount() {
 
     return (
         <>
-            <form className={styles["after-form"]} onSubmit={handleSubmit(onFormSubmit)}>
+            <div className={styles["after-form"]} onSubmit={handleSubmit(onFormSubmit)}>
 
                 {/*<DropdownWeekdayEvent/>*/}
                 {/*<DropdownStudentParty/>*/}
@@ -68,7 +68,7 @@ function AfterCount() {
                     <button className={styles["button-formAfterCount"]} type="notAgreed">Niet Akkoord</button>
                     <button className={styles["button-formAfterCount"]} type="agreed">Akkoord</button>
                 </div>
-            </form>
+            </div>
 
         </>
     )

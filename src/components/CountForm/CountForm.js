@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styles from './CountForm.module.css'
 import {useForm} from "react-hook-form";
+// import axios from "axios";
 
 function CountForm({nameList}) {
     const {handleSubmit, register} = useForm();
@@ -274,11 +275,23 @@ function CountForm({nameList}) {
 
     function onFormSubmit(data) {
         console.log(data, "DATA???");
+
+        //     try {
+        //         const result = await axios.post('http://localhost:3000/login', data)
+        //         // console.log(result.data.accessToken);
+        //         login(result.data.accessToken)
+        //     } catch (e) {
+        //         console.error(e)
+        //     }
+        // }
+
     }
 
     return (
         <>
             <form onSubmit={handleSubmit(onFormSubmit)}>
+
+
                 <table border="2">
                     <thead>
                     <tr>
@@ -294,10 +307,10 @@ function CountForm({nameList}) {
                     </tr>
                     <tr>
                         {bottles.map((fridge, index) => {
-                            return <>
+                            return <React.Fragment key={index}>
                                 <th className={styles.headerTwo}>Kratten</th>
                                 <th className={styles.headerTwo}>Flessen</th>
-                            </>
+                            </React.Fragment>
                         })}
                         <th className={styles.headerTwo}>Kratten</th>
                         <th className={styles.headerTwo}>Flessen</th>
@@ -310,16 +323,19 @@ function CountForm({nameList}) {
                             <td className={styles.text}>{beverages[beverageIndex]}</td>
                             {bottles.map((fridge, index) => {
                                 return <>
-                                    <td>
+                                    <td key={index}>
 
                                         <input
+                                            key={index}
                                             className={styles.beverage}
                                             name={beveragesCrates[beverageIndex]}
                                             placeholder="0"
                                             value={crates[index][beveragesCrates[beverageIndex]]}
                                             onChange={(event) => updateCrates(event, index)}
                                             type="number"
-                                            {...register}
+                                            {...register( `${beveragesCrates[beverageIndex]}`)}
+                                            
+
                                         /> HIER
                                     </td>
                                     <td><input min="0" className={styles.beverage} name={beverages[beverageIndex]}
@@ -331,7 +347,7 @@ function CountForm({nameList}) {
 
                             <td>{crates.reduce(function (accumulator, crates) {
                                 // console.log("LOGGEN", accumulator + crates[beveragesCrates[beverageIndex]])
-                                let totalCrates =   accumulator + crates[beveragesCrates[beverageIndex]];
+                                let totalCrates = accumulator + crates[beveragesCrates[beverageIndex]];
                                 // console.log(totalCrates)
                                 return totalCrates
 
@@ -354,7 +370,7 @@ function CountForm({nameList}) {
                         return <tr key={beverageIndex}>
                             <td className={styles.text}>{beveragesKegs[beverageIndex]}</td>
                             {kegs.map((fridge, index) => {
-                                return <>
+                                return <React.Fragment key={index}>
                                     <td key={beveragesKegs}><input min="0" className={styles.beverage}
                                                                    name={beveragesKegs[beverageIndex]}
                                                                    placeholder="0"
@@ -362,7 +378,7 @@ function CountForm({nameList}) {
                                                                    value={kegs[index][beveragesKegs[beverageIndex]]}
                                                                    onChange={(event) => updateKegs(event, index)}/>
                                     </td>
-                                </>
+                                </React.Fragment>
                             })}
 
                             <td>{kegs.reduce(function (accumulator, kegs) {
@@ -374,22 +390,20 @@ function CountForm({nameList}) {
                     <tr>
                         <th className={styles.headerOne}>Tankbier</th>
                         {tanks.map((fridge, index) => {
-                            return <th className={styles.headerOne}>Tankbier {index + 1}</th>
+                            return <th key={index} className={styles.headerOne}>Tankbier {index + 1}</th>
                         })}
 
                         <th className={styles.headerOne}>Totaal</th>
                     </tr>
                     {beveragesTanks.map((_, beverageIndex) => {
-                        return <tr>
+                        return <tr key={beverageIndex}>
                             <td className={styles.text}>{beveragesTanks[beverageIndex]}</td>
                             {tanks.map((fridge, index) => {
-                                return <>
-                                    <td><input min="0" className={styles.beverage} name={beveragesTanks[beverageIndex]}
+                                return <td key={index}><input min="0" className={styles.beverage} name={beveragesTanks[beverageIndex]}
                                                placeholder="0"
                                                type="number" value={tanks[index][beveragesTanks[beverageIndex]]}
                                                onChange={(event) => updateTanks(event, index)}/>
                                     </td>
-                                </>
                             })}
 
                             <td>{tanks.reduce(function (accumulator, tanks) {
@@ -399,17 +413,16 @@ function CountForm({nameList}) {
                     })}
 
 
-
                     </tbody>
                 </table>
                 <div className={styles["container-buttons"]}>
                     <button className={styles["button-formBeforeCount"]} type="adjust">Aanpassen</button>
-                    <button className={styles["button-formBeforeCount"]} type="submit" id="buttonSubmit">Opslaan</button>
+                    <button className={styles["button-formBeforeCount"]} type="submit" id="buttonSubmit">Opslaan
+                    </button>
                     <button className={styles["button-formBeforeCount"]} type="notAgreed">Niet Akkoord</button>
                     <button className={styles["button-formBeforeCount"]} type="agreed">Akkoord</button>
                 </div>
             </form>
-
 
 
         </>
