@@ -7,216 +7,216 @@ function CountForm({nameList}) {
     const {handleSubmit, register} = useForm();
     const [bottles, setBottles] = useState([
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         }
 
     ])
     const [crates, setCrates] = useState([
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
 
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         },
         {
-            Water_Rood: 0,
-            Water_Blauw: 0,
+            WaterRood: 0,
+            WaterBlauw: 0,
             Pepsi: 0,
-            Pepsi_Max: 0,
+            PepsiMax: 0,
             Sisi: 0,
-            Ice_Tea_Normal: 0,
-            Ice_Tea_Green_110cl: 0,
-            Ice_Tea_Green_150cl: 0,
-            Red_Bull: 0,
-            Red_Bull_Sugar_Free: 0,
-            Red_Bull_Tropical: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
             Desperados: 0
         }
     ])
     const [kegs, setKegs] = useState([
         {
-            Fust_Jilz: 0,
-            Fust_Radler: 0,
-            Fust_Pils: 0,
+            FustJilz: 0,
+            FustRadler: 0,
+            FustPils: 0,
         },
         {
-            Fust_Jilz: 0,
-            Fust_Radler: 0,
-            Fust_Pils: 0,
+            FustJilz: 0,
+            FustRadler: 0,
+            FustPils: 0,
         }
     ])
 
@@ -229,16 +229,35 @@ function CountForm({nameList}) {
     const beveragesKegs = Object.keys(kegs[0])
     const beveragesTanks = Object.keys(tanks[0])
 
+    // function updateCrates(event, cratesIndex) {
+    //     const updatedCratesState = crates.map((crates, index) => {
+    //         if (index === cratesIndex) {
+    //             return {...crates, [event.target.name]: parseInt(event.target.value)}
+    //         } else {
+    //             return crates
+    //         }
+    //     })
+    //     setCrates(updatedCratesState)
+    // }
+
     function updateCrates(event, cratesIndex) {
         const updatedCratesState = crates.map((crates, index) => {
             if (index === cratesIndex) {
-                return {...crates, [event.target.name]: parseInt(event.target.value)}
+                return {
+                    ...crates,
+                    ["crate" + event.target.name]: parseInt(event.target.value)}
             } else {
                 return crates
             }
         })
         setCrates(updatedCratesState)
     }
+
+
+
+
+
+
 
     function updateBottles(event, bottlesIndex) {
         const updatedBottleState = bottles.map((bottles, index) => {
@@ -322,27 +341,30 @@ function CountForm({nameList}) {
                         return <tr key={beverageIndex}>
                             <td className={styles.text}>{beverages[beverageIndex]}</td>
                             {bottles.map((fridge, index) => {
-                                return <>
-                                    <td key={index}>
-
+                                return <React.Fragment key={index}>
+                                    <td>
                                         <input
                                             key={index}
                                             className={styles.beverage}
                                             name={beveragesCrates[beverageIndex]}
-                                            placeholder="0"
+                                            // placeholder="0"
                                             value={crates[index][beveragesCrates[beverageIndex]]}
                                             onChange={(event) => updateCrates(event, index)}
                                             type="number"
-                                            {...register( `${beveragesCrates[beverageIndex]}`)}
-                                            
+                                            min="0"
 
-                                        /> HIER
+                                            {...register(`crate${beveragesCrates[beverageIndex]}`)}
+
+
+
+                                        />  HIER
                                     </td>
                                     <td><input min="0" className={styles.beverage} name={beverages[beverageIndex]}
+                                               placeholder="0"
 
                                                type="number" value={fridge[beverages[beverageIndex]]}
                                                onChange={(event) => updateBottles(event, index)}/></td>
-                                </>
+                                </React.Fragment>
                             })}
 
                             <td>{crates.reduce(function (accumulator, crates) {
@@ -399,11 +421,13 @@ function CountForm({nameList}) {
                         return <tr key={beverageIndex}>
                             <td className={styles.text}>{beveragesTanks[beverageIndex]}</td>
                             {tanks.map((fridge, index) => {
-                                return <td key={index}><input min="0" className={styles.beverage} name={beveragesTanks[beverageIndex]}
-                                               placeholder="0"
-                                               type="number" value={tanks[index][beveragesTanks[beverageIndex]]}
-                                               onChange={(event) => updateTanks(event, index)}/>
-                                    </td>
+                                return <td key={index}><input min="0" className={styles.beverage}
+                                                              name={beveragesTanks[beverageIndex]}
+                                                              placeholder="0"
+                                                              type="number"
+                                                              value={tanks[index][beveragesTanks[beverageIndex]]}
+                                                              onChange={(event) => updateTanks(event, index)}/>
+                                </td>
                             })}
 
                             <td>{tanks.reduce(function (accumulator, tanks) {
@@ -416,11 +440,35 @@ function CountForm({nameList}) {
                     </tbody>
                 </table>
                 <div className={styles["container-buttons"]}>
-                    <button className={styles["button-formBeforeCount"]} type="adjust">Aanpassen</button>
-                    <button className={styles["button-formBeforeCount"]} type="submit" id="buttonSubmit">Opslaan
-                    </button>
-                    <button className={styles["button-formBeforeCount"]} type="notAgreed">Niet Akkoord</button>
-                    <button className={styles["button-formBeforeCount"]} type="agreed">Akkoord</button>
+
+                    {/*INKOM BUTTONS*/}
+                    {/*    AANPAS BUTTON */}
+                    {/*        Button aanpassen waarschijnlijk niet nodig, INKOM slaat op, bij afkeuren door SP word telling weer zichtbaar.*/}
+                    {/*    OPSLAAN BUTTON.     */}
+                    {/*        Telling moet onzichtbaar worden voor INKOM*/}
+                    {/*        zichtbaar voor SP, inclusief de buttons SP. Kan wellicht met een value van true naar false en vica versa.*/}
+                    {/*        Telling moet opgeslagen worden in Backend*/}
+
+                    <button className={styles["button-formCount"]} type="adjust">Aanpassen</button>
+
+                    <button className={styles["button-formCount"]} type="submit" id="buttonSubmit">Opslaan</button>
+
+
+
+                    {/*SP BUTTONS*/}
+                    {/*    NIET AKKOORD*/}
+                    {/*        Telling moet weer onzichtbaar worden voor SP, wellicht met value true en false*/}
+                    {/*        Eedere opgeslagen telling met get request naar INKOM terug.*/}
+                    {/*    AKKOORD*/}
+                    {/*        data opgeslagen in de backend*/}
+                    {/*        data met get request naar totaal tellingen*/}
+                    {/*        bonus per mail met pdf de telling*/}
+
+                    <button className={styles["button-formCount"]} type="notAgreed">Niet Akkoord</button>
+
+                    <button className={styles["button-formCount"]} type="agreed">Akkoord</button>
+
+
                 </div>
             </form>
 

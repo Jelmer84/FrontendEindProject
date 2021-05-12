@@ -13,7 +13,7 @@ function DropdownStudentParty() {
     return (
         <>
             <Select
-                placeholder="Studentenpartij"
+                placeholder="Selecteer studentenpartij"
                 value={studentParty}
                 options={data}
                 onChange={handleStudentPartyChange}

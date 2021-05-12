@@ -28,6 +28,17 @@
     font-weight: bold;
 }
 
+.container-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button-formCount {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+}
+
 
 
 

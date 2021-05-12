@@ -18,6 +18,9 @@ function DropdownWeekdayEvent() {
         setInkomEvent(weekday);
     };
 
+    console.log(weekday)
+    console.log(inkomEvent)
+
     return (
         <>
             <Select
