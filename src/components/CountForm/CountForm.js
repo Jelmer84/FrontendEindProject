@@ -229,29 +229,27 @@ function CountForm({nameList}) {
     const beveragesKegs = Object.keys(kegs[0])
     const beveragesTanks = Object.keys(tanks[0])
 
-    // function updateCrates(event, cratesIndex) {
-    //     const updatedCratesState = crates.map((crates, index) => {
-    //         if (index === cratesIndex) {
-    //             return {...crates, [event.target.name]: parseInt(event.target.value)}
-    //         } else {
-    //             return crates
-    //         }
-    //     })
-    //     setCrates(updatedCratesState)
-    // }
-
     function updateCrates(event, cratesIndex) {
         const updatedCratesState = crates.map((crates, index) => {
             if (index === cratesIndex) {
-                return {
-                    ...crates,
-                    ["crate" + event.target.name]: parseInt(event.target.value)}
+                return {...crates, [event.target.name]: parseInt(event.target.value)}
             } else {
                 return crates
             }
         })
         setCrates(updatedCratesState)
     }
+
+    // function updateCrates(event, cratesIndex) {
+    //     const updatedCratesState = crates.map((crates, index) => {
+    //         if (index === cratesIndex) {
+    //             return {...crates, ["crate" + event.target.name]: parseInt(event.target.value)}
+    //         } else {
+    //             return crates
+    //         }
+    //     })
+    //     setCrates(updatedCratesState)
+    // }
 
 
 
@@ -293,7 +291,30 @@ function CountForm({nameList}) {
     }
 
     function onFormSubmit(data) {
-        console.log(data, "DATA???");
+        // console.log(data, "DATA???");
+        console.log(crates)
+        const totalCrates = crates.reduce((accumulator, crate ) => {
+            // console.log(accumulator, crate)
+            Object.keys(accumulator).forEach(brand => {
+                accumulator[brand]=accumulator[brand] + crate[brand]
+            })
+            return accumulator
+        },{ WaterRood: 0,
+            WaterBlauw: 0,
+            Pepsi: 0,
+            PepsiMax: 0,
+            Sisi: 0,
+            IceTeaNormal: 0,
+            IceTeaGreen110cl: 0,
+            IceTeaGreen150cl: 0,
+            RedBull: 0,
+            RedBullSugarFree: 0,
+            RedBullTropical: 0,
+            Desperados: 0})
+
+        console.log(totalCrates)
+
+
 
         //     try {
         //         const result = await axios.post('http://localhost:3000/login', data)
@@ -352,8 +373,6 @@ function CountForm({nameList}) {
                                             onChange={(event) => updateCrates(event, index)}
                                             type="number"
                                             min="0"
-
-                                            {...register(`crate${beveragesCrates[beverageIndex]}`)}
 
 
 

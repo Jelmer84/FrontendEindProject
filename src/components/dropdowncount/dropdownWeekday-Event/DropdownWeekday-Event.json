@@ -9,31 +9,30 @@
   {
     "weekday": "Dinsdag",
     "inkomEvents": [
-      {"nameEvent": "MECC Tuesday"},
-      {"nameEvent": "Festival"}
-
+      {"nameEvent": "Festival"},
+      {"nameEvent": "MECC Tuesday"}
     ]
   },
   {
     "weekday": "Woensdag",
     "inkomEvents": [
-      {"nameEvent": "Cantus"},
-      {"nameEvent": "Sportsevent"}
+      {"nameEvent": "Sportsevent"},
+      {"nameEvent": "BBQ"},
+      {"nameEvent": "Cantus"}
     ]
   },
   {
     "weekday": "Donderdag",
     "inkomEvents": [
-      {"nameEvent": "Night at the Museum"},
-      {"nameEvent": "DDD"}
+      {"nameEvent": "Culture Carnival"}
     ]
   },
   {
     "weekday": "Vrijdag",
     "inkomEvents": [
-      {"nameEvent": "Heineken Night"},
       {"nameEvent": "Aqua Lounge"},
-      {"nameEvent": "Meals on Wheels"}
+      {"nameEvent": "Open Air Cinema"},
+      {"nameEvent": "Heineken Night"}
     ]
   }
 ]
