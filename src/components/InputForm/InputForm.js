@@ -23,5 +23,3 @@ function InputForm({type,name,placeholder, fieldRef, errors}) {
 
 export default InputForm
 
-
-// {...register(`Krat ${beveragesCrates[beverageIndex]}`)}

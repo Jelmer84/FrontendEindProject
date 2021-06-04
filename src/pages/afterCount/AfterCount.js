@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import styles from "./AfterCount.module.css"
-// import DropdownWeekdayEvent from "../../components/dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
-// import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
 import CountForm from "../../components/CountForm/CountForm";
 import {useForm} from "react-hook-form";
 
@@ -18,8 +16,6 @@ function AfterCount() {
         <>
             <div className={styles["after-form"]} onSubmit={handleSubmit(onFormSubmit)}>
 
-                {/*<DropdownWeekdayEvent/>*/}
-                {/*<DropdownStudentParty/>*/}
                 <CountForm
                     nameList="Na"
                 />

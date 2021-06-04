@@ -1,9 +1,10 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import Select from "react-select";
 import data from './DropdownWeekday-Event.json';
 import styles from "./DropdownWeekday-Event.module.css"
 
-function DropdownWeekdayEvent() {
+
+function DropdownWeekdayEvent({selectedWeekday, selectedInkomEvent}) {
     const [weekday, setWeekday] = useState(null);
     const [inkomEvent, setInkomEvent] = useState(null);
     const [inkomEventList, setInkomEventList] = useState([]);
@@ -12,17 +13,26 @@ function DropdownWeekdayEvent() {
         setWeekday(weekday);
         setInkomEventList(weekday.inkomEvents);
         setInkomEvent(null);
+        selectedWeekday(weekday);
+
     };
 
-    const handleInkomEventChange = (weekday) => {
+    const handleInkomEventChange = (weekday, inkomEvents) => {
         setInkomEvent(weekday);
+        selectedInkomEvent(weekday.nameEvent);
+        // console.log(weekday)
     };
 
-    console.log(weekday)
-    console.log(inkomEvent)
+    // console.log(weekday.inkomEvents[0].nameEvent)
+    // console.log(inkomEvent)
+    // console.log(weekday.inkomEvents[0].nameEvent);
+
 
     return (
+
         <>
+           {/*<button onClick={() => selectedWeekday (weekday)}>TESTTS</button>*/}
+
             <Select
                 placeholder="Selecteer weekdag"
                 value={weekday}

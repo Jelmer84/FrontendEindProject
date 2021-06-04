@@ -24,7 +24,6 @@ function AuthContextProvider({children}) {
                 user: {
                     firstname: result.data.firstname,
                     lastname: result.data.lastname,
-                    username: result.data.username,
                     email: result.data.email,
                     id: result.data.id,
                 },

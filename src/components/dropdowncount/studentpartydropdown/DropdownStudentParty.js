@@ -3,11 +3,14 @@ import Select from "react-select";
 import data from "./DropdownStudentParty.json"
 import styles from "../dropdownWeekday-Event/DropdownWeekday-Event.module.css";
 
-function DropdownStudentParty() {
+function DropdownStudentParty({selectedStudentParty}) {
     const [studentParty, setStudentParty] = useState(null);
-    const handleStudentPartyChange = (studentParty) => {setStudentParty(studentParty);};
+    const handleStudentPartyChange = (studentParty) => {
+        setStudentParty(studentParty);
+        selectedStudentParty(studentParty);
+    };
 
-    console.log(studentParty)
+    // console.log(studentParty)
     
 
     return (

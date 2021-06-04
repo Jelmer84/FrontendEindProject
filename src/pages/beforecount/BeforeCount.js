@@ -11,8 +11,8 @@ function BeforeCount() {
         <>
             <div className={styles["before-container"]} >
 
-                <DropdownWeekdayEvent/>
-                <DropdownStudentParty/>
+                {/*<DropdownWeekdayEvent/>*/}
+                {/*<DropdownStudentParty/>*/}
                 <CountForm
                     nameList="Voor"
                 />
