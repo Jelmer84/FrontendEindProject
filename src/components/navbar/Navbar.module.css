@@ -1,24 +1,19 @@
-.nav-container {
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-nav {
-    width: 100%;
+.nav-list {
+    display: flex;
     background-color: #a7d5c1;
-    display: flex;
-    justify-content: center;
-    height: 60px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-ul {
-    list-style-type: none;
-    flex-basis: 550px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav-item {
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.nav-item:first-child {
+    margin-right: auto;
+    margin-left: -40px;
 }
 
 .active-link {
@@ -26,10 +21,8 @@ ul {
     text-decoration: none;
 }
 
-
-
 img {
-    max-width: 150px;
-    max-height: 150px;
-    margin-right: 420px;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px 5px 0 5px;
 }

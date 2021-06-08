@@ -284,7 +284,7 @@ function CountForm({nameList}) {
 
     function onFormSubmit(data) {
         // console.log(data, "DATA???");
-        
+
         console.log("crates per fridge", crates)
 
 
@@ -380,8 +380,6 @@ function CountForm({nameList}) {
                 />
                 <DropdownStudentParty
                     selectedStudentParty={selectedStudentParty => setSelectedStudentParty(selectedStudentParty)}
-
-
                 />
                  </div>
 

@@ -7,6 +7,7 @@ function Profile() {
     console.log(user)
     const [imagePreview, setImagePreview] = useState(null);
     const [error, setError] = useState(false);
+    console.log(imagePreview)
 
     const handleImageChange = (e) => {
         setError(false)

@@ -7,71 +7,80 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
     const history = useHistory();
-    const [authState, setAuthState] = useState({user: null, status: "pending"});
+    const [isLoading, setIsLoading] = useState(true);
+    const [userState, setUserState] = useState({user: null, status: "pending"});
 
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const userId = decoded.sub;
         try {
             const result = await axios.get(`http://localhost:3000/600/users/${userId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${JWToken}`,
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${JWToken}`,
+                    },
                 }
-            })
+            );
             // console.log(result)
-            setAuthState({
+            setUserState({
                 user: {
                     firstname: result.data.firstname,
                     lastname: result.data.lastname,
                     email: result.data.email,
                     id: result.data.id,
+                    // accesLevels: result.data.roles
+                    token: JWToken
                 },
                 status: "done",
             });
         } catch (e) {
             console.error(e)
         }
+        setIsLoading(false);
     }
 
     useEffect(() => {
+        let mounted = true;
         const token = localStorage.getItem('token')
-        if (token !== null && authState.user === null) {
-            fetchUserData(token);
-
+        if (token !== null && userState.user === null) {
+            if (mounted) {
+                fetchUserData(token);
+            }
         } else {
-            setAuthState({
+            setUserState({
                 user: null,
                 status: "done"
             });
         }
-    }, [])
+        return () => (mounted = false);
+    }, []);
 
     async function loginFunction(JWToken) {
         // console.log(JWToken)
         // console.log("DECODED", decoded)
         localStorage.setItem('token', JWToken);
 
-        fetchUserData(JWToken);
-        history.push("/before-count");
+        await fetchUserData(JWToken);
+        history.push("/profile");
     }
 
     function logoutFunction() {
         console.log("LOGOUT")
         localStorage.clear();
-        setAuthState({user: null, status: "done"});
+        setUserState({user: null, status: "done"});
         // history.push("/")
     }
 
     const data = {
-        ...authState,
+        ...userState,
         login: loginFunction,
         logout: logoutFunction,
+        isLoading
     }
 
     return (
         <AuthContext.Provider value={data}>
-            {authState.status === "done" ? children : <p>Loading...</p>}
+            {children}
         </AuthContext.Provider>
     );
 }

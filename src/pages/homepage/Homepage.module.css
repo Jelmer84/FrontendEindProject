@@ -1,34 +1,14 @@
 .container {
-    background: red;
-    /*justify-content: space-evenly;*/
-    /*justify-content: center;*/
-
-    /*justify-items: center;*/
-
-    /*justify-self: center;*/
-
+    display: flex;
+    flex-direction: column;
     align-content: center;
 
 }
 
 .text {
-    max-width: 95%;
 
     display: flex;
     flex-direction: column;
-
-    /*justify-content: center;*/
-
-    /*justify-items: center;*/
-
-    /*justify-self: center;*/
-
-    /*align-content: center;*/
-    padding: 2%;
-
-
-    background-color: #d5a7bb;
-
-
+    margin: 20px;
 }
 

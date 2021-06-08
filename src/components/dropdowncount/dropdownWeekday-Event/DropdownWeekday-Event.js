@@ -17,11 +17,14 @@ function DropdownWeekdayEvent({selectedWeekday, selectedInkomEvent}) {
 
     };
 
-    const handleInkomEventChange = (weekday, inkomEvents) => {
+    const handleInkomEventChange = (weekday) => {
         setInkomEvent(weekday);
         selectedInkomEvent(weekday.nameEvent);
         // console.log(weekday)
     };
+
+
+
 
     // console.log(weekday.inkomEvents[0].nameEvent)
     // console.log(inkomEvent)

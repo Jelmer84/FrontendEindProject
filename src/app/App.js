@@ -10,6 +10,7 @@ import BeforeCount from "../pages/beforecount/BeforeCount";
 import AfterCount from "../pages/afterCount/AfterCount";
 import AdminPage from "../pages/adminPage/AdminPage";
 import Totals from "../pages/totals/Totals";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 
 function App() {
@@ -21,21 +22,21 @@ function App() {
                 <Route exact path="/">
                     <HomePage/>
                 </Route>
-                <Route path="/profile">
+                <PrivateRoute path="/profile">
                     <Profile/>
-                </Route>
-                <Route exact path="/administration">
+                </PrivateRoute>
+                <PrivateRoute exact path="/administration">
                     <AdminPage/>
-                </Route>
-                <Route path="/before-count">
+                </PrivateRoute>
+                <PrivateRoute path="/before-count">
                     <BeforeCount/>
-                </Route>
-                <Route exact path="/after-count">
+                </PrivateRoute>
+                <PrivateRoute exact path="/after-count">
                     <AfterCount/>
-                </Route>
-                <Route path="/totals">
+                </PrivateRoute>
+                <PrivateRoute path="/totals">
                     <Totals/>
-                </Route>
+                </PrivateRoute>
                 <Route path="/register">
                     <Register/>
                 </Route>

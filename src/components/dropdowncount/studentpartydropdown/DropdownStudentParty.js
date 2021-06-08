@@ -1,6 +1,5 @@
 import React, { useState} from "react";
 import Select from "react-select";
-import data from "./DropdownStudentParty.json"
 import styles from "../dropdownWeekday-Event/DropdownWeekday-Event.module.css";
 
 function DropdownStudentParty({selectedStudentParty}) {
@@ -11,14 +10,21 @@ function DropdownStudentParty({selectedStudentParty}) {
     };
 
     // console.log(studentParty)
-    
+
+    const options = [
+        {"studentParty": "S.V. Circumflex"},
+        {"studentParty": "S.V. Koko"},
+        {"studentParty": "M.S.V. Tragos"},
+        {"studentParty": "M.S.R.V. Saurus"},
+        {"studentParty": "Stichting Onafhankelijk Maastricht"}
+    ]
 
     return (
         <>
             <Select
                 placeholder="Selecteer studentenpartij"
                 value={studentParty}
-                options={data}
+                options={options}
                 onChange={handleStudentPartyChange}
                 getOptionLabel={name => name.studentParty}
                 className={styles.dropdown}

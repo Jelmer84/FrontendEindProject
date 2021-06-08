@@ -5,47 +5,51 @@ import styles from "./Navbar.module.css"
 import {AuthContext} from "../../context/AuthContext";
 
 function Navbar() {
-    const {logout} = useContext(AuthContext)
+    const {logout, user} = useContext(AuthContext)
     return (
+
         <nav>
-            <img src={GeneralLogo} alt="INKOM"/>
             <div className={styles["nav-container"]}>
 
-                <ul>
-                    <li>
+
+                <ul className={styles["nav-list"]}>
+                    <li className={styles["nav-item"]}><img src={GeneralLogo} alt="INKOM"/></li>
+
+                    <li className={styles["nav-item"]}>
                         <NavLink to="/" exact activeClassName={styles["active-link"]}>Home</NavLink>
                     </li>
 
-                    <li>
-                        <NavLink to="/profile" activeClassName={styles["active-link"]}>Profiel</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/profile" activeClassName={styles["active-link"]}>Profiel</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/administration" activeClassName={styles["active-link"]}>Admin</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/administration" activeClassName={styles["active-link"]}>Admin</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {user &&
+                        <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/after-count" activeClassName={styles["active-link"]}>Natelling</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/after-count" activeClassName={styles["active-link"]}>Natelling</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/totals" activeClassName={styles["active-link"]}>Totalen</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/totals" activeClassName={styles["active-link"]}>Totalen</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/register" activeClassName={styles["active-link"]}>Registeren</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {!user && <NavLink to="/register" activeClassName={styles["active-link"]}>Registeren</NavLink>}
                     </li>
 
-                    <li>
-                        <NavLink to="/login" activeClassName={styles["active-link"]}>Inloggen</NavLink>
+                    <li className={styles["nav-item"]}>
+                        {!user && <NavLink to="/login" activeClassName={styles["active-link"]}>Inloggen</NavLink>}
                     </li>
 
-                    <li>
-                        <Link to="/login" onClick={logout}>Uitloggen</Link>
+                    <li className={styles["nav-item"]}>
+                        {user && <Link to="/login" onClick={logout}>Uitloggen</Link>}
                     </li>
                 </ul>
             </div>
