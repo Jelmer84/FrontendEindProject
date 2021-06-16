@@ -28,7 +28,7 @@ function AuthContextProvider({children}) {
                     lastname: result.data.lastname,
                     email: result.data.email,
                     id: result.data.id,
-                    // accesLevels: result.data.roles
+                    // accesLevels: result.data.roles,
                     token: JWToken
                 },
                 status: "done",

@@ -1,13 +1,30 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styles from './CountForm.module.css'
 import {useForm} from "react-hook-form";
 import DropdownWeekdayEvent from "../dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
 import DropdownStudentParty from "../dropdowncount/studentpartydropdown/DropdownStudentParty";
+import {AuthContext} from "../../context/AuthContext";
 
 function CountForm({nameList}) {
-    const [selectedWeekday, setSelectedWeekday] =useState();
-    const [selectedInkomEvent, setSelectedInkomEvent] =useState();
-    const [selectedStudentParty, setSelectedStudentParty] =useState();
+    const [selectedWeekday, setSelectedWeekday] = useState();
+    const [selectedInkomEvent, setSelectedInkomEvent] = useState();
+    const [selectedStudentParty, setSelectedStudentParty] = useState();
+    // const {user} = useContext(AuthContext)
+
+    const [saved, setSaved] = useState(false)
+    const [inputDisabled, setInputDisabled] = useState(false)
+
+
+    const [accepted, setAccepted] = useState(false)
+
+
+    //@todo USER
+    // const user = true
+    // const studentParty = false
+
+    //@todo STUDENTPARTY
+    const user = false
+    const studentParty = true
 
 
     const {handleSubmit} = useForm();
@@ -355,33 +372,34 @@ function CountForm({nameList}) {
             Tankbier: 0,
         })
 
+       // @Todo post request
+
         console.log("total crates", totalCrates)
         console.log("total bottles", totalBottles)
         console.log("total kegs", totalKegs)
         console.log("total tanks", totalTanks)
-
-
         console.log(selectedWeekday)
         console.log(selectedInkomEvent)
         console.log(selectedStudentParty)
-
     }
 
 
+    console.log(saved, "saved")
+    console.log(inputDisabled, "inputDisabled")
 
 
     return (
         <>
-            <form onSubmit={handleSubmit(onFormSubmit)}>
-                 <div className={styles.dropdownlists}>
-                <DropdownWeekdayEvent
-                    selectedWeekday={selectedWeekday => setSelectedWeekday(selectedWeekday)}
-                    selectedInkomEvent={selectedInkomEvent => setSelectedInkomEvent(selectedInkomEvent)}
-                />
-                <DropdownStudentParty
-                    selectedStudentParty={selectedStudentParty => setSelectedStudentParty(selectedStudentParty)}
-                />
-                 </div>
+            {!saved && <form onSubmit={handleSubmit(onFormSubmit)}>
+                <div className={styles.dropdownlists}>
+                    <DropdownWeekdayEvent
+                        selectedWeekday={selectedWeekday => setSelectedWeekday(selectedWeekday)}
+                        selectedInkomEvent={selectedInkomEvent => setSelectedInkomEvent(selectedInkomEvent)}
+                    />
+                    <DropdownStudentParty
+                        selectedStudentParty={selectedStudentParty => setSelectedStudentParty(selectedStudentParty)}
+                    />
+                </div>
 
                 <table border="2">
                     <thead>
@@ -415,6 +433,7 @@ function CountForm({nameList}) {
                                 return <React.Fragment key={index}>
                                     <td>
                                         <input
+                                            disabled={inputDisabled}
                                             key={index}
                                             min="0"
                                             className={styles.beverage}
@@ -429,6 +448,7 @@ function CountForm({nameList}) {
 
                                     <td>
                                         <input
+                                            disabled={inputDisabled}
                                             min="0"
                                             className={styles.beverage}
                                             name={beverages[beverageIndex]}
@@ -467,6 +487,7 @@ function CountForm({nameList}) {
                                 return <React.Fragment key={index}>
                                     <td key={beveragesKegs}>
                                         <input
+                                            disabled={inputDisabled}
                                             min="0"
                                             className={styles.beverage}
                                             name={beveragesKegs[beverageIndex]}
@@ -499,6 +520,7 @@ function CountForm({nameList}) {
                             {tanks.map((fridge, index) => {
                                 return <td key={index}>
                                     <input
+                                        disabled={inputDisabled}
                                         min="0"
                                         className={styles.beverage}
                                         name={beveragesTanks[beverageIndex]}
@@ -519,6 +541,7 @@ function CountForm({nameList}) {
 
                 <div className={styles["container-buttons"]}>
 
+
                     {/*INKOM BUTTONS*/}
                     {/*    AANPAS BUTTON */}
                     {/*        Button aanpassen waarschijnlijk niet nodig, INKOM slaat op, bij afkeuren door SP word telling weer zichtbaar.*/}
@@ -527,9 +550,25 @@ function CountForm({nameList}) {
                     {/*        zichtbaar voor SP, inclusief de buttons SP. Kan wellicht met een value van true naar false en vica versa.*/}
                     {/*        Telling moet opgeslagen worden in Backend*/}
 
-                    <button className={styles["button-formCount"]}>Aanpassen</button>
+                    {/*{user &&*/}
+                    {/*<button*/}
+                    {/*    className={styles["button-formCount"]}*/}
+                    {/*>*/}
+                    {/*    Aanpassen*/}
+                    {/*</button>}*/}
 
-                    <button className={styles["button-formCount"]} type="submit" id="buttonSubmit">Opslaan</button>
+
+                    {user &&
+                    <button
+                        className={styles["button-formCount"]}
+                        type="button" id="buttonSubmit"
+                        onClick={() => {
+                            setSaved(true);
+                            setInputDisabled(true);
+                        }}
+                    >
+                        Opslaan
+                    </button>}
 
 
                     {/*SP BUTTONS*/}
@@ -541,13 +580,29 @@ function CountForm({nameList}) {
                     {/*        data met get request naar totaal tellingen*/}
                     {/*        bonus per mail met pdf de telling*/}
 
-                    <button className={styles["button-formCount"]} type="notAgreed">Niet Akkoord</button>
+                    {studentParty &&
+                    <button
+                        className={styles["button-formCount"]}
+                        type="button"
+                        onClick={() => {
+                            setSaved(false);
+                            setInputDisabled(false);
+                        }}
+                    >
+                        Niet Akkoord
+                    </button>}
 
-                    <button className={styles["button-formCount"]} type="agreed">Akkoord</button>
-
-
+                    {studentParty &&
+                    <button
+                        className={styles["button-formCount"]}
+                        type="submit">
+                        Akkoord
+                    </button>}
                 </div>
+
             </form>
+            }
+
 
 
         </>

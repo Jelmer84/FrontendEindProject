@@ -1,0 +1,37 @@
+.calculations {
+    width: 65px;
+    height: 25px;
+}
+
+.text {
+    font-weight: bold;
+}
+
+.black {
+    background-color: black;
+}
+
+.headerOne {
+    top: 0;
+    position: sticky;
+}
+
+.headerTwo {
+    top: 27px;
+    position: sticky;
+}
+
+.headerThreeEmpty {
+    color: #a7d5c1;
+    background-color: #a7d5c1;
+
+}
+
+
+.headerOne, .headerTwo, .headerThree {
+    background-color: #a7d5c1;
+    font-weight: bold;
+}
+
+
+

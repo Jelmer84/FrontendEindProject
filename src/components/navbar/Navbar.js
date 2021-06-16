@@ -28,8 +28,7 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
-                        {user &&
-                        <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>}
+                        {user && <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>

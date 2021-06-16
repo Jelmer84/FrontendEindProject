@@ -22,6 +22,7 @@ function Login() {
 
     return (
         <>
+
             <form className={styles["login-form"]} onSubmit={handleSubmit(onSubmit)}>
 
                 <InputForm
@@ -59,6 +60,9 @@ function Login() {
                     )}
                     errors={errors}
                 />
+
+                <p>Test123!</p>
+
 
                 <button type="submit">Inloggen</button>
             </form>
