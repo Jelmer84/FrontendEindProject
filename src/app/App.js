@@ -11,11 +11,13 @@ import AfterCount from "../pages/afterCount/AfterCount";
 import AdminPage from "../pages/adminPage/AdminPage";
 import Totals from "../pages/totals/Totals";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import StudentBeforeCount from "../pages/studentBeforeCount/StudentBeforeCount";
+import StudentAfterCount from "../pages/studentAfterCount/StudentAfterCount";
 
 
 function App() {
     return (
-            <>
+        <>
             <Navbar/>
 
             <Switch>
@@ -34,6 +36,12 @@ function App() {
                 <PrivateRoute exact path="/after-count">
                     <AfterCount/>
                 </PrivateRoute>
+                <PrivateRoute exact path="/student-before-count">
+                    <StudentBeforeCount/>
+                </PrivateRoute>
+                <PrivateRoute exact path="/student-after-count">
+                    <StudentAfterCount/>
+                </PrivateRoute>
                 <PrivateRoute path="/totals">
                     <Totals/>
                 </PrivateRoute>
@@ -46,7 +54,7 @@ function App() {
             </Switch>
 
             <Footer/>
-            </>
+        </>
     );
 }
 

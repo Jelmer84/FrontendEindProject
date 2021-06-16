@@ -1,0 +1,55 @@
+.beverage {
+    max-width: 45px;
+    max-height: 45px;
+    display: flex;
+    text-align: center;
+}
+
+.text {
+    font-weight: bold;
+}
+
+.black {
+    background-color: black;
+}
+
+.headerOne {
+    top: 0;
+    position: sticky;
+}
+
+.headerTwo {
+    top: 27px;
+    position: sticky;
+}
+
+.headerOne, .headerTwo {
+    background-color: #a7d5c1;
+    font-weight: bold;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button-formCount {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+}
+
+.dropdownlists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+

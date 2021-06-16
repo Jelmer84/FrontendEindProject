@@ -4,6 +4,8 @@ import {useForm} from "react-hook-form";
 import DropdownWeekdayEvent from "../dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
 import DropdownStudentParty from "../dropdowncount/studentpartydropdown/DropdownStudentParty";
 import {AuthContext} from "../../context/AuthContext";
+import jwt_Decode from "jwt-decode";
+import axios from "axios";
 
 function CountForm({nameList}) {
     const [selectedWeekday, setSelectedWeekday] = useState();
@@ -299,10 +301,7 @@ function CountForm({nameList}) {
         setTanks(updatedTanksState)
     }
 
-    function onFormSubmit(data) {
-        // console.log(data, "DATA???");
 
-        console.log("crates per fridge", crates)
 
 
         const totalCrates = crates.reduce((accumulator, crate) => {
@@ -373,7 +372,15 @@ function CountForm({nameList}) {
         })
 
        // @Todo post request
+    async function onFormSubmit(combined) {
+        try {
+            let count = 1;
+            const result = await axios.post(`http://localhost:8080/${count}`, combined)
+        } catch (e) {
+            console.error(e)
+        }
 
+        const result =
         console.log("total crates", totalCrates)
         console.log("total bottles", totalBottles)
         console.log("total kegs", totalKegs)
@@ -382,6 +389,18 @@ function CountForm({nameList}) {
         console.log(selectedInkomEvent)
         console.log(selectedStudentParty)
     }
+
+    // async function onSubmit(data) {
+    //     console.log(data);
+    //     try {
+    //         const result = await axios.post('http://localhost:3000/login', data)
+    //         // console.log(result.data.accessToken);
+    //         login(result.data.accessToken)
+    //     } catch (e) {
+    //         console.error(e)
+    //     }
+    // }
+
 
 
     console.log(saved, "saved")

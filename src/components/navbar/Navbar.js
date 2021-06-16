@@ -28,11 +28,22 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
-                        {user && <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>}
+                        {user &&
+                        <NavLink to="/before-count" activeClassName={styles["active-link"]}>Voortelling</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>
                         {user && <NavLink to="/after-count" activeClassName={styles["active-link"]}>Natelling</NavLink>}
+                    </li>
+
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/student-before-count" activeClassName={styles["active-link"]}>Voortelling
+                            S.P.</NavLink>}
+                    </li>
+
+                    <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/student-after-count" activeClassName={styles["active-link"]}>Natelling
+                            S.P.</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>
