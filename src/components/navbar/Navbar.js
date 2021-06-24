@@ -37,13 +37,21 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/coins" activeClassName={styles["active-link"]}>Munten</NavLink>}
+                    </li>
+
+                    <li className={styles["nav-item"]}>
                         {user && <NavLink to="/student-before-count" activeClassName={styles["active-link"]}>Voortelling
                             S.P.</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>
-                        {user && <NavLink to="/student-after-count" activeClassName={styles["active-link"]}>Natelling
-                            S.P.</NavLink>}
+                        {user && <NavLink to="/student-after-count" activeClassName={styles["active-link"]}>Natelling S.P.</NavLink>}
+                    </li>
+
+                    <li className={styles["nav-item"]}>
+                        {user &&
+                        <NavLink to="/student-coins" activeClassName={styles["active-link"]}>Munten S.P.</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>

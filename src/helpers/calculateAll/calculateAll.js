@@ -1,8 +1,8 @@
-import { createCrateBottleData } from './createBeverageData/createCrateBottleData';
-import { createKegData } from './createBeverageData/createKegData';
-import { createTankData } from './createBeverageData/createTankData';
-import calculateTotalsInfoRow from './CalculateTotals/calculateTotalInfoRow';
-import combined from './fakeData/combined.json';
+import { createCrateBottleData } from '../createBeverageData/createCrateBottleData';
+import { createKegData } from '../createBeverageData/createKegData';
+import { createTankData } from '../createBeverageData/createTankData';
+import calculateTotalsInfoRow from '../CalculateTotals/calculateTotalInfoRow';
+import combined from '../fakeData/combined.json';
 
 function calculateAll() {
   // Voorberekening

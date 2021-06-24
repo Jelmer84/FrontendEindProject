@@ -10,8 +10,9 @@ import BeverageRowTank from "../../components/Totals/BeverageRowTank";
 import HeaderInfo from "../../components/Totals/HeaderInfo";
 import InfoRow from "../../components/Totals/InfoRow";
 import combined from "../../helpers/fakeData/combined.json"
-import calculateAll from '../../helpers/calculateAll';
+import calculateAll from '../../helpers/calculateAll/calculateAll';
 
+import remarksContent from "../../helpers/fakeData/remarksContent/remarksContent.json"
 
 function Totals() {
   const [tableValues, setTableValues] = useState({
@@ -134,6 +135,13 @@ function Totals() {
             calculationOne={tableValues.differenceCoins}
             calculationTwo={tableValues.percentageSoda}
           />
+
+          <tr>
+            <th className={styles.headerThree} colSpan={18}>Opmerkingen</th>
+          </tr>
+          <tr>
+            <td colSpan={18}>{remarksContent.remarksContent.remarks}</td>
+          </tr>
         </>
         }
         </tbody>

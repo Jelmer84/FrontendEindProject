@@ -1,70 +1,108 @@
 import React, {useState} from "react";
 import styles from "./AfterCount.module.css"
-import CountForm from "../../components/CountForm/CountForm";
-import {useForm} from "react-hook-form";
+import CountTable from "../../components/CountForm/CountTable";
+import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
+import Button from "../../components/Button/Button";
+import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
+import axios from "axios";
 
 function AfterCount() {
-    const {handleSubmit} = useForm();
-    const [remarks, toggleRemarks] = useState(false)
+    const [selectedWeekday, setSelectedWeekday] = useState('');
+    const [selectedInkomEvent, setSelectedInkomEvent] = useState('');
+    const [selectedStudentParty, setSelectedStudentParty] = useState('');
+
+    const [bottles, setBottles] = useState(initialStateDrinks);
+    const [crates, setCrates] = useState(initialStateDrinks);
+    const [kegs, setKegs] = useState(initialStateKegs);
+    const [tanks, setTanks] = useState(initialStateTanks);
+
+    const [totalCrates, setTotalCrates] = useState(0);
+    const [totalBottles, setTotalBottles] = useState(0);
+    const [totalKegs, setTotalKegs] = useState(0);
+    const [totalTanks, setTotalTanks] = useState(0);
+
+    const [remarks, toggleRemarks] = useState(false);
+    const [contentRemarks, setContentRemarks] = useState()
+
+    const [formSubmitSucces, setFormSubmitSucces] = useState(false)
 
 
-    function onFormSubmit(data) {
-        console.log(data, "Hoop dat dit werkt");
+    async function onFormSubmit(event) {
+        event.preventDefault()
+        try {
+            const result = await axios.post('urltjeAfter!!', {
+                selectedWeekday,
+                selectedInkomEvent,
+                selectedStudentParty,
+                bottles,
+                crates,
+                kegs,
+                tanks,
+                totalCrates,
+                totalBottles,
+                totalKegs,
+                totalTanks,
+                contentRemarks
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            })
+        } catch (e) {
+            console.error(e);
+        }
+        setFormSubmitSucces(true);
     }
+
 
     return (
         <>
-            <div className={styles["after-form"]} onSubmit={handleSubmit(onFormSubmit)}>
-
-                <CountForm
+            {!formSubmitSucces && <form className={styles["after-form"]} onSubmit={onFormSubmit}>
+                <CountTable
                     nameList="Na"
+                    selectedWeekday={selectedWeekday}
+                    setSelectedWeekday={setSelectedWeekday}
+                    selectedInkomEvent={selectedInkomEvent}
+                    setSelectedInkomEvent={setSelectedInkomEvent}
+                    selectedStudentParty={selectedStudentParty}
+                    setSelectedStudentParty={setSelectedStudentParty}
+
+                    bottles={bottles}
+                    setBottles={setBottles}
+                    crates={crates}
+                    setCrates={setCrates}
+                    kegs={kegs}
+                    setKegs={setKegs}
+                    tanks={tanks}
+                    setTanks={setTanks}
+
+                    totalCrates={totalCrates}
+                    setTotalCrates={setTotalCrates}
+                    totalBottles={totalBottles}
+                    setTotalBottles={setTotalBottles}
+                    totalKegs={totalKegs}
+                    setTotalKegs={setTotalKegs}
+                    totalTanks={totalTanks}
+                    setTotalTanks={setTotalTanks}
                 />
 
-                <div className={styles["remarks-container"]}>
-                    <label htmlFor="remarks">
-                        Opmerkingen
-                        <input
-                            type="checkbox"
-                            name="remarks"
-                            id="remarks"
-                            onChange={(event) => toggleRemarks(event.target.checked)}
-                        />
-                    </label>
+                <RemarksContainer
+                    remarks={remarks}
+                    toggleRemarks={toggleRemarks}
+                    contentRemarks={contentRemarks}
+                    setContentRemarks={setContentRemarks}
+                />
 
-                    {remarks === true && (
-                        <textarea
-                            name="test"
-                            id="test"
-                            cols="60"
-                            rows="10"
-                            placeholder="Zet hier je opmerkingen, geef bij overheveling aan VAN welke studentenpartij NAAR welke studentenpartij!"/>
-                    )}
-                </div>
+                <Button
+                    name="Opslaan"
+                    type="submit"
+                    id="buttonSubmit"
+                />
 
+            </form>}
 
-                <table border="2">
-                    <thead>
-                    <tr>
-                        <th className={styles.headerOne}>Munten</th>
-                        <th className={styles.headerOne}>Totaal</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Munten</td>
-                        <td><input type="number" placeholder="0"/></td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <div className={styles["container-buttons"]}>
-                    <button className={styles["button-formAfterCount"]} type="adjust">Aanpassen</button>
-                    <button className={styles["button-formAfterCount"]} type="submit" id="buttonSubmit">Opslaan
-                    </button>
-                    <button className={styles["button-formAfterCount"]} type="notAgreed">Niet Akkoord</button>
-                    <button className={styles["button-formAfterCount"]} type="agreed">Akkoord</button>
-                </div>
-            </div>
+            {formSubmitSucces && <p>De telling is opgeslagen!</p>}
 
         </>
     )

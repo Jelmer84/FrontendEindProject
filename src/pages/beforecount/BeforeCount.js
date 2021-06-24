@@ -1,22 +1,93 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./BeforeCount.module.css"
-import CountForm from "../../components/CountForm/CountForm";
+import CountTable from "../../components/CountForm/CountTable";
+import Button from "../../components/Button/Button";
+import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
+import axios from "axios";
+
 
 function BeforeCount() {
+    const [selectedWeekday, setSelectedWeekday] = useState('');
+    const [selectedInkomEvent, setSelectedInkomEvent] = useState('');
+    const [selectedStudentParty, setSelectedStudentParty] = useState('');
 
+    const [bottles, setBottles] = useState(initialStateDrinks);
+    const [crates, setCrates] = useState(initialStateDrinks);
+    const [kegs, setKegs] = useState(initialStateKegs);
+    const [tanks, setTanks] = useState(initialStateTanks);
+
+    const [totalCrates, setTotalCrates] = useState(0);
+    const [totalBottles, setTotalBottles] = useState(0);
+    const [totalKegs, setTotalKegs] = useState(0);
+    const [totalTanks, setTotalTanks] = useState(0);
+
+    const [formSubmitSucces, setFormSubmitSucces] = useState(false);
+
+
+    async function onFormSubmit(event) {
+        event.preventDefault()
+        try {
+            const result = await axios.post('urltjeBefore!!', {
+                banaan: selectedWeekday,
+                citroen: selectedInkomEvent,
+                selectedStudentParty,
+                bottles,
+                crates,
+                kegs,
+                tanks,
+                totalCrates,
+                totalBottles,
+                totalKegs,
+                totalTanks
+            })
+        } catch(e) {
+            console.error(e);
+        }
+        setFormSubmitSucces(true);
+    }
 
     return (
         <>
-            <div className={styles["before-container"]} >
+            {!formSubmitSucces && <form onSubmit={onFormSubmit}>
+                <div className={styles["before-container"]}>
 
 
-                <CountForm
-                    nameList="Voor"
-                />
+                    <CountTable
+                        nameList="Voor"
+                        selectedWeekday={selectedWeekday}
+                        setSelectedWeekday={setSelectedWeekday}
+                        selectedInkomEvent={selectedInkomEvent}
+                        setSelectedInkomEvent={setSelectedInkomEvent}
+                        selectedStudentParty={selectedStudentParty}
+                        setSelectedStudentParty={setSelectedStudentParty}
 
+                        bottles={bottles}
+                        setBottles={setBottles}
+                        crates={crates}
+                        setCrates={setCrates}
+                        kegs={kegs}
+                        setKegs={setKegs}
+                        tanks={tanks}
+                        setTanks={setTanks}
 
-            </div>
-           
+                        totalCrates={totalCrates}
+                        setTotalCrates={setTotalCrates}
+                        totalBottles={totalBottles}
+                        setTotalBottles={setTotalBottles}
+                        totalKegs={totalKegs}
+                        setTotalKegs={setTotalKegs}
+                        totalTanks={totalTanks}
+                        setTotalTanks={setTotalTanks}
+                    />
+
+                    <Button
+                        name="Opslaan"
+                        type="submit"
+                        id="buttonSubmit"
+                    />
+
+                </div>
+            </form>}
         </>
     )
 }
