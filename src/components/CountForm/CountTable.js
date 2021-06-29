@@ -4,7 +4,7 @@ import DropdownWeekdayEvent from "../dropdowncount/dropdownWeekday-Event/Dropdow
 import DropdownStudentParty from "../dropdowncount/studentpartydropdown/DropdownStudentParty";
 import reduceTotals from "../../helpers/reduceTotals/reduceTotals";
 import {initialStateDrink, initialStateKeg, initialStateTank} from "../../constants/initialStateDrinks";
-
+           
 function CountTable({
                         nameList,
                         setSelectedWeekday,
