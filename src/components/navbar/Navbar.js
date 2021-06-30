@@ -41,6 +41,10 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
+                        {user && <NavLink to="/my-counts" activeClassName={styles["active-link"]}>Mijn Tellingen</NavLink>}
+                    </li>
+
+                    <li className={styles["nav-item"]}>
                         {user && <NavLink to="/student-before-count" activeClassName={styles["active-link"]}>Voortelling
                             S.P.</NavLink>}
                     </li>

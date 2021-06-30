@@ -1,20 +1,26 @@
 [
   {
-    "weekday": "Maandag",
+    "weekday": "13-08-2021",
+    "inkomEvents": [
+      {"nameEvent": "Pre-INKOM-Party"}
+    ]
+  },
+  {
+    "weekday": "16-08-2021",
     "inkomEvents": [
       {"nameEvent": "Opening"},
       {"nameEvent": "Welcome to Maastricht"}
     ]
   },
   {
-    "weekday": "Dinsdag",
+    "weekday": "17-08-2021",
     "inkomEvents": [
       {"nameEvent": "Festival"},
       {"nameEvent": "MECC Tuesday"}
     ]
   },
   {
-    "weekday": "Woensdag",
+    "weekday": "18-08-2021",
     "inkomEvents": [
       {"nameEvent": "Sportsevent"},
       {"nameEvent": "BBQ"},
@@ -22,13 +28,13 @@
     ]
   },
   {
-    "weekday": "Donderdag",
+    "weekday": "19-08-2021",
     "inkomEvents": [
       {"nameEvent": "Culture Carnival"}
     ]
   },
   {
-    "weekday": "Vrijdag",
+    "weekday": "20-08-2021",
     "inkomEvents": [
       {"nameEvent": "Aqua Lounge"},
       {"nameEvent": "Open Air Cinema"},

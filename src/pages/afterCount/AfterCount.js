@@ -42,7 +42,7 @@ function AfterCount() {
                 totalBottles,
                 totalKegs,
                 totalTanks,
-                contentRemarks
+                contentRemarks,
             }, {
                 headers: {
                     "Content-Type": "application/json",
@@ -58,51 +58,56 @@ function AfterCount() {
 
     return (
         <>
-            {!formSubmitSucces && <form className={styles["after-form"]} onSubmit={onFormSubmit}>
-                <CountTable
-                    nameList="Na"
-                    selectedWeekday={selectedWeekday}
-                    setSelectedWeekday={setSelectedWeekday}
-                    selectedInkomEvent={selectedInkomEvent}
-                    setSelectedInkomEvent={setSelectedInkomEvent}
-                    selectedStudentParty={selectedStudentParty}
-                    setSelectedStudentParty={setSelectedStudentParty}
+            {!formSubmitSucces && <form onSubmit={onFormSubmit}>
+                <div className={styles["after-container"]}>
+                    <CountTable
+                        nameList="Na"
+                        selectedWeekday={selectedWeekday}
+                        setSelectedWeekday={setSelectedWeekday}
+                        selectedInkomEvent={selectedInkomEvent}
+                        setSelectedInkomEvent={setSelectedInkomEvent}
+                        selectedStudentParty={selectedStudentParty}
+                        setSelectedStudentParty={setSelectedStudentParty}
 
-                    bottles={bottles}
-                    setBottles={setBottles}
-                    crates={crates}
-                    setCrates={setCrates}
-                    kegs={kegs}
-                    setKegs={setKegs}
-                    tanks={tanks}
-                    setTanks={setTanks}
+                        bottles={bottles}
+                        setBottles={setBottles}
+                        crates={crates}
+                        setCrates={setCrates}
+                        kegs={kegs}
+                        setKegs={setKegs}
+                        tanks={tanks}
+                        setTanks={setTanks}
 
-                    totalCrates={totalCrates}
-                    setTotalCrates={setTotalCrates}
-                    totalBottles={totalBottles}
-                    setTotalBottles={setTotalBottles}
-                    totalKegs={totalKegs}
-                    setTotalKegs={setTotalKegs}
-                    totalTanks={totalTanks}
-                    setTotalTanks={setTotalTanks}
-                />
+                        totalCrates={totalCrates}
+                        setTotalCrates={setTotalCrates}
+                        totalBottles={totalBottles}
+                        setTotalBottles={setTotalBottles}
+                        totalKegs={totalKegs}
+                        setTotalKegs={setTotalKegs}
+                        totalTanks={totalTanks}
+                        setTotalTanks={setTotalTanks}
+                    />
 
-                <RemarksContainer
-                    remarks={remarks}
-                    toggleRemarks={toggleRemarks}
-                    contentRemarks={contentRemarks}
-                    setContentRemarks={setContentRemarks}
-                />
+                    <RemarksContainer
+                        remarks={remarks}
+                        toggleRemarks={toggleRemarks}
+                        contentRemarks={contentRemarks}
+                        setContentRemarks={setContentRemarks}
+                    />
 
-                <Button
-                    name="Opslaan"
-                    type="submit"
-                    id="buttonSubmit"
-                />
+                    <Button
+                        name="Opslaan"
+                        type="submit"
+                        id="buttonSubmit"
+                        disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                    />
 
+                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
+                    <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+                </div>
             </form>}
-
             {formSubmitSucces && <p>De telling is opgeslagen!</p>}
+
 
         </>
     )

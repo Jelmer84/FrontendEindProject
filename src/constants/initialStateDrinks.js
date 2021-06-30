@@ -10,7 +10,7 @@ const initialStateDrink = {
     Red_Bull: 0,
     Red_Bull_Sugar_Free: 0,
     Red_Bull_Tropical: 0,
-    Desperados: 0
+    Desperados: 0,
 };
 
 const initialStateKeg = {
@@ -36,7 +36,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -50,7 +50,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -64,7 +64,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -78,7 +78,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -92,7 +92,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -106,7 +106,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     },
     {
         Water_Rood: 0,
@@ -120,7 +120,7 @@ const initialStateDrinks = [
         Red_Bull: 0,
         Red_Bull_Sugar_Free: 0,
         Red_Bull_Tropical: 0,
-        Desperados: 0
+        Desperados: 0,
     }
 ];
 
@@ -150,7 +150,8 @@ export {
     initialStateDrinks,
     initialStateKegs,
     initialStateTanks,
+
     initialStateDrink,
     initialStateKeg,
-    initialStateTank
+    initialStateTank,
 }

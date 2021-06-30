@@ -22,6 +22,8 @@ function BeforeCount() {
     const [totalTanks, setTotalTanks] = useState(0);
 
     const [formSubmitSucces, setFormSubmitSucces] = useState(false);
+    
+    // const [disabled, setDisabled] = useState(true)
 
 
     async function onFormSubmit(event) {
@@ -31,8 +33,8 @@ function BeforeCount() {
                 banaan: selectedWeekday,
                 citroen: selectedInkomEvent,
                 selectedStudentParty,
-                bottles,
                 crates,
+                bottles,
                 kegs,
                 tanks,
                 totalCrates,
@@ -45,6 +47,23 @@ function BeforeCount() {
         }
         setFormSubmitSucces(true);
     }
+
+    console.log("DATA DIE VERSTUURD WORD",
+        selectedWeekday,
+        selectedInkomEvent,
+        selectedStudentParty,
+        crates,
+        bottles,
+        kegs,
+        tanks,
+        totalCrates,
+        totalBottles,
+        totalKegs,
+        totalTanks)
+
+    // function handleDisabled(){
+    //     setDisabled(false)
+    // }
 
     return (
         <>
@@ -84,10 +103,16 @@ function BeforeCount() {
                         name="Opslaan"
                         type="submit"
                         id="buttonSubmit"
+                        disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
                     />
+                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) && <p>Vul de datum, het evenement en de studentenpartij in!</p>}
 
                 </div>
+
             </form>}
+            {formSubmitSucces && <p>De telling is opgeslagen!</p>}
+
+
         </>
     )
 }

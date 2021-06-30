@@ -15,6 +15,7 @@ import StudentBeforeCount from "../pages/studentBeforeCount/StudentBeforeCount";
 import StudentAfterCount from "../pages/studentAfterCount/StudentAfterCount";
 import StudentCoins from "../pages/StudentCoins/StudentCoins";
 import Coins from "../pages/Coins/Coins";
+import MyCounts from "../pages/myCounts/MyCounts";
 
 
 function App() {
@@ -41,23 +42,21 @@ function App() {
                 <PrivateRoute path="/coins">
                     <Coins/>
                 </PrivateRoute>
-
-
+                <PrivateRoute path="/my-counts">
+                    <MyCounts/>
+                </PrivateRoute>
                 <PrivateRoute exact path="/student-before-count">
                     <StudentBeforeCount/>
                 </PrivateRoute>
                 <PrivateRoute exact path="/student-after-count">
                     <StudentAfterCount/>
                 </PrivateRoute>
-
                 <PrivateRoute exact path="/student-coins">
                     <StudentCoins/>
                 </PrivateRoute>
-
                 <PrivateRoute path="/totals">
                     <Totals/>
                 </PrivateRoute>
-
                 <Route path="/register">
                     <Register/>
                 </Route>

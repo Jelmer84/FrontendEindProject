@@ -1,6 +1,5 @@
 function calculateTotalsInfoRow (calculatedBeverageValues, infoProp ) {
     return calculatedBeverageValues.reduce(function (accumulator, calculatedBeverageValue) {
-        console.log(calculatedBeverageValues)
         return accumulator + calculatedBeverageValue[infoProp]
     }, 0)
 }

@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import styles from "../../components/CountForm/CountTable.module.css";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 import Button from "../../components/Button/Button";
 import axios from "axios";
@@ -32,20 +31,23 @@ function StudentBeforeCount() {
                 <StudentCountTable
                     nameList="Voor"
                 />
-                {/*//@Todo MOET DEZE KNOP RESET ALS TYPE ZIJN?*/}
+                {/*//@Todo, deze knop moet met een onClick, de data van de voortelling weer beschikbaar maken voor de ORGANISATIE. terug naar BeforeCount.*/}
 
                 <Button
                     name="Niet akkoord"
                     type="button"
                     id="notAccepted"
+                    value="false"
                 />
 
                 <Button
                     name="Akkoord"
                     type="submit"
-                    id="notAccepted"
+                    id="accepted"
                 />
             </form>}
+            {accepted && <p>De telling is opgeslagen!</p>}
+
         </>
     )
 }

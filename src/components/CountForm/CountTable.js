@@ -32,16 +32,16 @@ function CountTable({
     const beveragesKegs = Object.keys(kegs[0])
     const beveragesTanks = Object.keys(tanks[0])
 
-    console.log("crates per fridge", crates)
+    // console.log("crates per fridge", crates)
     // const totalCrates = reduceTotals(crates)
 
-    console.log("bottles per fridge", bottles)
+    // console.log("bottles per fridge", bottles)
     // const totalBottles = reduceTotals(bottles)
 
-    console.log("kegs per fridge", kegs)
+    // console.log("kegs per fridge", kegs)
     // const totalKegs = reduceTotals(kegs)
 
-    console.log("tanks per fridge", tanks)
+    // console.log("tanks per fridge", tanks)
     // const totalTanks = reduceTotals(tanks)
 
     function updateCrates(event, cratesIndex) {
@@ -96,6 +96,8 @@ function CountTable({
         setTanks(updatedTanksState)
         setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
     }
+
+
 
     return (
         <>
@@ -196,7 +198,7 @@ function CountTable({
                                 </td>
                             </React.Fragment>
                         })}
-                        <td>{totalKegs[kegName]}</td>
+                        <td>{totalKegs[kegName] || 0}</td>
                     </tr>
                 })}
 
@@ -222,7 +224,7 @@ function CountTable({
                                     onChange={(event) => updateTanks(event, index)}/>
                             </td>
                         })}
-                        <td>{totalTanks[tankName]}</td>
+                        <td>{totalTanks[tankName] || 0}</td>
                     </tr>
                 })}
                 </tbody>

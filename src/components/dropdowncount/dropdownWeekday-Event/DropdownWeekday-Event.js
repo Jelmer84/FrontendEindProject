@@ -5,8 +5,8 @@ import styles from "./DropdownWeekday-Event.module.css"
 
 
 function DropdownWeekdayEvent({selectedWeekday, selectedInkomEvent}) {
-    const [weekday, setWeekday] = useState(null);
-    const [inkomEvent, setInkomEvent] = useState(null);
+    const [weekday, setWeekday] = useState('');
+    const [inkomEvent, setInkomEvent] = useState('');
     const [inkomEventList, setInkomEventList] = useState([]);
 
     const handleWeekdayChange = (weekday) => {
@@ -37,7 +37,7 @@ function DropdownWeekdayEvent({selectedWeekday, selectedInkomEvent}) {
            {/*<button onClick={() => selectedWeekday (weekday)}>TESTTS</button>*/}
 
             <Select
-                placeholder="Selecteer weekdag"
+                placeholder="Selecteer datum"
                 value={weekday}
                 options={data}
                 onChange={handleWeekdayChange}

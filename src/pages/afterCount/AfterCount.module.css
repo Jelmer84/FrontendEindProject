@@ -1,20 +1,10 @@
-.after-form {
+.after-container {
     display: flex;
     margin: 50px;
     flex-direction: column;
     align-items: center;
 }
 
-.container-buttons {
-    display: flex;
-    justify-content: center;
-}
-
-.button-formAfterCount {
-    width: 150px;
-    height: 30px;
-    margin: 10px;
-}
 
 
 
