@@ -1,53 +1,104 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 import Button from "../../components/Button/Button";
 import axios from "axios";
+import {approveEventInventory, fetchEventInventory} from "../../network";
+import {AuthContext} from "../../context/AuthContext";
 
 function StudentBeforeCount() {
     const [accepted, setAccepted] = useState(false)
-    const [notAccepted, setNotAccepted] = useState(true)
+    const [data, setData] = useState({ def : 0})
+    const [loading, setLoading] = useState(true)
+    const [alreadyCompleted, setAlreadyCompleted] = useState(false)
+    const [eventId, setEventId] = useState("")
+    const [studentPartyId, setStudentPartyId] = useState("")
+    const stage = 0;
+    const {user} = useContext(AuthContext)
+    const [message, setMessage] = useState()
 
-    async function onFormSubmit(event) {
-        event.preventDefault()
+
+    useEffect(async ()=>{
+        await getEventInventory();
+    },[data.def])
+
+
+    async function getEventInventory(){
         try {
-            const result = await axios.get(`basisUrl/beforeCounts/eventName`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            })
-            // set een state met result want dat zijn al je waardes
+
+            //const eventId = "Pre-INKOM-Party";
+            // console.log(user)
+            const {studentID} = user
+            const result = await fetchEventInventory(studentID, stage)
+
+            if(result.status === 200){
+                setData(JSON.parse(result.data.data))
+                setStudentPartyId(result.data.studentPartyId)
+                setEventId(result.data.eventId)
+
+            } else if(result.status === 208){
+                setAlreadyCompleted(true)
+                setMessage('There is no count available for you at this moment, check back later.')
+            }
+            setLoading(false)
+
+        } catch (e) {
+            console.error(e)
+            setLoading(false)
+        }
+    }
+
+    async function approveEvent(approve) {
+
+        try {
+            await approveEventInventory({eventId, studentPartyId,approve, stage})
+            if(approve){
+                setAccepted(true)
+                setMessage('De telling is opgeslagen!')
+            }else{
+                setAccepted(false)
+                setMessage('Go and see the supervisor!')
+            }
+
+
         } catch (e) {
             console.error(e)
         }
-        setAccepted(true)
-    }
 
+    }
 
     return (
         <>
-            {!accepted && <form onSubmit={onFormSubmit}>
+            {!message && <form>
 
-                <StudentCountTable
-                    nameList="Voor"
-                />
+                {  loading ?
+                    <p>loading</p> :
+                     <StudentCountTable
+                        nameList="Voor" eventId={eventId} data={data} studentPartyId={studentPartyId}/>
+                }
+
                 {/*//@Todo, deze knop moet met een onClick, de data van de voortelling weer beschikbaar maken voor de ORGANISATIE. terug naar BeforeCount.*/}
 
                 <Button
                     name="Niet akkoord"
-                    type="button"
                     id="notAccepted"
                     value="false"
+                    click={(event)=>{
+                        event.preventDefault();
+                        approveEvent(false)
+                    }}
                 />
 
                 <Button
                     name="Akkoord"
-                    type="submit"
                     id="accepted"
+                    click={(event)=>{
+                       event.preventDefault();
+                        approveEvent(true)
+                    }}
                 />
             </form>}
-            {accepted && <p>De telling is opgeslagen!</p>}
 
+            { message && <p>{message}</p> }
         </>
     )
 }

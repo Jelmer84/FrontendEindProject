@@ -8,7 +8,7 @@ import Login from "../pages/login/Login";
 import Footer from "../components/footer/Footer";
 import BeforeCount from "../pages/beforecount/BeforeCount";
 import AfterCount from "../pages/afterCount/AfterCount";
-import AdminPage from "../pages/adminPage/AdminPage";
+import OverallCounts from "../pages/overallCounts/OverallCounts";
 import Totals from "../pages/totals/Totals";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import StudentBeforeCount from "../pages/studentBeforeCount/StudentBeforeCount";
@@ -30,8 +30,8 @@ function App() {
                 <PrivateRoute path="/profile">
                     <Profile/>
                 </PrivateRoute>
-                <PrivateRoute exact path="/administration">
-                    <AdminPage/>
+                <PrivateRoute exact path="/overall-counts">
+                    <OverallCounts/>
                 </PrivateRoute>
                 <PrivateRoute path="/before-count">
                     <BeforeCount/>

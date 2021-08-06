@@ -1,10 +1,10 @@
-import data from "../../helpers/fakeData/combined.json";
+//import data from "../../helpers/fakeData/combined.json";
 import calculateTankTotals from "../calculateBeverageTotals/calculateTankTotals";
 
 
 
 // deze functie wil uiteindelijk graag de data als argumenten ontvangen, niet uit json data
-export function createTankData() {
+export function createTankData(data) {
     // alles destructuren en hernoemen, want we hebben veel dezelfde keys.
     // Ik ga ervanuit dat deze functie het object met één voor- en natelling ontvangt van een evenement
     const {before: {totalTanks: totalBeforeTanks}, after: {totalTanks: totalAfterTanks}} = data;

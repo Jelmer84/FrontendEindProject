@@ -12,7 +12,7 @@ function Login() {
     async function onSubmit(data) {
         console.log(data);
         try {
-            const result = await axios.post('http://localhost:3000/login', data)
+            const result = await axios.post('http://localhost:8080/api/auth/signin', data)
             // console.log(result.data.accessToken);
             login(result.data.accessToken)
         } catch (e) {

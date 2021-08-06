@@ -2,13 +2,13 @@ import { createCrateBottleData } from '../createBeverageData/createCrateBottleDa
 import { createKegData } from '../createBeverageData/createKegData';
 import { createTankData } from '../createBeverageData/createTankData';
 import calculateTotalsInfoRow from '../CalculateTotals/calculateTotalInfoRow';
-import combined from '../fakeData/combined.json';
+//import combined from '../fakeData/combined.json';
 
-function calculateAll() {
+function calculateAll(combined) {
   // Voorberekening
-  const cratesBottles = createCrateBottleData();
-  const kegs = createKegData();
-  const tanks = createTankData();
+  const cratesBottles = createCrateBottleData(combined);
+  const kegs = createKegData(combined);
+  const tanks = createTankData(combined);
 
   // Kratten en flesjes
   const totalCratesBottlesDrinks = calculateTotalsInfoRow(cratesBottles, 'totalDrinks');
@@ -23,14 +23,23 @@ function calculateAll() {
   // Totale drank- en munttelling
   const allCountedDrinks = totalCratesBottlesDrinks + totalKegsDrinks + parseInt(tanks.totalDrinksTanks);
   const allCountedCoins = totalCratesBottlesCoins + totalKegsCoins + parseInt(tanks.totalCoinsTanks);
+
+  console.log('cratesBottles', cratesBottles)
   const { totalCoins: alcoholicCoins } = cratesBottles.find((cratesBottles) => {
+
+    //console.log(cratesBottles)
+
     return cratesBottles.name === "Desperados"
   });
 
   // Verschillen
   const coinsPrice = 1.90;
   // @todo letop, dit komt ineens uit de json file
-  const differenceCoins = allCountedCoins - combined.after.totalCoins.Coins;
+
+  console.log('>>>>>>>>>>>>> ', combined.coin)
+  console.log('>>>>>>>>>>>>> ', allCountedCoins)
+  console.log('>>>>>>>>>>>>> ', combined.coin.coins)
+  const differenceCoins = allCountedCoins - Number(combined.coin.coins);
   const differenceEuro = (differenceCoins * coinsPrice).toFixed(2);
 
   // Percentages

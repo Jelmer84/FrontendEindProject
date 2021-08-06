@@ -24,7 +24,7 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
-                        {user && <NavLink to="/administration" activeClassName={styles["active-link"]}>Admin</NavLink>}
+                        {user && <NavLink to="/overall-counts" activeClassName={styles["active-link"]}>Losse tellingen</NavLink>}
                     </li>
 
                     <li className={styles["nav-item"]}>
@@ -63,7 +63,7 @@ function Navbar() {
                     </li>
 
                     <li className={styles["nav-item"]}>
-                        {!user && <NavLink to="/register" activeClassName={styles["active-link"]}>Registeren</NavLink>}
+                        <NavLink to="/register" activeClassName={styles["active-link"]}>Registeren</NavLink>
                     </li>
 
                     <li className={styles["nav-item"]}>

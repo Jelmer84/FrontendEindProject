@@ -5,6 +5,7 @@ import RemarksContainer from "../../components/RemarksContainer/RemarksContainer
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
 import axios from "axios";
+import {postEventInventory} from "../../network";
 
 function AfterCount() {
     const [selectedWeekday, setSelectedWeekday] = useState('');
@@ -25,33 +26,36 @@ function AfterCount() {
     const [contentRemarks, setContentRemarks] = useState()
 
     const [formSubmitSucces, setFormSubmitSucces] = useState(false)
+    const [errorMsg, setErrorMsg] = useState();
 
 
     async function onFormSubmit(event) {
         event.preventDefault()
-        try {
-            const result = await axios.post('urltjeAfter!!', {
-                selectedWeekday,
-                selectedInkomEvent,
-                selectedStudentParty,
-                bottles,
-                crates,
-                kegs,
-                tanks,
-                totalCrates,
-                totalBottles,
-                totalKegs,
-                totalTanks,
-                contentRemarks,
-            }, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            })
-        } catch (e) {
-            console.error(e);
+        const eventDetails = {
+            eventId:selectedInkomEvent,
+            studentPartyId: selectedStudentParty.studentParty,
+            stage : 1, // after count
+            organisationRemarks: contentRemarks,
+            data: {
+                selectedWeekday: selectedWeekday,
+                crates: crates,
+                bottles: bottles,
+                kegs: kegs,
+                tanks: tanks,
+                totalCrates: totalCrates,
+                totalBottles: totalBottles,
+                totalKegs: totalKegs,
+                totalTanks: totalTanks
+            }
         }
+        try {
+            await postEventInventory(eventDetails)
+        } catch (e) {
+            if(e.response.status === 400){
+                // this has already been submitted
+                setErrorMsg(e.response.data.message)
+            }
+            console.error(e);        }
         setFormSubmitSucces(true);
     }
 
@@ -106,7 +110,9 @@ function AfterCount() {
                     <p>Vul de datum, het evenement en de studentenpartij in!</p>}
                 </div>
             </form>}
-            {formSubmitSucces && <p>De telling is opgeslagen!</p>}
+
+            {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
+            {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
 
 
         </>

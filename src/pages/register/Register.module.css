@@ -15,3 +15,26 @@
     margin-right: 3px;
 }
 
+.dropdown-containerRole {
+    margin: 5px;
+    border: solid black 2px;
+    border-radius: 1rem;
+    width: 160px;
+    text-align: center;
+}
+
+select {
+    width: 95%;
+    color: #757575;
+    -webkit-appearance: none;
+    border: transparent;
+    text-align-last: center;
+    border-radius: 1rem;
+}
+
+select option {
+    color: black;
+}
+
+
+

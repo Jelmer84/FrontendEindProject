@@ -12,9 +12,9 @@ function AuthContextProvider({children}) {
 
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
-        const userId = decoded.sub;
+        const email = decoded.sub;
         try {
-            const result = await axios.get(`http://localhost:3000/600/users/${userId}`, {
+            const result = await axios.get(`http://localhost:8080/api/users/${email}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${JWToken}`,
@@ -22,15 +22,12 @@ function AuthContextProvider({children}) {
                 }
             );
             // console.log(result)
+
+            const data = result.data;
+            delete data['password']  ;
+           // localStorage.setItem('user', data);
             setUserState({
-                user: {
-                    firstname: result.data.firstname,
-                    lastname: result.data.lastname,
-                    email: result.data.email,
-                    id: result.data.id,
-                    // accesLevels: result.data.roles,
-                    token: JWToken
-                },
+                user: data,
                 status: "done",
             });
         } catch (e) {

@@ -25,7 +25,7 @@ function RemarksContainer({remarks, toggleRemarks, contentRemarks, setContentRem
                         id="remarks"
                         cols="60"
                         rows="10"
-                        placeholder="Zet hier je opmerkingen, geef bij overheveling aan VAN welke studentenpartij NAAR welke studentenpartij!"
+                        placeholder="Zet hier je opmerkingen, geef bij overheveling aan VAN welke studentenpartij NAAR welke studentenpartij en je NAAM!"
                     />
                 )}
             </div>

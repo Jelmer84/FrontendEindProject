@@ -1,66 +1,120 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import Button from "../../components/Button/Button";
 import styles from "./StudentCoins.module.css"
 import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
 import axios from "axios";
 import countCratesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countCratesPerFridge.json";
+import {AuthContext} from "../../context/AuthContext";
+import {approveEventInventory, fetchEventInventory} from "../../network";
+import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 
 function StudentCoins() {
     const [accepted, setAccepted] = useState(false)
-    const [notAccepted, setNotAccepted] = useState(true)
-    const [data, setData] = useState([])
+    const [data, setData] = useState({ def : 0})
+    const [loading, setLoading] = useState(true)
+    const [alreadyCompleted, setAlreadyCompleted] = useState(false)
+    const [eventId, setEventId] = useState("")
+    const [studentPartyId, setStudentPartyId] = useState("")
+    const [message, setMessage] = useState()
+    const stage = 2; // coin stage
+    const {user} = useContext(AuthContext)
 
-    async function onFormSubmit(event) {
-        event.preventDefault()
+
+    useEffect(async ()=>{
+        await getEventInventory();
+    },[data.def])
+
+
+    async function getEventInventory(){
         try {
-            const result = await axios.get(`basisUrl/coins/eventName`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            })
-            setData(result)
+
+            //const eventId = "Pre-INKOM-Party";
+            // console.log(user)
+            const {studentID} = user
+            const result = await fetchEventInventory(studentID, stage)
+
+            if(result.status === 200){
+                setData(JSON.parse(result.data.data))
+                setStudentPartyId(result.data.studentPartyId)
+                setEventId(result.data.eventId)
+            } else if(result.status === 208){
+                setAlreadyCompleted(true)
+                setMessage('There is no count available for you at this moment, check back later.')
+            }
+            setLoading(false)
+
         } catch (e) {
             console.error(e)
         }
-        setAccepted(true)
     }
 
+    async function approveEvent(approve) {
+
+        try {
+            await approveEventInventory({eventId, studentPartyId,approve, stage})
+            if(approve){
+                setAccepted(true)
+                setMessage('De telling is opgeslagen!')
+            }else {
+                setAccepted(false)
+                setMessage('Go and see the supervisor!')
+
+            }
+
+        } catch (e) {
+            console.error(e)
+        }
+
+    }
 
     return (
         <>
-            {!accepted && <div className={styles["coins-container"]}>
-                <div>
-                    <p><strong>Weekdag:</strong> {countCratesPerFridge.weekday}</p>
-                    <p><strong>Evenement:</strong> {countCratesPerFridge.event}</p>
-                    <p><strong>StudentenPartij:</strong> {countCratesPerFridge.studentParty}</p>
-                </div>
+            {!message &&
+            <div className={styles["coins-container"]}>
 
-                <form onSubmit={onFormSubmit}>
+                {  loading ?
+                    <p>loading</p> :
+                    <div>
+                        <p><strong>Weekdag:</strong> {data.selectedWeekday.weekday}</p>
+                        <p><strong>Evenement:</strong> {eventId}</p>
+                        <p><strong>StudentenPartij:</strong> {studentPartyId}</p>
+                    </div>
+                }
+
+
+                {!loading && <form>
                     <CoinsComponent
-                        disabled={true}
+                        disabled={true}  coins={data.coins}
                     />
 
 
                     <div className={styles["container-studentCoinsButtons"]}>
                         <Button
                             name="Niet akkoord"
-                            type="button"
                             id="notAccepted"
                             value="false"
+                            click={(event)=>{
+                                event.preventDefault();
+                                approveEvent(false)
+                            }}
                         />
 
                         <Button
                             name="Akkoord"
-                            type="submit"
                             id="accepted"
+                            click={(event)=>{
+                                event.preventDefault();
+                                approveEvent(true)
+                            }}
                         />
                     </div>
 
-                </form>
-            </div>}
-            {accepted && <p>De telling is opgeslagen!</p>}
+                </form>}
+
+            </div>
+            }
+            {message && <p>{message}</p>}
 
         </>
     )

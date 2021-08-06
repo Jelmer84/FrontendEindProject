@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from './StudentCountTable.module.css'
 
 import countCratesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countCratesPerFridge.json"
@@ -11,24 +11,61 @@ import BeverageRowStudent from "./BeverageRowStudent";
 import HeaderBeers from "./HeaderKegs";
 import BeersRowsStudent from "./BeersRowStudent";
 import TankRowStudent from "./TankRowStudent";
+import axios from "axios";
+import {AuthContext} from "../../context/AuthContext";
+import {fetchEventInventory} from "../../network";
 
 
-function StudentCountTable({nameList}) {
+
+function StudentCountTable({nameList, eventId, studentPartyId, data}) {
 
 
     // const [saved, setSaved] = useState(false)
     // const [inputDisabled, setInputDisabled] = useState(false)
+//    const [countCratesPerFridge, setCountCratesPerFridge] = useState({})
+    // const [data, setData] = useState({ def : 0})
+    // const [loading, setLoading] = useState(true)
+    // const [eventId, setEventId] = useState("")
+    // const [studentPartyId, setStudentPartyId] = useState("")
+    // const {user} = useContext(AuthContext)
+    //
+    //
+    // useEffect(async ()=>{
+    //     await getEventInventory();
+    // },[data.def])
 
-    // @Todo get request
-    // async function onFormSubmit(combined) {
+   // @Todo get request
+   //  async function onFormSubmit(combined) {
+   //      try {
+   //          let count = 1;
+   //          const eventId = "Pre-INKOM-Party";
+   //          //const result = await axios.get(`http://localhost:8080/api/inventory/$`, {})
+   //
+   //         // setCountCratesPerFridge(result.data)
+   //      } catch (e) {
+   //          console.error(e)
+   //      }
+   //  }
+
+    //
+    // async function getEventInventory(){
     //     try {
-    //         let count = 1;
-    //         const result = await axios.get(`http://localhost:8080/${count}`, combined)
+    //
+    //         //const eventId = "Pre-INKOM-Party";
+    //        // console.log(user)
+    //         const {studentID} = user
+    //         const result = fetchEventInventory(studentID)
+    //
+    //         setData(JSON.parse(result.data.data))
+    //         setStudentPartyId(result.data.studentPartyId)
+    //         setEventId(result.data.eventId)
+    //         console.log('From context', data)
+    //         setLoading(false)
+    //
     //     } catch (e) {
     //         console.error(e)
     //     }
     // }
-
     // console.log(countCrateBottle.name)
 
     // for (let i = 1; i <7 ; i++) {
@@ -43,11 +80,12 @@ function StudentCountTable({nameList}) {
     // }
 
     return (
-        <>
+
+            <>
             <div>
-                <p><strong>Weekdag:</strong> {countCratesPerFridge.weekday}</p>
-                <p><strong>Evenement:</strong> {countCratesPerFridge.event}</p>
-                <p><strong>StudentenPartij:</strong> {countCratesPerFridge.studentParty}</p>
+                <p><strong>Weekdag:</strong> {data.selectedWeekday.weekday}</p>
+                <p><strong>Evenement:</strong> {eventId}</p>
+                <p><strong>StudentenPartij:</strong> {studentPartyId}</p>
 
 
             </div>
@@ -82,18 +120,18 @@ function StudentCountTable({nameList}) {
 
                 <tbody>
 
-                <BeverageRowStudent beverage="Water_Rood"/>
-                <BeverageRowStudent beverage="Water_Blauw"/>
-                <BeverageRowStudent beverage="Pepsi"/>
-                <BeverageRowStudent beverage="Pepsi_Max"/>
-                <BeverageRowStudent beverage="Sisi"/>
-                <BeverageRowStudent beverage="Ice_Tea_Normal"/>
-                <BeverageRowStudent beverage="Ice_Tea_Green_110cl"/>
-                <BeverageRowStudent beverage="Ice_Tea_Green_150cl"/>
-                <BeverageRowStudent beverage="Red_Bull"/>
-                <BeverageRowStudent beverage="Red_Bull_Sugar_Free"/>
-                <BeverageRowStudent beverage="Red_Bull_Tropical"/>
-                <BeverageRowStudent beverage="Desperados"/>
+                <BeverageRowStudent data={data} beverage="Water_Rood" />
+                <BeverageRowStudent data={data} beverage="Water_Blauw" />
+                <BeverageRowStudent data={data} beverage="Pepsi"/>
+                <BeverageRowStudent data={data} beverage="Pepsi_Max"/>
+                <BeverageRowStudent data={data} beverage="Sisi"/>
+                <BeverageRowStudent data={data} beverage="Ice_Tea_Normal"/>
+                <BeverageRowStudent data={data} beverage="Ice_Tea_Green_110cl"/>
+                <BeverageRowStudent data={data} beverage="Ice_Tea_Green_150cl"/>
+                <BeverageRowStudent data={data} beverage="Red_Bull"/>
+                <BeverageRowStudent data={data} beverage="Red_Bull_Sugar_Free"/>
+                <BeverageRowStudent data={data} beverage="Red_Bull_Tropical"/>
+                <BeverageRowStudent data={data} beverage="Desperados"/>
 
                 <tr>
                     <HeaderBeers title="Fusten"/>
@@ -102,9 +140,9 @@ function StudentCountTable({nameList}) {
                     <HeaderBeers title="Totaal"/>
                 </tr>
 
-                <BeersRowsStudent beverage="Fust_Jilz"/>
-                <BeersRowsStudent beverage="Fust_Radler"/>
-                <BeersRowsStudent beverage="Fust_Pils"/>
+                <BeersRowsStudent data={data} beverage="Fust_Jilz"/>
+                <BeersRowsStudent data={data} beverage="Fust_Radler"/>
+                <BeersRowsStudent data={data} beverage="Fust_Pils"/>
 
                 <tr>
                     <HeaderBeers title="Tankbier"/>
@@ -113,7 +151,7 @@ function StudentCountTable({nameList}) {
                     <HeaderBeers title="Totaal"/>
                 </tr>
 
-                <TankRowStudent beverage="Tankbier"/>
+                <TankRowStudent data={data} beverage="Tankbier"/>
 
                 </tbody>
             </table>

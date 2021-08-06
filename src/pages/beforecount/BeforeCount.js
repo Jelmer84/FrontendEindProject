@@ -4,6 +4,7 @@ import CountTable from "../../components/CountForm/CountTable";
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
 import axios from "axios";
+import {postEventInventory} from "../../network";
 
 
 function BeforeCount() {
@@ -22,27 +23,38 @@ function BeforeCount() {
     const [totalTanks, setTotalTanks] = useState(0);
 
     const [formSubmitSucces, setFormSubmitSucces] = useState(false);
-    
+    const [errorMsg, setErrorMsg] = useState();
+
     // const [disabled, setDisabled] = useState(true)
 
 
     async function onFormSubmit(event) {
         event.preventDefault()
+        const eventDetails = {
+            eventId:selectedInkomEvent,
+            studentPartyId: selectedStudentParty.studentParty,
+            stage : 0,
+            data: {
+                selectedWeekday: selectedWeekday,
+                crates: crates,
+                bottles: bottles,
+                kegs: kegs,
+                tanks: tanks,
+                totalCrates: totalCrates,
+                totalBottles: totalBottles,
+                totalKegs: totalKegs,
+                totalTanks: totalTanks
+            }
+        }
+        
         try {
-            const result = await axios.post('urltjeBefore!!', {
-                banaan: selectedWeekday,
-                citroen: selectedInkomEvent,
-                selectedStudentParty,
-                crates,
-                bottles,
-                kegs,
-                tanks,
-                totalCrates,
-                totalBottles,
-                totalKegs,
-                totalTanks
-            })
+            await postEventInventory(eventDetails)
         } catch(e) {
+
+            if(e.response.status === 400){
+                // this has already been submitted
+                setErrorMsg(e.response.data.message)
+            }
             console.error(e);
         }
         setFormSubmitSucces(true);
@@ -110,7 +122,8 @@ function BeforeCount() {
                 </div>
 
             </form>}
-            {formSubmitSucces && <p>De telling is opgeslagen!</p>}
+            {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
+            {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
 
 
         </>

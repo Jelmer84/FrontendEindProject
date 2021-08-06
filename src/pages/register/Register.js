@@ -3,12 +3,14 @@ import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom"
 import axios from "axios";
 import InputForm from "../../components/InputForm/InputForm";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import styles from "./Register.module.css"
 
 function Register() {
     const [loading, toggleLoading] = useState(false)
     const [registerSuccess, toggleRegisterSuccess] = useState(false)
+    const [role, setRole] = useState([])
+    const [studentID, setStudentID] = useState()
     const history = useHistory();
     const {handleSubmit, formState: {errors}, register, watch} = useForm()
     const password = useRef()
@@ -16,10 +18,15 @@ function Register() {
 
 
     async function onSubmit(data) {
-        console.log(data);
+        //console.log(data);
+        //setRole(role)
+       // console.log(role)
         toggleLoading(true)
+        data['role'] = role;
+        data['studentID'] = studentID;
+        console.log(data)
         try {
-            const result = await axios.post('http://localhost:3000/register', data);
+            const result = await axios.post('http://localhost:8080/api/auth/signup', data);
             console.log(result.data)
         } catch (e) {
             console.error(e)
@@ -30,14 +37,16 @@ function Register() {
 
     }
 
+    // console.log(role)
+
     return (
         <>
             <form className={styles["register-form"]} onSubmit={handleSubmit(onSubmit)}>
                 <InputForm
-                    type="tex"
-                    name="firstname"
+                    type="text"
+                    name="firstName"
                     placeholder="Voornaam"
-                    fieldRef={register("firstname",
+                    fieldRef={register("firstName",
                         {
                             required: {
                                 value: true,
@@ -67,10 +76,10 @@ function Register() {
 
 
                 <InputForm
-                    type="tex"
-                    name="lastname"
+                    type="text"
+                    name="lastName"
                     placeholder="Achternaam"
-                    fieldRef={register("lastname",
+                    fieldRef={register("lastName",
                         {
                             required: {
                                 value: true,
@@ -138,6 +147,43 @@ function Register() {
                 {/*</label>*/}
                 {/*{errors.email && <p>⚠️{errors.email.message}</p>}*/}
 
+                <div className={styles["dropdown-containerRole"]}>
+                    <select
+                        name="roles"
+                        id="roles"
+                        defaultValue={"Rol"}
+                        onChange={(event => {
+                            const selectedRol = event.target.value
+                            setRole([selectedRol])
+                        })}
+                    >
+                        <option value="Rol" disabled hidden>Rol</option>
+                        <option value="studentparty">Studentpartij</option>
+                        <option value="organisation">INKOM organisatie</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div className={styles["dropdown-containerRole"]}>
+                    <select
+                        name="studentID"
+                        id="studentID"
+                        defaultValue={"Studenten Partij"}
+                        onChange={(event => {
+                            const selectedStudentID = event.target.value
+                            setStudentID(selectedStudentID)
+                        })}
+                        //ref={(input)=>{this.input = input}}
+                    >
+                        <option value="Studenten Partij" disabled hidden>Studenten Partij</option>
+                        <option value="INKOM">INKOM</option>
+                        <option value="S.V. Circumflex">S.V. Circumflex</option>
+                        <option value="S.V. Koko">S.V. Koko</option>
+                        <option value="M.S.V. Tragos">M.S.V. Tragos</option>
+                        <option value="M.S.R.V. Saurus">M.S.R.V. Saurus</option>
+                        <option value="Stichting Onafhankelijk Maastricht">Stichting Onafhankelijk Maastricht</option>
+                    </select>
+                </div>
 
                 <InputForm
                     type="password"
@@ -212,8 +258,6 @@ function Register() {
                 {loading === true && <p>"Loading ... "</p>}
 
             </form>
-            <p className={styles.link}> Heeft u al een account? Klik<Link className={styles.sendToLogin} to="/login">hier </Link>om in te loggen.</p>
-
         </>
     );
 }
