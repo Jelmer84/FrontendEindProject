@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./Login.module.css"
 import {AuthContext} from "../../context/AuthContext";
 import InputForm from "../../components/InputForm/InputForm";
+import {loginUser} from "../../network/network";
 
 function Login() {
     const {login} = useContext(AuthContext)
@@ -12,7 +13,7 @@ function Login() {
     async function onSubmit(data) {
         console.log(data);
         try {
-            const result = await axios.post('http://localhost:8080/api/auth/signin', data)
+            const result = await loginUser(data) //axios.post('http://localhost:8080/api/auth/signin', data)
             // console.log(result.data.accessToken);
             login(result.data.accessToken)
         } catch (e) {

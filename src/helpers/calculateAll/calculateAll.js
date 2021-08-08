@@ -2,7 +2,6 @@ import { createCrateBottleData } from '../createBeverageData/createCrateBottleDa
 import { createKegData } from '../createBeverageData/createKegData';
 import { createTankData } from '../createBeverageData/createTankData';
 import calculateTotalsInfoRow from '../CalculateTotals/calculateTotalInfoRow';
-//import combined from '../fakeData/combined.json';
 
 function calculateAll(combined) {
   // Voorberekening
@@ -35,11 +34,8 @@ function calculateAll(combined) {
   // Verschillen
   const coinsPrice = 1.90;
   // @todo letop, dit komt ineens uit de json file
-
-  console.log('>>>>>>>>>>>>> ', combined.coin)
-  console.log('>>>>>>>>>>>>> ', allCountedCoins)
-  console.log('>>>>>>>>>>>>> ', combined.coin.coins)
-  const differenceCoins = allCountedCoins - Number(combined.coin.coins);
+  
+  const differenceCoins = allCountedCoins - Number(combined.after.totalCoins.Coins);
   const differenceEuro = (differenceCoins * coinsPrice).toFixed(2);
 
   // Percentages

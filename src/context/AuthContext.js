@@ -2,6 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import jwt_Decode from "jwt-decode";
 import axios from "axios";
+import {fetchUser} from "../network/network";
 
 export const AuthContext = createContext({});
 
@@ -14,13 +15,7 @@ function AuthContextProvider({children}) {
         const decoded = jwt_Decode(JWToken);
         const email = decoded.sub;
         try {
-            const result = await axios.get(`http://localhost:8080/api/users/${email}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${JWToken}`,
-                    },
-                }
-            );
+            const result = await fetchUser(email)
             // console.log(result)
 
             const data = result.data;

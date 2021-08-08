@@ -2,18 +2,20 @@ import React, {useState} from "react";
 import Select from "react-select";
 import styles from "../DropdownStatus/DropdownStatus.module.css";
 
-function DropdownStatus() {
+function DropdownStatus({onValueChange}) {
     const [stage, setStage] = useState(null);
     const handleStageChange = (stage) => {
         setStage(stage);
+        if(onValueChange)
+            onValueChange(stage)
     };
 
     console.log(stage)
 
     const options = [
-        {"stage": "Voortelling"},
-        {"stage": "Natelling"},
-        {"stage": "Munten"},
+        {"stage": "Voortelling", value: 0},
+        {"stage": "Natelling", value: 1},
+        {"stage": "Munten", value: 2},
 ]
 
     return (

@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import Button from "../../components/Button/Button";
 import axios from "axios";
 import styles from "./Coins.module.css";
 import DropdownWeekdayEvent from "../../components/dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
 import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
-import {postEventInventory} from "../../network";
+import {postEventInventory} from "../../network/network";
+import {AuthContext} from "../../context/AuthContext";
 
 function Coins() {
     const [formSubmitSucces, setFormSubmitSucces] = useState(false)
@@ -16,6 +17,8 @@ function Coins() {
     const [selectedInkomEvent, setSelectedInkomEvent] = useState('');
     const [selectedStudentParty, setSelectedStudentParty] = useState('');
     const [errorMsg, setErrorMsg] = useState();
+    const {user} = useContext(AuthContext)
+
 
     async function onFormSubmit(event) {
         event.preventDefault()
@@ -23,6 +26,7 @@ function Coins() {
             eventId:selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
             stage : 2, // coin stage
+            submitted: user.id,
             data: {
                 coins,
                 selectedWeekday,

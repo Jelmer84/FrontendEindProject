@@ -1,4 +1,3 @@
-//import data from "../../helpers/fakeData/combined.json";
 import calculateTankTotals from "../calculateBeverageTotals/calculateTankTotals";
 
 

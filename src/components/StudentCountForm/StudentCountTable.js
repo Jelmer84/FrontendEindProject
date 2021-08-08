@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from './StudentCountTable.module.css'
 
-import countCratesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countCratesPerFridge.json"
 
 
 
@@ -13,7 +12,7 @@ import BeersRowsStudent from "./BeersRowStudent";
 import TankRowStudent from "./TankRowStudent";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
-import {fetchEventInventory} from "../../network";
+import {fetchEventInventory} from "../../network/network";
 
 
 
@@ -89,7 +88,7 @@ function StudentCountTable({nameList, eventId, studentPartyId, data}) {
 
 
             </div>
-            <table border="2">
+            <table border="2" id="table-to-xls">
                 <thead>
                 <tr>
                     <th className={styles.text} colSpan="17">Tellijst {nameList}</th>

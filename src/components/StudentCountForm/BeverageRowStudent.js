@@ -1,8 +1,4 @@
 import React from "react";
-// import countCratesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countCratesPerFridge.json";
-// import countBottlesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countBottlesPerFridge.json";
-// import countCratesTotal from "../../helpers/fakeData/countStudentsTotal/countCratesTotal.json";
-// import countBottlesTotal from "../../helpers/fakeData/countStudentsTotal/countBottlesTotal.json";
 
 function BeverageRowStudent({beverage, data}) {
 

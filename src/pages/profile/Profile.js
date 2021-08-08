@@ -1,13 +1,16 @@
 import styles from "./Profile.module.css"
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
+import {getImage, uploadImage} from "../../network/network";
 
 function Profile() {
     const {user} = useContext(AuthContext)
-    // console.log(user)
+    console.log(user.roles[0].name)
     const [imagePreview, setImagePreview] = useState(null);
     const [error, setError] = useState(false);
+    const [imageId, setImageId] = useState(-1);
+
 
     // useEffect op mount
     // geen imagePreview? Dan onderstaande
@@ -17,16 +20,24 @@ function Profile() {
     // image in state plaatsen (imagePreview) maar vergeet niet de base64 weer te decoden
     // response empty? Dan doen we lekker  niks!
 
+    useEffect(async ()=>{
+        const res = await getImage(user.id)
+        const image = res.data.base64String;
+        if(image){
+            setImageId(res.data.id)
+            setImagePreview(image)
+        }
+        console.log(user)
+    },[])
+
     async function sendImage(image) {
         try {
-            const result = await axios.post('http://localhost:8080/api/image/plaatje', {
+            const result = await uploadImage({
                 base64String: image,
-            }, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            });
+                userId: user.id,
+                id: imageId
+            })
+            setImageId(result.data.id)
             console.log('RESULT', result)
         } catch (e) {
             console.error(e);

@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styles from "./AfterCount.module.css"
 import CountTable from "../../components/CountForm/CountTable";
 import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
 import axios from "axios";
-import {postEventInventory} from "../../network";
+import {postEventInventory} from "../../network/network";
+import {AuthContext} from "../../context/AuthContext";
 
 function AfterCount() {
     const [selectedWeekday, setSelectedWeekday] = useState('');
@@ -27,6 +28,8 @@ function AfterCount() {
 
     const [formSubmitSucces, setFormSubmitSucces] = useState(false)
     const [errorMsg, setErrorMsg] = useState();
+    const {user} = useContext(AuthContext)
+
 
 
     async function onFormSubmit(event) {
@@ -35,6 +38,7 @@ function AfterCount() {
             eventId:selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
             stage : 1, // after count
+            submitted: user.id,
             organisationRemarks: contentRemarks,
             data: {
                 selectedWeekday: selectedWeekday,

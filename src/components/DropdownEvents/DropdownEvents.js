@@ -2,15 +2,15 @@ import React, { useState} from "react";
 import Select from "react-select";
 import styles from "./DropdownEvents.module.css";
 
-function DropdownEvents() {
-    const [nameEvent, setNameEvent] = useState(null);
+
+function DropdownEvents({onValueChange}) {
+    const [nameEvent, setNameEvent] = useState();
     const handleNameEventChange = (nameEvent) => {
         setNameEvent(nameEvent);
-
+        if(onValueChange)
+            onValueChange(nameEvent)
     };
-
-    console.log(nameEvent)
-
+    
     const options = [
         {"nameEvent": "Pre-INKOM-Party"},
         {"nameEvent": "Opening"},

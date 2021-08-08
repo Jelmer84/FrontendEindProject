@@ -1,8 +1,6 @@
 import React from "react";
 
 
-// import countKegsPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countKegsPerFridge.json"
-// import countKegsTotal from "../../helpers/fakeData/countStudentsTotal/countKegsTotal.json"
 
 function KegRowStudent({beverage, data}) {
 

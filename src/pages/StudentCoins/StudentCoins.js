@@ -4,9 +4,8 @@ import Button from "../../components/Button/Button";
 import styles from "./StudentCoins.module.css"
 import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
 import axios from "axios";
-import countCratesPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countCratesPerFridge.json";
 import {AuthContext} from "../../context/AuthContext";
-import {approveEventInventory, fetchEventInventory} from "../../network";
+import {approveEventInventory, fetchEventInventory} from "../../network/network";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 
 function StudentCoins() {

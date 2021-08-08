@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 import Button from "../../components/Button/Button";
 import axios from "axios";
-import {approveEventInventory, fetchEventInventory} from "../../network";
+import {approveEventInventory, fetchEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
 function StudentBeforeCount() {

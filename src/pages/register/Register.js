@@ -5,6 +5,7 @@ import axios from "axios";
 import InputForm from "../../components/InputForm/InputForm";
 // import {Link} from "react-router-dom";
 import styles from "./Register.module.css"
+import {registerUser} from "../../network/network";
 
 function Register() {
     const [loading, toggleLoading] = useState(false)
@@ -26,7 +27,8 @@ function Register() {
         data['studentID'] = studentID;
         console.log(data)
         try {
-            const result = await axios.post('http://localhost:8080/api/auth/signup', data);
+            const result = await registerUser(data)
+            //await axios.post('http://localhost:8080/api/auth/signup', data);
             console.log(result.data)
         } catch (e) {
             console.error(e)
@@ -158,8 +160,8 @@ function Register() {
                         })}
                     >
                         <option value="Rol" disabled hidden>Rol</option>
-                        <option value="studentparty">Studentpartij</option>
-                        <option value="organisation">INKOM organisatie</option>
+                        <option value="user">Studentpartij</option>
+                        <option value="mod">INKOM organisatie</option>
                         <option value="admin">Admin</option>
                     </select>
                 </div>

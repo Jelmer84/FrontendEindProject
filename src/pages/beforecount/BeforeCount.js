@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styles from "./BeforeCount.module.css"
 import CountTable from "../../components/CountForm/CountTable";
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
 import axios from "axios";
-import {postEventInventory} from "../../network";
+import {postEventInventory} from "../../network/network";
+import {AuthContext} from "../../context/AuthContext";
 
 
 function BeforeCount() {
@@ -24,6 +25,7 @@ function BeforeCount() {
 
     const [formSubmitSucces, setFormSubmitSucces] = useState(false);
     const [errorMsg, setErrorMsg] = useState();
+    const {user} = useContext(AuthContext)
 
     // const [disabled, setDisabled] = useState(true)
 
@@ -34,6 +36,7 @@ function BeforeCount() {
             eventId:selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
             stage : 0,
+            submitted: user.id,
             data: {
                 selectedWeekday: selectedWeekday,
                 crates: crates,
@@ -45,6 +48,7 @@ function BeforeCount() {
                 totalKegs: totalKegs,
                 totalTanks: totalTanks
             }
+
         }
         
         try {

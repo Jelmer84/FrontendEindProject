@@ -1,7 +1,5 @@
-//import data from "../../helpers/fakeData/combined.json";
 import calculateKegTotals from "../calculateBeverageTotals/calculateKegTotals";
 
-// deze functie wil uiteindelijk graag de data als argumenten ontvangen, niet uit json data
 export function createKegData(data) {
     // alles destructuren en hernoemen, want we hebben veel dezelfde keys.
     // Ik ga ervanuit dat deze functie het object met één voor- en natelling ontvangt van een evenement

@@ -1,18 +1,18 @@
 const kegContent = {
-    Jilz: 20,
-    Radler: 20,
-    Pils: 50
+    Fust_Jilz: 20,
+    Fust_Radler: 20,
+    Fust_Pils: 50
 }
 
 const drinksPerLiter = {
-    Jilz: 4.6,
-    Radler: 4.6,
-    Pils: 4.6,
+    Fust_Jilz: 4.6,
+    Fust_Radler: 4.6,
+    Fust_Pils: 4.6,
 }
 const coinsPerConsumption = {
-    Jilz: 1,
-    Radler: 1,
-    Pils: 1,
+    Fust_Jilz: 1,
+    Fust_Radler: 1,
+    Fust_Pils: 1,
 }
 
 function calculateKegTotals(beverage, beforeKeg, afterKegs) {

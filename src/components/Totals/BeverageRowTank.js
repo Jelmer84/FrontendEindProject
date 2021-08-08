@@ -39,7 +39,6 @@ export default BeverageRowTank;
 
 
 // import React from "react";
-// import combined from "./dataBeforeCount/combined.json";
 // import styles from "../../Totals/Totals.module.css";
 //
 // function BeverageTank({title, beverage}) {

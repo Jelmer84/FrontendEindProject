@@ -44,7 +44,6 @@ function BeverageRowKegs(
 export default BeverageRowKegs;
 
 // import React from "react";
-// import combined from "./dataBeforeCount/combined.json";
 // import styles from "../../Totals/Totals.module.css";
 // import calculateTotals from "../../helpers/calculateTotals";
 //

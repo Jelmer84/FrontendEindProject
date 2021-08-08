@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "../../components/CoinsComponent/CoinsComponent.module.css";
-import {fetchSupervisorSummary} from "../../network";
+import {fetchSupervisorSummary} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
 

@@ -17,7 +17,7 @@ function CountTable({
                         setKegs,
                         tanks,
                         setTanks,
-
+    
                         totalCrates,
                         setTotalCrates,
                         totalBottles,
@@ -44,58 +44,74 @@ function CountTable({
     // console.log("tanks per fridge", tanks)
     // const totalTanks = reduceTotals(tanks)
 
-    function updateCrates(event, cratesIndex) {
 
-        // Helpersfunctie
-        const updatedCratesState = crates.map((crates, index) => {
-            if (index === cratesIndex) {
-                return {...crates, [event.target.name]: parseInt(event.target.value)}
+
+    // function updateCrates(event, cratesIndex) {
+    //
+    //     // Helpersfunctie
+    //     const updatedCratesState = crates.map((crates, index) => {
+    //         if (index === cratesIndex) {
+    //             return {...crates, [event.target.name]: parseInt(event.target.value)}
+    //         } else {
+    //             return crates
+    //         }
+    //     })
+    //     // Helpersfunctie
+    //
+    //     setCrates(updatedCratesState)
+    //     setTotalCrates(reduceTotals(updatedCratesState, initialStateDrink))
+    //
+    // }
+
+    // function updateBottles(event, bottlesIndex) {
+    //     const updatedBottleState = bottles.map((bottles, index) => {
+    //         if (index === bottlesIndex) {
+    //             return {...bottles, [event.target.name]: parseInt(event.target.value)}
+    //         } else {
+    //             return bottles
+    //         }
+    //     })
+    //     setBottles(updatedBottleState)
+    //     setTotalBottles(reduceTotals(updatedBottleState, initialStateDrink))
+    // }
+
+    // function updateKegs(event, kegsIndex) {
+    //     const updatedKegsState = kegs.map((kegs, index) => {
+    //         if (index === kegsIndex) {
+    //             return {...kegs, [event.target.name]: parseFloat(event.target.value)}
+    //         } else {
+    //             return kegs
+    //         }
+    //     })
+    //     setKegs(updatedKegsState)
+    //     setTotalKegs(reduceTotals(updatedKegsState, initialStateKeg))
+    // }
+
+    // function updateTanks(event, tanksIndex) {
+    //     const updatedTanksState = tanks.map((tanks, index) => {
+    //         if (index === tanksIndex) {
+    //             return {...tanks, [event.target.name]: parseFloat(event.target.value)}
+    //         } else {
+    //             return tanks
+    //         }
+    //     })
+    //     setTanks(updatedTanksState)
+    //     setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
+    // }
+
+    function updateItems(event, itemIndex, items,setItems, setTotalItems, initialStateItem) {
+        const updatedTanksState = items.map((newItems, index) => {
+            if (index === itemIndex) {
+                return {...newItems, [event.target.name]: parseFloat(event.target.value)}
             } else {
-                return crates
+                return newItems
             }
         })
-        // Helpersfunctie
-
-        setCrates(updatedCratesState)
-        setTotalCrates(reduceTotals(updatedCratesState, initialStateDrink))
-
+        setItems(updatedTanksState)
+        setTotalItems(reduceTotals(updatedTanksState, initialStateItem))
     }
 
-    function updateBottles(event, bottlesIndex) {
-        const updatedBottleState = bottles.map((bottles, index) => {
-            if (index === bottlesIndex) {
-                return {...bottles, [event.target.name]: parseInt(event.target.value)}
-            } else {
-                return bottles
-            }
-        })
-        setBottles(updatedBottleState)
-        setTotalBottles(reduceTotals(updatedBottleState, initialStateDrink))
-    }
 
-    function updateKegs(event, kegsIndex) {
-        const updatedKegsState = kegs.map((kegs, index) => {
-            if (index === kegsIndex) {
-                return {...kegs, [event.target.name]: parseFloat(event.target.value)}
-            } else {
-                return kegs
-            }
-        })
-        setKegs(updatedKegsState)
-        setTotalKegs(reduceTotals(updatedKegsState, initialStateKeg))
-    }
-
-    function updateTanks(event, tanksIndex) {
-        const updatedTanksState = tanks.map((tanks, index) => {
-            if (index === tanksIndex) {
-                return {...tanks, [event.target.name]: parseFloat(event.target.value)}
-            } else {
-                return tanks
-            }
-        })
-        setTanks(updatedTanksState)
-        setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
-    }
 
 
 
@@ -151,7 +167,9 @@ function CountTable({
                                         placeholder="0"
                                         type="number"
                                         value={crates[index][beveragesCrates[beverageIndex]]}
-                                        onChange={(event) => updateCrates(event, index)}
+                                       // onChange={(event) => updateCrates(event, index)}
+                                        onChange={(event) => updateItems(event, index, crates,
+                                            setCrates, setTotalCrates, initialStateDrink)}
 
                                     />
                                 </td>
@@ -164,7 +182,7 @@ function CountTable({
                                         placeholder="0"
                                         type="number"
                                         value={fridge[beverages[beverageIndex]]}
-                                        onChange={(event) => updateBottles(event, index)}/>
+                                        onChange={(event) => updateItems(event, index, bottles, setBottles, setTotalBottles, initialStateDrink)}/>
                                 </td>
                             </React.Fragment>
                         })}
@@ -195,7 +213,7 @@ function CountTable({
                                         type="number"
                                         step="any"
                                         value={kegs[index][beveragesKegs[beverageIndex]]}
-                                        onChange={(event) => updateKegs(event, index)}/>
+                                        onChange={(event) => updateItems(event, index, kegs, setKegs, setTotalKegs, initialStateKeg)}/>
                                 </td>
                             </React.Fragment>
                         })}
@@ -222,7 +240,8 @@ function CountTable({
                                     placeholder="0"
                                     type="number"
                                     value={tanks[index][beveragesTanks[beverageIndex]]}
-                                    onChange={(event) => updateTanks(event, index)}/>
+                                    onChange={(event) => updateItems(event, index, tanks, setTanks,
+                                        setTotalTanks, initialStateTank)}/>
                             </td>
                         })}
                         <td>{totalTanks[tankName] || 0}</td>

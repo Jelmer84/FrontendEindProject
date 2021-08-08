@@ -1,8 +1,6 @@
 import React from "react";
 
 
-import countTankPerFridge from "../../helpers/fakeData/countStudentsPerFridge/countTanksPerFridge.json"
-import countTankTotal from "../../helpers/fakeData/countStudentsTotal/countTanksTotal.json"
 
 
 

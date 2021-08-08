@@ -4,7 +4,7 @@ import RemarksContainer from "../../components/RemarksContainer/RemarksContainer
 import Button from "../../components/Button/Button";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
-import {approveEventInventory, fetchEventInventory} from "../../network";
+import {approveEventInventory, fetchEventInventory} from "../../network/network";
 
 function StudentAfterCount() {
 

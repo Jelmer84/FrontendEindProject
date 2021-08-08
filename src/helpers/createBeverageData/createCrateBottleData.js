@@ -1,4 +1,3 @@
-//import data from "../../helpers/fakeData/combined.json";
 import calculateCrateBottleTotals from "../../helpers/calculateBeverageTotals/calculateCrateBottleTotals";
 
 // deze functie wil uiteindelijk graag de data als argumenten ontvangen, niet uit json data
