@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Select from "react-select";
-import styles from "../DropdownStatus/DropdownStatus.module.css";
+import styles from ".//DropdownStage.module.css";
 
-function DropdownStatus({onValueChange}) {
+function DropdownStage({onValueChange}) {
     const [stage, setStage] = useState(null);
     const handleStageChange = (stage) => {
         setStage(stage);
@@ -32,7 +32,7 @@ function DropdownStatus({onValueChange}) {
     );
 }
 
-export default DropdownStatus;
+export default DropdownStage;
 
 
 

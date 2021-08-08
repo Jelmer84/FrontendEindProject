@@ -85,7 +85,7 @@ function Totals() {
     }
 
     async function resetEventData() {
-        if(window.confirm("Are you sure you want to delete all database data. his action can not be undo")){
+        if(window.confirm("Weet je absoluut zeker dat je ALLE tellingen wilt verwijderen. Deze handeling kan niet ongedaan worden gemaakt! Ga allen verder als je absoluut zeker bent.")){
              try {
                  const result = await deleteAllInventory()
                  setMessage(result.data.message)

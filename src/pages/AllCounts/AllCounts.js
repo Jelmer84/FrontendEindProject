@@ -4,9 +4,9 @@ import Button from "../../components/Button/Button";
 import {getAdminOverview} from "../../network/network";
 import DropdownEvents from "../../components/DropdownEvents/DropdownEvents";
 import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
-import DropdownStatus from "../../components/DropdownStatus/DropdownStatus";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import DropdownStage from "../../components/DropdownStage/DropdownStage";
 
 function AllCounts() {
     const [hasChanged, setHasChanged] = useState(false)
@@ -15,7 +15,7 @@ function AllCounts() {
     const [eventId, setEventId] = useState("")
     const [studentPartyId, setStudentPartyId] = useState("")
     const [stage, setStage] = useState(-1)
-    const [message, setMessage] = useState('Please select combination of event, student party and stage to view records')
+    const [message, setMessage] = useState('Selecteer een evenement, vereniging en telling en druk op ophalen om de date te bekijken.')
 
     async function getOverview() {
 
@@ -29,7 +29,7 @@ function AllCounts() {
                     setEventId(result.data.eventId)
                     setHasChanged(true)
                 } else if (result.status === 404) {
-                    setMessage('Record not yet available')
+                    setMessage('Record not (yet) available')
                 }
                 setLoading(false)
                 setMessage(undefined)
@@ -60,8 +60,8 @@ function AllCounts() {
         <>
             <DropdownEvents onValueChange={onEventValueChange}/>
             <DropdownStudentParty selectedStudentParty={onStudentPartyValueChange}/>
-            <DropdownStatus onValueChange={onStageValueChange}/>
-            <Button click={() => getOverview()} name="Fetch"/>
+            <DropdownStage onValueChange={onStageValueChange}/>
+            <Button click={() => getOverview()} name="Ophalen data"/>
 
             {!message && hasChanged && <div>
                 {(stage >= 0 && stage < 2) &&
@@ -76,16 +76,19 @@ function AllCounts() {
                     disabled={true} coins={data.coins}
                 />}
 
+                <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button"
+                    table="table-to-xls"
+                    filename="tablexls"
+                    sheet="tablexls"
+                    buttonText="Download as Excel"/>
+
+
             </div>}
             {message && <p>{message}</p>}
 
-            <ReactHTMLTableToExcel
-                id="test-table-xls-button"
-                className="download-table-xls-button"
-                table="table-to-xls"
-                filename="tablexls"
-                sheet="tablexls"
-                buttonText="Download as Excel"/>
+
         </>
     )
 }
