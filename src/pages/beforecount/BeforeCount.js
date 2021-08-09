@@ -3,7 +3,6 @@ import styles from "./BeforeCount.module.css"
 import CountTable from "../../components/CountForm/CountTable";
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
-import axios from "axios";
 import {postEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
@@ -64,18 +63,18 @@ function BeforeCount() {
         setFormSubmitSucces(true);
     }
 
-    console.log("DATA DIE VERSTUURD WORD",
-        selectedWeekday,
-        selectedInkomEvent,
-        selectedStudentParty,
-        crates,
-        bottles,
-        kegs,
-        tanks,
-        totalCrates,
-        totalBottles,
-        totalKegs,
-        totalTanks)
+    // console.log("DATA DIE VERSTUURD WORD",
+    //     selectedWeekday,
+    //     selectedInkomEvent,
+    //     selectedStudentParty,
+    //     crates,
+    //     bottles,
+    //     kegs,
+    //     tanks,
+    //     totalCrates,
+    //     totalBottles,
+    //     totalKegs,
+    //     totalTanks)
 
     // function handleDisabled(){
     //     setDisabled(false)

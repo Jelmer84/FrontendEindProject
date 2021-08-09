@@ -3,11 +3,6 @@ import axios from "axios";
 export const BASE_URL = 'http://localhost:8080/'
 const API_URL = BASE_URL+'api/'
 
-
-// function axiosX){
-//     axios.interceptors.request
-// }
-
 async function loginUser(data){
     return axios.post(`${API_URL}auth/signin`, data)
 }
@@ -15,7 +10,6 @@ async function loginUser(data){
 async function registerUser(data){
     return axios.post(`${API_URL}auth/signup`, data)
 }
-
 
 axios.interceptors.request.use(function (config) {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
@@ -76,4 +70,4 @@ export {
     deleteAllInventory,
     uploadImage,
     getImage
-}
+};

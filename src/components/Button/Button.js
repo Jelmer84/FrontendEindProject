@@ -15,9 +15,7 @@ function Button({name, type, id, click, value, disabled}) {
             >
                 {name}
             </button>
-
-
-    )
+    );
 }
 
 export default Button

@@ -1,10 +1,9 @@
 import React, {useContext, useState} from "react";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import Button from "../../components/Button/Button";
-import axios from "axios";
 import styles from "./Coins.module.css";
-import DropdownWeekdayEvent from "../../components/dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
-import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
+import DropdownWeekdayEvent from "../../components/dropdowncount/DropdownWeekday-Event/DropdownWeekday-Event";
+import DropdownStudentParty from "../../components/dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import {postEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
@@ -23,9 +22,9 @@ function Coins() {
     async function onFormSubmit(event) {
         event.preventDefault()
         const eventDetails = {
-            eventId:selectedInkomEvent,
+            eventId: selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
-            stage : 2, // coin stage
+            stage: 2, // coin stage
             submitted: user.id,
             data: {
                 coins,
@@ -37,8 +36,8 @@ function Coins() {
 
         try {
             await postEventInventory(eventDetails)
-        } catch(e) {
-            if(e.response.status === 400){
+        } catch (e) {
+            if (e.response.status === 400) {
                 // this has already been submitted
                 setErrorMsg(e.response.data.message)
             }
@@ -66,21 +65,21 @@ function Coins() {
                     />
                 </div>
 
-                <form className={styles["coins-form "]} onSubmit={onFormSubmit}>
+                <form onSubmit={onFormSubmit}>
 
                     <CoinsComponent
                         disabled={false}
                         coins={coins}
                         setCoins={setCoins}
-
                     />
-
-                    <Button
-                        name="Opslaan"
-                        type="submit"
-                        id="buttonSubmit"
-                        disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
-                    />
+                    <div className={styles["coins-button"]}>
+                        <Button
+                            name="Opslaan"
+                            type="submit"
+                            id="buttonSubmit"
+                            disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                        />
+                    </div>
                     {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
                     <p>Vul de datum, het evenement en de studentenpartij in!</p>}
 

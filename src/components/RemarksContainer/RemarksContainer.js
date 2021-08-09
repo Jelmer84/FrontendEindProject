@@ -30,7 +30,7 @@ function RemarksContainer({remarks, toggleRemarks, contentRemarks, setContentRem
                 )}
             </div>
         </div>
-    )
+    );
 }
 
 export default RemarksContainer

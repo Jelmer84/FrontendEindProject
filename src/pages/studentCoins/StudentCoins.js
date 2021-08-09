@@ -2,11 +2,8 @@ import React, {useContext, useEffect, useState} from "react";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import Button from "../../components/Button/Button";
 import styles from "./StudentCoins.module.css"
-import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
-import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 import {approveEventInventory, fetchEventInventory} from "../../network/network";
-import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 
 function StudentCoins() {
     const [accepted, setAccepted] = useState(false)
@@ -19,15 +16,12 @@ function StudentCoins() {
     const stage = 2; // coin stage
     const {user} = useContext(AuthContext)
 
-
     useEffect(async ()=>{
         await getEventInventory();
     },[data.def])
 
-
     async function getEventInventory(){
         try {
-
             //const eventId = "Pre-INKOM-Party";
             // console.log(user)
             const {studentID} = user
@@ -58,13 +52,10 @@ function StudentCoins() {
             }else {
                 setAccepted(false)
                 setMessage('Go and see the supervisor!')
-
             }
-
         } catch (e) {
             console.error(e)
         }
-
     }
 
     return (
@@ -81,15 +72,14 @@ function StudentCoins() {
                     </div>
                 }
 
-
                 {!loading && <form>
                     <CoinsComponent
                         disabled={true}  coins={data.coins}
                     />
 
-
                     <div className={styles["container-studentCoinsButtons"]}>
                         <Button
+                            type="button"
                             name="Niet akkoord"
                             id="notAccepted"
                             value="false"
@@ -100,6 +90,7 @@ function StudentCoins() {
                         />
 
                         <Button
+                            type="button"
                             name="Akkoord"
                             id="accepted"
                             click={(event)=>{
@@ -108,15 +99,12 @@ function StudentCoins() {
                             }}
                         />
                     </div>
-
                 </form>}
-
             </div>
             }
             {message && <p>{message}</p>}
-
         </>
-    )
+    );
 }
 
 export default StudentCoins

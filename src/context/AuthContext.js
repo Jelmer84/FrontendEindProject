@@ -1,7 +1,6 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import jwt_Decode from "jwt-decode";
-import axios from "axios";
 import {fetchUser} from "../network/network";
 
 export const AuthContext = createContext({});

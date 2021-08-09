@@ -3,7 +3,6 @@ import styles from "./Totals.module.css";
 
 function HeaderBetween({title}) {
 
-
     return (
         <>
             <tr>
@@ -26,7 +25,6 @@ function HeaderBetween({title}) {
                 <th className={styles.headerThree}>Drankjes</th>
                 <th className={styles.headerThree}>Munten</th>
             </tr>
-
         </>
     );
 }

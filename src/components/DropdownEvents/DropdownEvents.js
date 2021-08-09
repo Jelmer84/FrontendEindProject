@@ -2,7 +2,6 @@ import React, { useState} from "react";
 import Select from "react-select";
 import styles from "./DropdownEvents.module.css";
 
-
 function DropdownEvents({onValueChange}) {
     const [nameEvent, setNameEvent] = useState();
     const handleNameEventChange = (nameEvent) => {

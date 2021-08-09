@@ -1,11 +1,9 @@
 import React from "react";
 
-
-
 function KegRowStudent({beverage, data}) {
-
     const countKegsPerFridge = data.kegs;
     const countKegsTotal = data.totalKegs
+
     return (
         <tr>
             <td>{beverage}</td>
@@ -13,7 +11,7 @@ function KegRowStudent({beverage, data}) {
             <td>{countKegsPerFridge[1][beverage]}</td>
             <td>{countKegsTotal[beverage]}</td>
         </tr>
-    )
+    );
 }
 
 export default KegRowStudent

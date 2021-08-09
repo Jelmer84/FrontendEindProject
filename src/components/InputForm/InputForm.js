@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./InputForm.module.css";
 
-
 function InputForm({type,name,placeholder, fieldRef, errors}) {
 
     return (

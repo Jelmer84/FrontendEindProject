@@ -11,7 +11,7 @@ import HeaderInfo from "../../components/Totals/HeaderInfo";
 import InfoRow from "../../components/Totals/InfoRow";
 import calculateAll from '../../helpers/calculateAll/calculateAll';
 import DropdownEvents from "../../components/DropdownEvents/DropdownEvents";
-import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
+import DropdownStudentParty from "../../components/dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import {deleteAllInventory, getAdminTotal} from "../../network/network";
 import Button from "../../components/Button/Button";
 
@@ -40,38 +40,22 @@ function Totals() {
     const [message, setMessage] = useState('Please select event and student party to view records');
     const [hasChanged, setHasChanged] = useState(false)
 
-
-    // useEffect(async () => {
-    //
-    //     //await fetchTotal()
-    //
-    //     // console.log(calculateAll());
-    //
-    // }, [eventId, selectedStudentParty]);
-
-
     async function fetchTotal() {
-        console.log(eventId, selectedStudentParty)
         if (eventId && selectedStudentParty) {
             setLoading(true)
             try {
-                // const response = await getAdminTotal(eventId.nameEvent,selectedStudentParty.studentParty)
                 const response = await getAdminTotal(eventId, selectedStudentParty)
                 setCombined(response.data)
                 setTableValues(calculateAll(response.data));
                 setMessage(undefined)
                 setHasChanged(true)
-
             } catch (e) {
-                if (e.response.status == 400) {
+                if (e.response.status === 400) {
                     setMessage(e.response.data.message)
                 }
-                console.log(e)
-
             }
             setLoading(false)
         }
-
     }
 
     const onEventValueChange = async (value) => {
@@ -93,26 +77,25 @@ function Totals() {
                  console.log(e)
              }
         }
-
     }
 
     return (
         <>
             {loading && <p>loading...</p>}
-
             <div>
                 <DropdownEvents
-                    // onChange={onChangeEventId}
                     onValueChange={onEventValueChange}
                 />
-                {/*{eventId}*/}
 
                 <DropdownStudentParty
                     selectedStudentParty={onStudentValueChange}
                 />
-                {/*{selectedStudentParty}*/}
-                <Button click={() => fetchTotal()} name="Fetch"/>
 
+                <Button
+                    click={() => fetchTotal()}
+                    name="Data Ophalen"
+                    type="button"
+                />
 
                 {!message && hasChanged && <div>
                     <table border="2" id="table-to-xls">
@@ -162,22 +145,18 @@ function Totals() {
 
                             <HeaderInfo/>
 
-
                             <InfoRow
                                 titleOne="Totaal aantal Drankjes"
                                 titleTwo="Verschil in Euro's"
                                 titleThree="Weekdag"
 
-
-                                // TOTAAL DRANKJES
+                                //Totaal drankjes
                                 calculationOne={tableValues.allCountedDrinks.toFixed(0)}
 
-                                // VERSCHIL IN EURO
+                                // Verschil in euro's
                                 calculationTwo={(tableValues.differenceCoins*1.90).toFixed(0)}
 
-                                // calculationTwo={tableValues.differenceCoins.toFixed(0)}
-
-                                //Weekday
+                                //Weekdag
                                 calculationThree={combined.weekday}
 
 
@@ -188,11 +167,13 @@ function Totals() {
                                 titleTwo="Tapverlies S.P."
                                 titleThree="Event"
 
-                                // HIER VERWACHTE MUNTEN IN VERWERKEN
+                                //Verwachte munten
                                 calculationOne={tableValues.allCountedCoins.toFixed(0)}
 
-                                // TAPVERLIES SP = VERSCHIL IN EURO'S * 2/3'
+                                // Tapverlies S.P. = Verschil in euro's * 2/3'
                                 calculationTwo={(tableValues.differenceEuro * 2/3).toFixed(0)}
+
+                                //Evenement
                                 calculationThree={combined.event}
                             />
 
@@ -200,9 +181,14 @@ function Totals() {
                                 titleOne="Ingeleverde Munten"
                                 titleTwo="% Alcohol"
                                 titleThree="Studentenpartij"
-                                //calculationOne={'40'}
+
+                                //Ingelverde munten
                                 calculationOne={Number(combined.after === undefined ? 0 : combined.after.totalCoins.Coins)}
+
+                                // Alcohol percentage
                                 calculationTwo={tableValues.percentageAlcohol}
+
+                                //Studentenpartij
                                 calculationThree={combined.studentParty}
                             />
 
@@ -210,8 +196,10 @@ function Totals() {
                                 titleOne="Verschil in Munten"
                                 titleTwo="% Fris"
 
-                                //HIER VERSCHIL MUNTEN IN VERWERKEN
+                                //Verschil in munten
                                 calculationOne={(tableValues.differenceCoins).toFixed(0)}
+
+                                //Fris percentage
                                 calculationTwo={tableValues.percentageSoda}
                             />
 
@@ -248,7 +236,7 @@ function Totals() {
             {message && <p>{message}</p>}
 
             <Button
-                className={styles.button}
+                type="button"
                 click={()=>resetEventData()}
                 name="Reset Database"
             />

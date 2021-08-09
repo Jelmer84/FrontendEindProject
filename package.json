@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "react-html-table-to-excel": "^2.0.0"
+    "react-html-table-to-excel": "^2.0.0",
+    "react-select-event": "^5.3.0"
   }
 }

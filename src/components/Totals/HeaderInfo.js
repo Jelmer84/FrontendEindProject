@@ -3,7 +3,6 @@ import styles from "./Totals.module.css";
 
 function HeaderInfo() {
 
-
     return (
         <>
             <tr>

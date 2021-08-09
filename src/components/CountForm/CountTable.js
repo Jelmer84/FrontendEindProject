@@ -1,105 +1,32 @@
 import React from "react";
 import styles from './CountTable.module.css'
-import DropdownWeekdayEvent from "../dropdowncount/dropdownWeekday-Event/DropdownWeekday-Event";
-import DropdownStudentParty from "../dropdowncount/studentpartydropdown/DropdownStudentParty";
+import DropdownWeekdayEvent from "../dropdowncount/DropdownWeekday-Event/DropdownWeekday-Event";
+import DropdownStudentParty from "../dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import reduceTotals from "../../helpers/reduceTotals/reduceTotals";
 import {initialStateDrink, initialStateKeg, initialStateTank} from "../../constants/initialStateDrinks";
-           
+
 function CountTable({
                         nameList,
                         setSelectedWeekday,
                         setSelectedInkomEvent,
                         setSelectedStudentParty,
+
                         bottles, setBottles,
-                        crates,
-                        setCrates,
-                        kegs,
-                        setKegs,
-                        tanks,
-                        setTanks,
-    
-                        totalCrates,
-                        setTotalCrates,
-                        totalBottles,
-                        setTotalBottles,
-                        totalKegs,
-                        setTotalKegs,
-                        totalTanks,
-                        setTotalTanks
+                        crates, setCrates,
+                        kegs, setKegs,
+                        tanks, setTanks,
+
+                        totalCrates, setTotalCrates,
+                        totalBottles, setTotalBottles,
+                        totalKegs, setTotalKegs,
+                        totalTanks, setTotalTanks
                     }) {
     const beverages = Object.keys(bottles[0])
     const beveragesCrates = Object.keys(crates[0])
     const beveragesKegs = Object.keys(kegs[0])
     const beveragesTanks = Object.keys(tanks[0])
 
-    // console.log("crates per fridge", crates)
-    // const totalCrates = reduceTotals(crates)
-
-    // console.log("bottles per fridge", bottles)
-    // const totalBottles = reduceTotals(bottles)
-
-    // console.log("kegs per fridge", kegs)
-    // const totalKegs = reduceTotals(kegs)
-
-    // console.log("tanks per fridge", tanks)
-    // const totalTanks = reduceTotals(tanks)
-
-
-
-    // function updateCrates(event, cratesIndex) {
-    //
-    //     // Helpersfunctie
-    //     const updatedCratesState = crates.map((crates, index) => {
-    //         if (index === cratesIndex) {
-    //             return {...crates, [event.target.name]: parseInt(event.target.value)}
-    //         } else {
-    //             return crates
-    //         }
-    //     })
-    //     // Helpersfunctie
-    //
-    //     setCrates(updatedCratesState)
-    //     setTotalCrates(reduceTotals(updatedCratesState, initialStateDrink))
-    //
-    // }
-
-    // function updateBottles(event, bottlesIndex) {
-    //     const updatedBottleState = bottles.map((bottles, index) => {
-    //         if (index === bottlesIndex) {
-    //             return {...bottles, [event.target.name]: parseInt(event.target.value)}
-    //         } else {
-    //             return bottles
-    //         }
-    //     })
-    //     setBottles(updatedBottleState)
-    //     setTotalBottles(reduceTotals(updatedBottleState, initialStateDrink))
-    // }
-
-    // function updateKegs(event, kegsIndex) {
-    //     const updatedKegsState = kegs.map((kegs, index) => {
-    //         if (index === kegsIndex) {
-    //             return {...kegs, [event.target.name]: parseFloat(event.target.value)}
-    //         } else {
-    //             return kegs
-    //         }
-    //     })
-    //     setKegs(updatedKegsState)
-    //     setTotalKegs(reduceTotals(updatedKegsState, initialStateKeg))
-    // }
-
-    // function updateTanks(event, tanksIndex) {
-    //     const updatedTanksState = tanks.map((tanks, index) => {
-    //         if (index === tanksIndex) {
-    //             return {...tanks, [event.target.name]: parseFloat(event.target.value)}
-    //         } else {
-    //             return tanks
-    //         }
-    //     })
-    //     setTanks(updatedTanksState)
-    //     setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
-    // }
-
-    function updateItems(event, itemIndex, items,setItems, setTotalItems, initialStateItem) {
+    function updateItems(event, itemIndex, items, setItems, setTotalItems, initialStateItem) {
         const updatedTanksState = items.map((newItems, index) => {
             if (index === itemIndex) {
                 return {...newItems, [event.target.name]: parseFloat(event.target.value)}
@@ -110,11 +37,6 @@ function CountTable({
         setItems(updatedTanksState)
         setTotalItems(reduceTotals(updatedTanksState, initialStateItem))
     }
-
-
-
-
-
 
     return (
         <>
@@ -167,10 +89,9 @@ function CountTable({
                                         placeholder="0"
                                         type="number"
                                         value={crates[index][beveragesCrates[beverageIndex]]}
-                                       // onChange={(event) => updateCrates(event, index)}
+                                        // onChange={(event) => updateCrates(event, index)}
                                         onChange={(event) => updateItems(event, index, crates,
                                             setCrates, setTotalCrates, initialStateDrink)}
-
                                     />
                                 </td>
 
@@ -258,3 +179,69 @@ export default CountTable
 
 // onInput="validity.valid||(value='');"
 // zorgt ervoor dat de ingetypte waarde niet onder de nul kan, geeft error bij aanklikken button
+
+// console.log("crates per fridge", crates)
+// const totalCrates = reduceTotals(crates)
+
+// console.log("bottles per fridge", bottles)
+// const totalBottles = reduceTotals(bottles)
+
+// console.log("kegs per fridge", kegs)
+// const totalKegs = reduceTotals(kegs)
+
+// console.log("tanks per fridge", tanks)
+// const totalTanks = reduceTotals(tanks)
+
+
+// function updateCrates(event, cratesIndex) {
+//
+//     // Helpersfunctie
+//     const updatedCratesState = crates.map((crates, index) => {
+//         if (index === cratesIndex) {
+//             return {...crates, [event.target.name]: parseInt(event.target.value)}
+//         } else {
+//             return crates
+//         }
+//     })
+//     // Helpersfunctie
+//
+//     setCrates(updatedCratesState)
+//     setTotalCrates(reduceTotals(updatedCratesState, initialStateDrink))
+//
+// }
+
+// function updateBottles(event, bottlesIndex) {
+//     const updatedBottleState = bottles.map((bottles, index) => {
+//         if (index === bottlesIndex) {
+//             return {...bottles, [event.target.name]: parseInt(event.target.value)}
+//         } else {
+//             return bottles
+//         }
+//     })
+//     setBottles(updatedBottleState)
+//     setTotalBottles(reduceTotals(updatedBottleState, initialStateDrink))
+// }
+
+// function updateKegs(event, kegsIndex) {
+//     const updatedKegsState = kegs.map((kegs, index) => {
+//         if (index === kegsIndex) {
+//             return {...kegs, [event.target.name]: parseFloat(event.target.value)}
+//         } else {
+//             return kegs
+//         }
+//     })
+//     setKegs(updatedKegsState)
+//     setTotalKegs(reduceTotals(updatedKegsState, initialStateKeg))
+// }
+
+// function updateTanks(event, tanksIndex) {
+//     const updatedTanksState = tanks.map((tanks, index) => {
+//         if (index === tanksIndex) {
+//             return {...tanks, [event.target.name]: parseFloat(event.target.value)}
+//         } else {
+//             return tanks
+//         }
+//     })
+//     setTanks(updatedTanksState)
+//     setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
+// }

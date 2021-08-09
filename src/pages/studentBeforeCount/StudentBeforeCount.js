@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 import Button from "../../components/Button/Button";
-import axios from "axios";
 import {approveEventInventory, fetchEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
@@ -79,6 +78,7 @@ function StudentBeforeCount() {
                 {/*//@Todo, deze knop moet met een onClick, de data van de voortelling weer beschikbaar maken voor de ORGANISATIE. terug naar BeforeCount.*/}
 
                 <Button
+                    type="button"
                     name="Niet akkoord"
                     id="notAccepted"
                     value="false"
@@ -89,6 +89,7 @@ function StudentBeforeCount() {
                 />
 
                 <Button
+                    type="button"
                     name="Akkoord"
                     id="accepted"
                     click={(event)=>{

@@ -1,7 +1,6 @@
 import styles from "./Profile.module.css"
 import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
-import axios from "axios";
 import {getImage, uploadImage} from "../../network/network";
 
 function Profile() {

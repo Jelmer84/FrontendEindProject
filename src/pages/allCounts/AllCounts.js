@@ -3,7 +3,7 @@ import StudentCountTable from "../../components/StudentCountForm/StudentCountTab
 import Button from "../../components/Button/Button";
 import {getAdminOverview} from "../../network/network";
 import DropdownEvents from "../../components/DropdownEvents/DropdownEvents";
-import DropdownStudentParty from "../../components/dropdowncount/studentpartydropdown/DropdownStudentParty";
+import DropdownStudentParty from "../../components/dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import CoinsComponent from "../../components/CoinsComponent/CoinsComponent";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import DropdownStage from "../../components/DropdownStage/DropdownStage";

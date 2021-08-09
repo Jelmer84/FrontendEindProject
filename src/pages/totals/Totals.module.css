@@ -1,14 +1,5 @@
-.calculations {
-    width: 65px;
-    height: 25px;
-}
-
 .text {
     font-weight: bold;
-}
-
-.black {
-    background-color: black;
 }
 
 .headerOne {
@@ -26,11 +17,7 @@
     background-color: #a7d5c1;
 }
 
-
 .headerOne, .headerTwo, .headerThree {
     background-color: #a7d5c1;
     font-weight: bold;
 }
-
-
-

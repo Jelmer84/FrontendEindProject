@@ -5,8 +5,6 @@ function CoinsComponent({disabled, setCoins, coins, }) {
 
     return (
         <>
-
-
             <div className={styles["container-table"]}>
             <table border="2">
                 <thead>

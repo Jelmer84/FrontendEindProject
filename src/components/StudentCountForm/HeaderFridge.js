@@ -5,7 +5,7 @@ function HeaderFridge({fridge}) {
 
     return (
         <th className={styles.headerOne} colSpan="2">Koeling {fridge}</th>
-    )
+    );
 }
 
 export default HeaderFridge

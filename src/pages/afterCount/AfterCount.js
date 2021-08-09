@@ -4,7 +4,6 @@ import CountTable from "../../components/CountForm/CountTable";
 import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
 import Button from "../../components/Button/Button";
 import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../constants/initialStateDrinks";
-import axios from "axios";
 import {postEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
@@ -29,8 +28,6 @@ function AfterCount() {
     const [formSubmitSucces, setFormSubmitSucces] = useState(false)
     const [errorMsg, setErrorMsg] = useState();
     const {user} = useContext(AuthContext)
-
-
 
     async function onFormSubmit(event) {
         event.preventDefault()
@@ -62,7 +59,6 @@ function AfterCount() {
             console.error(e);        }
         setFormSubmitSucces(true);
     }
-
 
     return (
         <>
@@ -117,10 +113,8 @@ function AfterCount() {
 
             {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
             {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
-
-
         </>
-    )
+    );
 }
 
 export default AfterCount

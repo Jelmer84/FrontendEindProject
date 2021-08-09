@@ -1,14 +1,11 @@
 import React from "react";
 
 function BeverageRowStudent({beverage, data}) {
-
-        console.log('>>>>>>>>>>> DATA ',data)
-        const countCratesPerFridge = data.crates;
-       const countBottlesPerFridge = data.bottles;
-       const countBottlesTotal = data.totalBottles;
-       const countCratesTotal = data.totalCrates;
-
-
+    // console.log('>>>>>>>>>>> DATA ', data)
+    const countCratesPerFridge = data.crates;
+    const countBottlesPerFridge = data.bottles;
+    const countBottlesTotal = data.totalBottles;
+    const countCratesTotal = data.totalCrates;
 
     return (
         <tr>
@@ -30,7 +27,7 @@ function BeverageRowStudent({beverage, data}) {
             <td>{countCratesTotal[beverage]}</td>
             <td>{countBottlesTotal[beverage]}</td>
         </tr>
-    )
+    );
 }
 
 export default BeverageRowStudent

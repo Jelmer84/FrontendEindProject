@@ -1,6 +1,6 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import HomePage from "../pages/homepage/Homepage";
 import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/Register";
@@ -8,13 +8,13 @@ import Login from "../pages/login/Login";
 import Footer from "../components/footer/Footer";
 import BeforeCount from "../pages/beforecount/BeforeCount";
 import AfterCount from "../pages/afterCount/AfterCount";
-import AllCounts from "../pages/AllCounts/AllCounts";
+import AllCounts from "../pages/allCounts/AllCounts";
 import Totals from "../pages/totals/Totals";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import StudentBeforeCount from "../pages/studentBeforeCount/StudentBeforeCount";
 import StudentAfterCount from "../pages/studentAfterCount/StudentAfterCount";
-import StudentCoins from "../pages/StudentCoins/StudentCoins";
-import Coins from "../pages/Coins/Coins";
+import StudentCoins from "../pages/studentCoins/StudentCoins";
+import Coins from "../pages/coins/Coins";
 import MyCounts from "../pages/myCounts/MyCounts";
 
 

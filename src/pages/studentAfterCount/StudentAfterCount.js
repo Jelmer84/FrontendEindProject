@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import StudentCountTable from "../../components/StudentCountForm/StudentCountTable";
 import RemarksContainer from "../../components/RemarksContainer/RemarksContainer";
 import Button from "../../components/Button/Button";
-import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 import {approveEventInventory, fetchEventInventory} from "../../network/network";
 
@@ -96,10 +95,8 @@ function StudentAfterCount() {
                     setContentRemarks={setContentRemarks}
                 />
 
-
-                {/*//@Todo MOET DEZE KNOP RESET ALS TYPE ZIJN?*/}
-
                 <Button
+                    type="button"
                     name="Niet akkoord"
                     id="notAccepted"
                     value="false"
@@ -110,6 +107,7 @@ function StudentAfterCount() {
                 />
 
                 <Button
+                    type="button"
                     name="Akkoord"
                     id="accepted"
                     click={(event)=>{
@@ -121,8 +119,8 @@ function StudentAfterCount() {
             {message && <p>{message}</p>}
 
         </>
-    )
-}
+    );
+} 
 
 export default StudentAfterCount
 

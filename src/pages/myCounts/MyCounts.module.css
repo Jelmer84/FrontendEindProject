@@ -1,0 +1,10 @@
+.coins-table-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.headerOne {
+    background-color: #a7d5c1;
+    font-weight: bold;
+}

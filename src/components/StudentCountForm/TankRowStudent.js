@@ -1,13 +1,9 @@
 import React from "react";
 
-
-
-
-
 function TankRowStudent({beverage, data}) {
-
     const countTankPerFridge = data.tanks;
     const countTankTotal = data.totalTanks
+
     return (
         <tr>
             <td>{beverage}</td>
@@ -15,7 +11,7 @@ function TankRowStudent({beverage, data}) {
             <td>{countTankPerFridge[1][beverage]}</td>
             <td>{countTankTotal[beverage]}</td>
         </tr>
-    )
+    );
 }
 
 export default TankRowStudent

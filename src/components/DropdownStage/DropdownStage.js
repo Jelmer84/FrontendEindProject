@@ -10,7 +10,7 @@ function DropdownStage({onValueChange}) {
             onValueChange(stage)
     };
 
-    console.log(stage)
+    // console.log(stage)
 
     const options = [
         {"stage": "Voortelling", value: 0},

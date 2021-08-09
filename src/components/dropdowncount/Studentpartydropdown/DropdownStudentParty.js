@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Select from "react-select";
-import styles from "../dropdownWeekday-Event/DropdownWeekday-Event.module.css";
+import styles from "../DropdownWeekday-Event/DropdownWeekday-Event.module.css";
 
 function DropdownStudentParty({selectedStudentParty}) {
     const [studentParty, setStudentParty] = useState();
@@ -24,6 +24,7 @@ function DropdownStudentParty({selectedStudentParty}) {
             <Select
                 placeholder="Selecteer studentenpartij"
                 value={studentParty}
+                aria-label={"Selecteer studentenpartij"}
                 options={options}
                 onChange={handleStudentPartyChange}
                 getOptionLabel={name => name.studentParty}
