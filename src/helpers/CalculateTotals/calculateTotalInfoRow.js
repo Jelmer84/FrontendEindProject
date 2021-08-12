@@ -5,5 +5,3 @@ function calculateTotalsInfoRow (calculatedBeverageValues, infoProp ) {
 }
 
 export default calculateTotalsInfoRow;
-// calculatedBeverageValues is de array
-// infoProp is de variable die je optelt zodat het werkt voor alle mogelijkheden (props)

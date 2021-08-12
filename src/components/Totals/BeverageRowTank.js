@@ -9,8 +9,7 @@ function BeverageRowTank({
                              name,
                              totalCoinsTanks,
                              totalDrinksTanks,
-                         })
-{
+                         }) {
 
     return (
         <tr>

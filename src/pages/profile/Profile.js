@@ -26,7 +26,6 @@ function Profile() {
                 id: imageId
             })
             setImageId(result.data.id)
-            console.log('RESULT', result)
         } catch (e) {
             console.error(e);
         }
@@ -69,6 +68,7 @@ function Profile() {
                                         Kies File
                                     </label>
                                 </button>
+
                                 <input
                                     type="file"
                                     id="fileUpload"
@@ -97,6 +97,6 @@ function Profile() {
             </div>
         </>
     );
-}                                
+}
 
 export default Profile;

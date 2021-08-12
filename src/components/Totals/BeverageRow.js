@@ -1,28 +1,27 @@
 import React from "react";
 import styles from "./Totals.module.css";
 
-function BeverageRow(
-    {
-        name,
-        literCrate,
-        literBottle,
-        beforeCrates,
-        beforeBottles,
-        countCrateLitersBefore,
-        countBottleLitersBefore,
-        differenceLitersBefore,
-        afterCrates,
-        afterBottles,
-        countCrateLitersAfter,
-        countBottleLitersAfter,
-        differenceLitersAfter,
-        differenceCratesTotal,
-        differenceBottlesTotal,
-        differenceTotal,
-        totalDrinks,
-        totalCoins
-    }
-) {
+function BeverageRow({
+                         name,
+                         literCrate,
+                         literBottle,
+                         beforeCrates,
+                         beforeBottles,
+                         countCrateLitersBefore,
+                         countBottleLitersBefore,
+                         differenceLitersBefore,
+                         afterCrates,
+                         afterBottles,
+                         countCrateLitersAfter,
+                         countBottleLitersAfter,
+                         differenceLitersAfter,
+                         differenceCratesTotal,
+                         differenceBottlesTotal,
+                         differenceTotal,
+                         totalDrinks,
+                         totalCoins
+                     }) {
+
     return (
         <tr>
             <td className={styles.text}>{name}</td>

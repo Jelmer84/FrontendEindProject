@@ -7,7 +7,6 @@ function HomePage() {
             <div className={styles.text}>
                 <h3>Beste Samenwerkingspartner!</h3>
 
-
                 <p>Welkom bij de nieuwe INKOMapp. Bedankt dat je dit jaar meewerkt aan een stapje richting de toekomst!
                     Door het testen van deze app hopen we het telsysteem van de INKOM te digitaliseren, zodat het proces
                     voor alle partijen makkelijker en sneller verloopt. Vergeet niet om ook de papieren tellijsten in te
@@ -19,7 +18,7 @@ function HomePage() {
                     wellicht wat info over hoe de app werkt.</p>
             </div>
         </div>
-    )
+    );
 }
 
 export default HomePage

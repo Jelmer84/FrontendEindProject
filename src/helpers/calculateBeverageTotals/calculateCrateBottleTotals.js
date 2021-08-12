@@ -12,6 +12,7 @@ const crateContent = {
     Red_Bull_Tropical: 3,
     Desperados: 7.92
 }
+
 const bottleContent = {
     Water_Rood: 1.1,
     Water_Blauw: 1.1,
@@ -40,8 +41,8 @@ const drinksPerLiter = {
     Sisi: 5,
     Water_Blauw: 5,
     Water_Rood: 5,
-
 }
+
 const coinsPerConsumption = {
     Desperados: 2,
     Ice_Tea_Green_110cl: 1,
@@ -55,35 +56,31 @@ const coinsPerConsumption = {
     Sisi: 1,
     Water_Blauw: 1,
     Water_Rood: 1,
-
 }
 
 function calculateCrateBottleTotals(beverage, beforeCrate, beforeBottle, afterCrate, afterBottle) {
-    // hoeveel liters van deze drank zitten er in een fles/krat/fust/tank?
-
-    //INHOUD KRATTEN EN FLESSEN
+    //Inhoud kratten en flessen in liters
     const literCrate = crateContent[beverage];
     const literBottle = bottleContent[beverage];
 
-    // VOORTELLING KRATTEN EN FLESSEN
+    // Voortelling ktatten en flessen in liters
     const countCrateLitersBefore = literCrate * beforeCrate;
     const countBottleLitersBefore = literBottle * beforeBottle;
     const differenceLitersBefore = (literCrate * beforeCrate) + (literBottle * beforeBottle);
 
-    // NATELLING KRATTEN EN FLESSEN
+    // Natelling kratten en flessen in liters
     const countCrateLitersAfter = literCrate * afterCrate;
     const countBottleLitersAfter = literBottle * afterBottle;
     const differenceLitersAfter = (literCrate * afterCrate) + (literBottle * afterBottle);
 
-    //VERSCHILLEN KRATTEN EN FLESSEN
+    //Verschillen kratten en flessen in liters
     const differenceCratesTotal = countCrateLitersBefore - countCrateLitersAfter;
     const differenceBottlesTotal = countBottleLitersBefore - countBottleLitersAfter;
     const differenceTotal = differenceCratesTotal + differenceBottlesTotal;
 
-    // BEREKENING DRANK & COINS KRATTEN EN FLESSEN
+    // Berekening consumpties & munten van consumpties van de kratten en flessen
     const totalDrinks = (differenceLitersBefore - differenceLitersAfter) * drinksPerLiter[beverage];
     const totalCoins = ((differenceLitersBefore - differenceLitersAfter) * drinksPerLiter[beverage]) * coinsPerConsumption[beverage];
-
 
     return {
         literCrate,
@@ -99,7 +96,6 @@ function calculateCrateBottleTotals(beverage, beforeCrate, beforeBottle, afterCr
         differenceTotal,
         totalDrinks,
         totalCoins,
-
     }
 }
 

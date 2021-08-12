@@ -4,7 +4,6 @@ import styles from "./Button.module.css";
 function Button({name, type, id, click, value, disabled}) {
 
     return (
-
             <button
                 disabled={disabled}
                 className={styles.button}

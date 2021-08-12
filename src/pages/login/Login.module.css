@@ -1,9 +1,19 @@
 .login-form {
     display: flex;
-    margin: 50px;
     flex-direction: column;
     align-items: center;
+    width: 150%;
 }
+
+@media only screen and (min-device-width: 900px) {
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}
+
 
 
 

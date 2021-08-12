@@ -11,7 +11,6 @@ function Login() {
     const {handleSubmit, formState: {errors}, register} = useForm()
 
     async function onSubmit(data) {
-        console.log(data);
         try {
             const result = await loginUser(data)
             login(result.data.accessToken)
@@ -62,10 +61,10 @@ function Login() {
                 <p>Test123!</p>
                 <p>Superadmin123!</p>
 
-                 <Button
-                   type="submit"
-                   name="Inloggen"
-                 />
+                <Button
+                    type="submit"
+                    name="Inloggen"
+                />
             </form>
         </>
     );

@@ -115,7 +115,6 @@ function AfterCount() {
                     </div>
                 </div>
             </form>}
-
             {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
             {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
         </>

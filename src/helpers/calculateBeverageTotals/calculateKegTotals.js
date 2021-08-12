@@ -9,6 +9,7 @@ const drinksPerLiter = {
     Fust_Radler: 4.6,
     Fust_Pils: 4.6,
 }
+
 const coinsPerConsumption = {
     Fust_Jilz: 1,
     Fust_Radler: 1,
@@ -16,22 +17,19 @@ const coinsPerConsumption = {
 }
 
 function calculateKegTotals(beverage, beforeKeg, afterKegs) {
-    // hoeveel liters van deze drank zitten er in een fles/krat/fust/tank?
-
-
-    //INHOUD FUSTEN EN TANKBIER
+    //Inhoud fusten in liters
     const literKeg = kegContent[beverage];
 
-    // VOORTELLING FUSTEN EN TANKBIER
+    // Voortelling fusten in liters
     const countKegLitersBefore = beforeKeg;
 
-    //NATELLING FUSTEN EN TANKBIER
+    //Natelling fusten in liters
     const countKegLitersAfter = afterKegs;
 
-    //VERSCHILLEN FUSTEN EN TANKBIER
+    //Verschillen fusten in liters
     const differenceKegsTotal = countKegLitersBefore - countKegLitersAfter;
 
-    // BEREKENING DRANK & COINS FUSTEN EN TANKBIER
+    // Berekening consumpties & munten van consumpties van de fusten
     const totalDrinksKegs = differenceKegsTotal * drinksPerLiter[beverage];
     const totalCoinsKegs = (differenceKegsTotal * drinksPerLiter[beverage]) * coinsPerConsumption[beverage];
 

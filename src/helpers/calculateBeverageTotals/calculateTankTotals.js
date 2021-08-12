@@ -11,21 +11,19 @@ const coinsPerConsumption = {
 }
 
 function calculateTankTotals(beverage, beforeTank, afterTank) {
-    // hoeveel liters van deze drank zitten er in een fles/krat/fust/tank?
-
-    //INHOUD FUSTEN EN TANKBIER
+    //Inhoud tankbier in liters
     const literTank = tankContent.Tankbier;
 
-    // VOORTELLING FUSTEN EN TANKBIER
+    // Voortelling tankbier in liters
     const countTankLitersBefore = beforeTank;
 
-    //NATELLING FUSTEN EN TANKBIER
+    //Natelling tankbier in liters
     const countTankLitersAfter = afterTank;
 
-    //VERSCHILLEN FUSTEN EN TANKBIER
+    //Verschillen tankbier in liters
     const differenceTankTotal = countTankLitersBefore - countTankLitersAfter;
 
-    // BEREKENING DRANK & COINS FUSTEN EN TANKBIER
+    // Berekening consumpties & munten van consumpties van de tankbier
     const totalDrinksTanks = (differenceTankTotal * drinksPerLiter.Tankbier).toFixed(1);
     const totalCoinsTanks = ((differenceTankTotal * drinksPerLiter.Tankbier) * coinsPerConsumption.Tankbier).toFixed(1);
 

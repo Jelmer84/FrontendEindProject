@@ -1,5 +1,5 @@
-import React, {createContext, useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, {createContext, useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 import jwt_Decode from "jwt-decode";
 import {fetchUser} from "../network/network";
 
@@ -15,11 +15,8 @@ function AuthContextProvider({children}) {
         const email = decoded.sub;
         try {
             const result = await fetchUser(email)
-            // console.log(result)
-
             const data = result.data;
-            delete data['password']  ;
-           // localStorage.setItem('user', data);
+            delete data['password'];
             setUserState({
                 user: data,
                 status: "done",
@@ -47,19 +44,14 @@ function AuthContextProvider({children}) {
     }, []);
 
     async function loginFunction(JWToken) {
-        // console.log(JWToken)
-        // console.log("DECODED", decoded)
         localStorage.setItem('token', JWToken);
-
         await fetchUserData(JWToken);
         history.push("/profile");
     }
 
     function logoutFunction() {
-        console.log("LOGOUT")
         localStorage.clear();
         setUserState({user: null, status: "done"});
-        // history.push("/")
     }
 
     const data = {

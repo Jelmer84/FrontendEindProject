@@ -2,15 +2,15 @@ import React from "react";
 import styles from "./Totals.module.css";
 
 function BeverageRowKegs({
-        name,
-        differenceKegsTotal,
-        literKeg,
-        countKegLitersBefore,
-        countKegLitersAfter,
-        totalDrinksKegs,
-        totalCoinsKegs,
-    })
-{
+                             name,
+                             differenceKegsTotal,
+                             literKeg,
+                             countKegLitersBefore,
+                             countKegLitersAfter,
+                             totalDrinksKegs,
+                             totalCoinsKegs,
+                         }) {
+
     return (
         <tr>
             <td className={styles.text}>{name}</td>

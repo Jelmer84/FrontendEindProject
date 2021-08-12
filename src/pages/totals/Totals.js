@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from "../../components/Totals/Totals.module.css";
+import styles from "./Totals.module.css";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import HeaderCrateBottle from "../../components/Totals/HeaderCrateBottle";
 import HeaderAll from "../../components/Totals/HeaderAll";
@@ -74,7 +74,6 @@ function Totals() {
                 const result = await deleteAllInventory()
                 setMessage(result.data.message)
             } catch (e) {
-                console.log(e)
             }
         }
     }

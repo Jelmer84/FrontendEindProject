@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     width: 155%;
-    background-color: blue;
 }
 
 .container {
@@ -34,12 +33,6 @@
     display: none;
 }
 
-button {
-    border: none;
-    outline: none;
-    margin: 10px;
-}
-
 @media only screen and (min-device-width: 737px) {
     .background {
         min-height: 65vh;
@@ -47,13 +40,11 @@ button {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        background-color: yellow;
     }
 
     .container {
         margin: auto;
         width: 100%;
-        /*max-width: 200px;*/
     }
 
     .error {
@@ -75,11 +66,5 @@ button {
 
     .imagePreview input[type="file"]   {
         display: none;
-    }
-
-    button {
-        border: none;
-        outline: none;
-        margin: 10px;
     }
 }

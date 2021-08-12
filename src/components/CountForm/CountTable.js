@@ -89,9 +89,7 @@ function CountTable({
                                         placeholder="0"
                                         type="number"
                                         value={crates[index][beveragesCrates[beverageIndex]]}
-                                        // onChange={(event) => updateCrates(event, index)}
-                                        onChange={(event) => updateItems(event, index, crates,
-                                            setCrates, setTotalCrates, initialStateDrink)}
+                                        onChange={(event) => updateItems(event, index, crates, setCrates, setTotalCrates, initialStateDrink)}
                                     />
                                 </td>
 

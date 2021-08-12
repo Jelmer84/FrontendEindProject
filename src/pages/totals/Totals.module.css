@@ -12,11 +12,6 @@
     position: sticky;
 }
 
-.headerThreeEmpty {
-    color: #a7d5c1;
-    background-color: #a7d5c1;
-}
-
 .headerOne, .headerTwo, .headerThree {
     background-color: #a7d5c1;
     font-weight: bold;

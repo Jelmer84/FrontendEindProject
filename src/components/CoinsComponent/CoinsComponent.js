@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CoinsComponent.module.css";
 
-function CoinsComponent({disabled, setCoins, coins,}) {
+function CoinsComponent({disabled, setCoins, coins}) {
 
     return (
         <>

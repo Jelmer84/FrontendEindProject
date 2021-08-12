@@ -155,7 +155,6 @@ function Register() {
                 {registerSuccess === true &&
                 <p>Registeren is gelukt, je wordt nu door gestuurd naar de inlog pagina!</p>}
                 {loading === true && <p>"Loading ... "</p>}
-
             </form>
         </>
     );

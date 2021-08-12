@@ -20,7 +20,7 @@
 }
 
 .headerOne, .headerTwo {
-    background-color: red;
+    background-color: #a7d5c1;
     font-weight: bold;
 }
 
@@ -62,7 +62,6 @@
         flex-direction: column;
         align-items: center;
     }
-
 }
 
 

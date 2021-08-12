@@ -32,7 +32,7 @@ function StudentAfterCount() {
                 setEventId(result.data.eventId)
             } else if(result.status === 208){
                 setAlreadyCompleted(true)
-                setMessage('There is no count available for you at this moment, check back later.')
+                setMessage('Er is geen telling beschikbaar op het moment,controleer later weer.')
             }
             setLoading(false)
 
@@ -49,7 +49,7 @@ function StudentAfterCount() {
                 setMessage('De telling is opgeslagen!')
             }else{
                 setAccepted(false)
-                setMessage('Go and see the supervisor!')
+                setMessage('Ga naar de organisatie van de INKOM en geef aan dat je de telling afgekeurd hebt!')
             }
         } catch (e) {
             console.error(e)

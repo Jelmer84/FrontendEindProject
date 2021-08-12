@@ -6,7 +6,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 function StudentBeforeCount() {
     const [accepted, setAccepted] = useState(false)
-    const [data, setData] = useState({ def : 0})
+    const [data, setData] = useState({def: 0})
     const [loading, setLoading] = useState(true)
     const [alreadyCompleted, setAlreadyCompleted] = useState(false)
     const [eventId, setEventId] = useState("")
@@ -15,31 +15,23 @@ function StudentBeforeCount() {
     const {user} = useContext(AuthContext)
     const [message, setMessage] = useState()
 
-
-    useEffect(async ()=>{
+    useEffect(async () => {
         await getEventInventory();
-    },[data.def])
+    }, [data.def])
 
-
-    async function getEventInventory(){
+    async function getEventInventory() {
         try {
-
-            //const eventId = "Pre-INKOM-Party";
-            // console.log(user)
             const {studentID} = user
             const result = await fetchEventInventory(studentID, stage)
-
-            if(result.status === 200){
+            if (result.status === 200) {
                 setData(JSON.parse(result.data.data))
                 setStudentPartyId(result.data.studentPartyId)
                 setEventId(result.data.eventId)
-
-            } else if(result.status === 208){
+            } else if (result.status === 208) {
                 setAlreadyCompleted(true)
-                setMessage('There is no count available for you at this moment, check back later.')
+                setMessage('Er is geen telling beschikbaar op het moment,controleer later weer.')
             }
             setLoading(false)
-
         } catch (e) {
             console.error(e)
             setLoading(false)
@@ -47,43 +39,35 @@ function StudentBeforeCount() {
     }
 
     async function approveEvent(approve) {
-
         try {
-            await approveEventInventory({eventId, studentPartyId,approve, stage})
-            if(approve){
+            await approveEventInventory({eventId, studentPartyId, approve, stage})
+            if (approve) {
                 setAccepted(true)
                 setMessage('De telling is opgeslagen!')
-            }else{
+            } else {
                 setAccepted(false)
-                setMessage('Go and see the supervisor!')
+                setMessage('Ga naar de organisatie van de INKOM en geef aan dat je de telling afgekeurd hebt!')
             }
-
-
         } catch (e) {
             console.error(e)
         }
-
     }
 
     return (
         <>
             {!message && <div>
-
-                {  loading ?
+                {loading ?
                     <p>loading</p> :
-
-                     <StudentCountTable
+                    <StudentCountTable
                         nameList="Voor" eventId={eventId} data={data} studentPartyId={studentPartyId}/>
                 }
-
-                {/*//@Todo, deze knop moet met een onClick, de data van de voortelling weer beschikbaar maken voor de ORGANISATIE. terug naar BeforeCount.*/}
 
                 <Button
                     type="button"
                     name="Niet akkoord"
                     id="notAccepted"
                     value="false"
-                    click={(event)=>{
+                    click={(event) => {
                         event.preventDefault();
                         approveEvent(false)
                     }}
@@ -93,15 +77,15 @@ function StudentBeforeCount() {
                     type="button"
                     name="Akkoord"
                     id="accepted"
-                    click={(event)=>{
-                       event.preventDefault();
+                    click={(event) => {
+                        event.preventDefault();
                         approveEvent(true)
                     }}
                 />
             </div>}
-            { message && <p>{message}</p> }
+            {message && <p>{message}</p>}
         </>
-    )
+    );
 }
 
 export default StudentBeforeCount

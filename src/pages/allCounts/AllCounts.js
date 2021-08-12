@@ -18,8 +18,6 @@ function AllCounts() {
     const [message, setMessage] = useState('Selecteer een evenement, vereniging en telling en druk op ophalen om de date te bekijken.')
 
     async function getOverview() {
-
-        console.log('Print...', eventId, studentPartyId, stage)
         if (eventId && studentPartyId && stage > -1) {
             try {
                 const result = await getAdminOverview(eventId, studentPartyId, stage)
@@ -84,13 +82,10 @@ function AllCounts() {
                     sheet="tablexls"
                     buttonText="Download as Excel"/>
 
-
             </div>}
             {message && <p>{message}</p>}
-
-
         </>
-    )
+    );
 }
 
 export default AllCounts

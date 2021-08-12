@@ -12,10 +12,6 @@
     width: 400px;
 }
 
-.coins-table {
-    margin-left: 410px;
-}
-
 @media only screen and (min-width: 737px) {
     .coins-container {
         display: flex;
@@ -28,8 +24,5 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-    }
-    .coins-table {
-        margin-left: 0;
     }
 }

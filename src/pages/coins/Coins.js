@@ -9,15 +9,12 @@ import {AuthContext} from "../../context/AuthContext";
 
 function Coins() {
     const [formSubmitSucces, setFormSubmitSucces] = useState(false)
-
     const [coins, setCoins] = useState(0)
-
     const [selectedWeekday, setSelectedWeekday] = useState('');
     const [selectedInkomEvent, setSelectedInkomEvent] = useState('');
     const [selectedStudentParty, setSelectedStudentParty] = useState('');
     const [errorMsg, setErrorMsg] = useState();
     const {user} = useContext(AuthContext)
-
 
     async function onFormSubmit(event) {
         event.preventDefault()
@@ -33,7 +30,6 @@ function Coins() {
                 selectedStudentParty
             }
         }
-
         try {
             await postEventInventory(eventDetails)
         } catch (e) {
@@ -43,19 +39,12 @@ function Coins() {
             }
             console.error(e);
         }
-
         setFormSubmitSucces(true);
     }
-
-    console.log(coins,
-        selectedWeekday,
-        selectedInkomEvent,
-        selectedStudentParty)
 
     return (
         <>
             {!formSubmitSucces && <div className={styles["coins-container"]}>
-
                 <DropdownWeekdayEvent
                     selectedWeekday={selectedWeekday => setSelectedWeekday(selectedWeekday)}
                     selectedInkomEvent={selectedInkomEvent => setSelectedInkomEvent(selectedInkomEvent)}
@@ -65,31 +54,28 @@ function Coins() {
                 />
 
                 <form onSubmit={onFormSubmit}>
-
-                        <CoinsComponent
-                            disabled={false}
-                            coins={coins}
-                            setCoins={setCoins}
+                    <CoinsComponent
+                        disabled={false}
+                        coins={coins}
+                        setCoins={setCoins}
+                    />
+                    <div className={styles["coins-button"]}>
+                        <Button
+                            name="Opslaan"
+                            type="submit"
+                            id="buttonSubmit"
+                            disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
                         />
-                        <div className={styles["coins-button"]}>
-                            <Button
-                                name="Opslaan"
-                                type="submit"
-                                id="buttonSubmit"
-                                disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
-                            />
-                        </div>
-
-                {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
-                        <p>Vul de datum, het evenement en de studentenpartij in!</p>}
-
+                    </div>
+                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
+                    <p>Vul de datum, het evenement en de studentenpartij in!</p>}
 
                 </form>
             </div>}
             {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
             {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
         </>
-    )
+    );
 }
 
 export default Coins
