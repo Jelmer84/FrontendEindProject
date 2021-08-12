@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './StudentCountTable.module.css'
+import styles from "./StudentCountTable.module.css"
 import HeaderCrateBottle from "../Totals/HeaderCrateBottle";
 import HeaderFridge from "./HeaderFridge";
 import BeverageRowStudent from "./BeverageRowStudent";

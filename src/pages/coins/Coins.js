@@ -55,36 +55,36 @@ function Coins() {
     return (
         <>
             {!formSubmitSucces && <div className={styles["coins-container"]}>
-                <div>
-                    <DropdownWeekdayEvent
-                        selectedWeekday={selectedWeekday => setSelectedWeekday(selectedWeekday)}
-                        selectedInkomEvent={selectedInkomEvent => setSelectedInkomEvent(selectedInkomEvent)}
-                    />
-                    <DropdownStudentParty
-                        selectedStudentParty={selectedStudentParty => setSelectedStudentParty(selectedStudentParty)}
-                    />
-                </div>
+
+                <DropdownWeekdayEvent
+                    selectedWeekday={selectedWeekday => setSelectedWeekday(selectedWeekday)}
+                    selectedInkomEvent={selectedInkomEvent => setSelectedInkomEvent(selectedInkomEvent)}
+                />
+                <DropdownStudentParty
+                    selectedStudentParty={selectedStudentParty => setSelectedStudentParty(selectedStudentParty)}
+                />
 
                 <form onSubmit={onFormSubmit}>
 
-                    <CoinsComponent
-                        disabled={false}
-                        coins={coins}
-                        setCoins={setCoins}
-                    />
-                    <div className={styles["coins-button"]}>
-                        <Button
-                            name="Opslaan"
-                            type="submit"
-                            id="buttonSubmit"
-                            disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                        <CoinsComponent
+                            disabled={false}
+                            coins={coins}
+                            setCoins={setCoins}
                         />
-                    </div>
-                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
-                    <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+                        <div className={styles["coins-button"]}>
+                            <Button
+                                name="Opslaan"
+                                type="submit"
+                                id="buttonSubmit"
+                                disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                            />
+                        </div>
+
+                {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
+                        <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+
 
                 </form>
-
             </div>}
             {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
             {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}

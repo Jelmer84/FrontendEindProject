@@ -13,7 +13,3 @@ function Footer() {
 }
 
 export default Footer
-
-
-// {/*className="kaas" word className ={styles.kaas}  */}
-// {styles["active-link"]}

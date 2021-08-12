@@ -32,9 +32,9 @@ function AfterCount() {
     async function onFormSubmit(event) {
         event.preventDefault()
         const eventDetails = {
-            eventId:selectedInkomEvent,
+            eventId: selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
-            stage : 1, // after count
+            stage: 1, // after count
             submitted: user.id,
             organisationRemarks: contentRemarks,
             data: {
@@ -52,11 +52,12 @@ function AfterCount() {
         try {
             await postEventInventory(eventDetails)
         } catch (e) {
-            if(e.response.status === 400){
+            if (e.response.status === 400) {
                 // this has already been submitted
                 setErrorMsg(e.response.data.message)
             }
-            console.error(e);        }
+            console.error(e);
+        }
         setFormSubmitSucces(true);
     }
 
@@ -64,50 +65,54 @@ function AfterCount() {
         <>
             {!formSubmitSucces && <form onSubmit={onFormSubmit}>
                 <div className={styles["after-container"]}>
-                    <CountTable
-                        nameList="Na"
-                        selectedWeekday={selectedWeekday}
-                        setSelectedWeekday={setSelectedWeekday}
-                        selectedInkomEvent={selectedInkomEvent}
-                        setSelectedInkomEvent={setSelectedInkomEvent}
-                        selectedStudentParty={selectedStudentParty}
-                        setSelectedStudentParty={setSelectedStudentParty}
+                    <div className={styles["after-countTable"]}>
+                        <CountTable
+                            nameList="Na"
+                            selectedWeekday={selectedWeekday}
+                            setSelectedWeekday={setSelectedWeekday}
+                            selectedInkomEvent={selectedInkomEvent}
+                            setSelectedInkomEvent={setSelectedInkomEvent}
+                            selectedStudentParty={selectedStudentParty}
+                            setSelectedStudentParty={setSelectedStudentParty}
 
-                        bottles={bottles}
-                        setBottles={setBottles}
-                        crates={crates}
-                        setCrates={setCrates}
-                        kegs={kegs}
-                        setKegs={setKegs}
-                        tanks={tanks}
-                        setTanks={setTanks}
+                            bottles={bottles}
+                            setBottles={setBottles}
+                            crates={crates}
+                            setCrates={setCrates}
+                            kegs={kegs}
+                            setKegs={setKegs}
+                            tanks={tanks}
+                            setTanks={setTanks}
 
-                        totalCrates={totalCrates}
-                        setTotalCrates={setTotalCrates}
-                        totalBottles={totalBottles}
-                        setTotalBottles={setTotalBottles}
-                        totalKegs={totalKegs}
-                        setTotalKegs={setTotalKegs}
-                        totalTanks={totalTanks}
-                        setTotalTanks={setTotalTanks}
-                    />
+                            totalCrates={totalCrates}
+                            setTotalCrates={setTotalCrates}
+                            totalBottles={totalBottles}
+                            setTotalBottles={setTotalBottles}
+                            totalKegs={totalKegs}
+                            setTotalKegs={setTotalKegs}
+                            totalTanks={totalTanks}
+                            setTotalTanks={setTotalTanks}
+                        />
+                    </div>
 
-                    <RemarksContainer
-                        remarks={remarks}
-                        toggleRemarks={toggleRemarks}
-                        contentRemarks={contentRemarks}
-                        setContentRemarks={setContentRemarks}
-                    />
+                    <div className={styles["after-button"]}>
+                        <RemarksContainer
+                            remarks={remarks}
+                            toggleRemarks={toggleRemarks}
+                            contentRemarks={contentRemarks}
+                            setContentRemarks={setContentRemarks}
+                        />
 
-                    <Button
-                        name="Opslaan"
-                        type="submit"
-                        id="buttonSubmit"
-                        disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
-                    />
+                        <Button
+                            name="Opslaan"
+                            type="submit"
+                            id="buttonSubmit"
+                            disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                        />
 
-                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
-                    <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+                        {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
+                        <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+                    </div>
                 </div>
             </form>}
 

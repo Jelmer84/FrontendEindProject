@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Select from "react-select";
-import data from './DropdownWeekday-Event.json';
+import data from "./DropdownWeekday-Event.json";
 import styles from "./DropdownWeekday-Event.module.css"
 
 function DropdownWeekdayEvent({selectedWeekday, selectedInkomEvent}) {

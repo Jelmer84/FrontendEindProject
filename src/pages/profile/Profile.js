@@ -1,33 +1,22 @@
 import styles from "./Profile.module.css"
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {getImage, uploadImage} from "../../network/network";
 
 function Profile() {
     const {user} = useContext(AuthContext)
-    console.log(user.roles[0].name)
     const [imagePreview, setImagePreview] = useState(null);
     const [error, setError] = useState(false);
     const [imageId, setImageId] = useState(-1);
 
-
-    // useEffect op mount
-    // geen imagePreview? Dan onderstaande
-    // get request doen naar de plek waar image staat (user of token meegeven)
-    // als response:
-    // is data null of een image
-    // image in state plaatsen (imagePreview) maar vergeet niet de base64 weer te decoden
-    // response empty? Dan doen we lekker  niks!
-
-    useEffect(async ()=>{
+    useEffect(async () => {
         const res = await getImage(user.id)
         const image = res.data.base64String;
-        if(image){
+        if (image) {
             setImageId(res.data.id)
             setImagePreview(image)
         }
-        console.log(user)
-    },[])
+    }, [])
 
     async function sendImage(image) {
         try {
@@ -43,8 +32,6 @@ function Profile() {
         }
     }
 
-    // console.log(imagePreview);
-
     const handleImageChange = (e) => {
         setError(false)
         const selected = e.target.files[0];
@@ -59,9 +46,7 @@ function Profile() {
         } else {
             setError(true);
         }
-
     };
-
 
     return (
         <>
@@ -112,6 +97,6 @@ function Profile() {
             </div>
         </>
     );
-}
+}                                
 
 export default Profile;

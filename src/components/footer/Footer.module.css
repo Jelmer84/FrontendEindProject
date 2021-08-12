@@ -1,11 +1,24 @@
-
 .footer-container {
-    background-color: #a7d5c1;
+    background-color: red;
     display: flex;
     margin-top: 50px;
+    width: 155%;
 }
 
 .list {
     list-style: none;
 }
 
+
+@media only screen and (min-device-width: 737px) {
+    .footer-container {
+        background-color: #a7d5c1;
+        display: flex;
+        margin-top: 50px;
+        max-width: 102%;
+    }
+
+    .list {
+        list-style: none;
+    }
+}

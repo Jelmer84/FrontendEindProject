@@ -1,7 +1,6 @@
 import React from "react";
 
 function BeverageRowStudent({beverage, data}) {
-    // console.log('>>>>>>>>>>> DATA ', data)
     const countCratesPerFridge = data.crates;
     const countBottlesPerFridge = data.bottles;
     const countBottlesTotal = data.totalBottles;

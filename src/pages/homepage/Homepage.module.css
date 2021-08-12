@@ -1,14 +1,32 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-content: center;
-
+    width: 155%;
+    background-color: red;
 }
 
 .text {
-
     display: flex;
     flex-direction: column;
     margin: 20px;
+}
+
+
+
+@media only screen and (min-device-width: 737px) {
+
+    .container {
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*align-content: center;*/
+        background-color: green;
+        max-width: 100%;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
 }
 

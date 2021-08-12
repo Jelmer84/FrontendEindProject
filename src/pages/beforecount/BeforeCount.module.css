@@ -1,7 +1,32 @@
 .before-container {
     display: flex;
-    margin: 50px;
     flex-direction: column;
     align-items: center;
+}
+
+.before-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 400px ;
+    width: 400px;
+}
+
+.before-countTable {
+    margin-left: 410px;
+}
+
+@media only screen and (min-width: 737px) {
+    .before-button {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0;
+        width: 400px;
+    }
+
+    .before-countTable {
+        margin-left: 0;
+    }
 }
 

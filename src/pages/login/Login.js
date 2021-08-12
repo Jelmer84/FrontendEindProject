@@ -13,8 +13,7 @@ function Login() {
     async function onSubmit(data) {
         console.log(data);
         try {
-            const result = await loginUser(data) //axios.post('http://localhost:8080/api/auth/signin', data)
-            // console.log(result.data.accessToken);
+            const result = await loginUser(data)
             login(result.data.accessToken)
         } catch (e) {
             console.error(e)
@@ -23,9 +22,7 @@ function Login() {
 
     return (
         <>
-
             <form className={styles["login-form"]} onSubmit={handleSubmit(onSubmit)}>
-
                 <InputForm
                     type="text"
                     name="email"
@@ -61,7 +58,6 @@ function Login() {
                     )}
                     errors={errors}
                 />
-
 
                 <p>Test123!</p>
                 <p>Superadmin123!</p>

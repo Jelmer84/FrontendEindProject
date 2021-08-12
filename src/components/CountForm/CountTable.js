@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './CountTable.module.css'
+import styles from "./CountTable.module.css"
 import DropdownWeekdayEvent from "../dropdowncount/DropdownWeekday-Event/DropdownWeekday-Event";
 import DropdownStudentParty from "../dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import reduceTotals from "../../helpers/reduceTotals/reduceTotals";
@@ -175,73 +175,3 @@ function CountTable({
 }
 
 export default CountTable
-
-
-// onInput="validity.valid||(value='');"
-// zorgt ervoor dat de ingetypte waarde niet onder de nul kan, geeft error bij aanklikken button
-
-// console.log("crates per fridge", crates)
-// const totalCrates = reduceTotals(crates)
-
-// console.log("bottles per fridge", bottles)
-// const totalBottles = reduceTotals(bottles)
-
-// console.log("kegs per fridge", kegs)
-// const totalKegs = reduceTotals(kegs)
-
-// console.log("tanks per fridge", tanks)
-// const totalTanks = reduceTotals(tanks)
-
-
-// function updateCrates(event, cratesIndex) {
-//
-//     // Helpersfunctie
-//     const updatedCratesState = crates.map((crates, index) => {
-//         if (index === cratesIndex) {
-//             return {...crates, [event.target.name]: parseInt(event.target.value)}
-//         } else {
-//             return crates
-//         }
-//     })
-//     // Helpersfunctie
-//
-//     setCrates(updatedCratesState)
-//     setTotalCrates(reduceTotals(updatedCratesState, initialStateDrink))
-//
-// }
-
-// function updateBottles(event, bottlesIndex) {
-//     const updatedBottleState = bottles.map((bottles, index) => {
-//         if (index === bottlesIndex) {
-//             return {...bottles, [event.target.name]: parseInt(event.target.value)}
-//         } else {
-//             return bottles
-//         }
-//     })
-//     setBottles(updatedBottleState)
-//     setTotalBottles(reduceTotals(updatedBottleState, initialStateDrink))
-// }
-
-// function updateKegs(event, kegsIndex) {
-//     const updatedKegsState = kegs.map((kegs, index) => {
-//         if (index === kegsIndex) {
-//             return {...kegs, [event.target.name]: parseFloat(event.target.value)}
-//         } else {
-//             return kegs
-//         }
-//     })
-//     setKegs(updatedKegsState)
-//     setTotalKegs(reduceTotals(updatedKegsState, initialStateKeg))
-// }
-
-// function updateTanks(event, tanksIndex) {
-//     const updatedTanksState = tanks.map((tanks, index) => {
-//         if (index === tanksIndex) {
-//             return {...tanks, [event.target.name]: parseFloat(event.target.value)}
-//         } else {
-//             return tanks
-//         }
-//     })
-//     setTanks(updatedTanksState)
-//     setTotalTanks(reduceTotals(updatedTanksState, initialStateTank))
-// }

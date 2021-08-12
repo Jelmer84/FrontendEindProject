@@ -22,11 +22,8 @@ function StudentCoins() {
 
     async function getEventInventory(){
         try {
-            //const eventId = "Pre-INKOM-Party";
-            // console.log(user)
             const {studentID} = user
             const result = await fetchEventInventory(studentID, stage)
-
             if(result.status === 200){
                 setData(JSON.parse(result.data.data))
                 setStudentPartyId(result.data.studentPartyId)
@@ -36,14 +33,12 @@ function StudentCoins() {
                 setMessage('There is no count available for you at this moment, check back later.')
             }
             setLoading(false)
-
         } catch (e) {
             console.error(e)
         }
     }
 
     async function approveEvent(approve) {
-
         try {
             await approveEventInventory({eventId, studentPartyId,approve, stage})
             if(approve){
@@ -62,7 +57,6 @@ function StudentCoins() {
         <>
             {!message &&
             <div className={styles["coins-container"]}>
-
                 {  loading ?
                     <p>loading</p> :
                     <div>

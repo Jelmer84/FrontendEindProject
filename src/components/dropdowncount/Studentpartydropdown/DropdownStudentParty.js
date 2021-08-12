@@ -8,7 +8,6 @@ function DropdownStudentParty({selectedStudentParty}) {
         setStudentParty(studentParty);
         if(selectedStudentParty)
             selectedStudentParty(studentParty);
-        
     };
     
     const options = [
@@ -30,7 +29,6 @@ function DropdownStudentParty({selectedStudentParty}) {
                 getOptionLabel={name => name.studentParty}
                 className={styles.dropdown}
             />
-
         </>
     );
 }

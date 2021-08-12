@@ -1,11 +1,35 @@
 .coins-container {
     display: flex;
-    margin: 50px;
     flex-direction: column;
     align-items: center;
+    width: 153%;
 }
 
 .coins-button {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+}
+
+.coins-table {
+    margin-left: 410px;
+}
+
+@media only screen and (min-width: 737px) {
+    .coins-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .coins-button {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .coins-table {
+        margin-left: 0;
+    }
 }

@@ -17,12 +17,10 @@ import StudentCoins from "../pages/studentCoins/StudentCoins";
 import Coins from "../pages/coins/Coins";
 import MyCounts from "../pages/myCounts/MyCounts";
 
-
 function App() {
     return (
         <>
             <Navbar/>
-
             <Switch>
                 <Route exact path="/">
                     <HomePage/>
@@ -64,7 +62,6 @@ function App() {
                     <Login/>
                 </Route>
             </Switch>
-
             <Footer/>
         </>
     );

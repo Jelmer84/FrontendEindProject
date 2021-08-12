@@ -1,11 +1,35 @@
 .after-container {
     display: flex;
-    margin: 50px;
     flex-direction: column;
     align-items: center;
 }
 
+.after-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 400px ;
+    width: 400px;
+}
 
+.after-countTable {
+    margin-left: 410px;
+}
+
+
+@media only screen and (min-width: 737px) {
+    .after-button {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0;
+        width: 400px;
+    }
+
+    .after-countTable {
+        margin-left: 0;
+    }
+}
 
 
 

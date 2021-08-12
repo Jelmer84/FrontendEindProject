@@ -67,10 +67,11 @@ function StudentBeforeCount() {
 
     return (
         <>
-            {!message && <form>
+            {!message && <div>
 
                 {  loading ?
                     <p>loading</p> :
+
                      <StudentCountTable
                         nameList="Voor" eventId={eventId} data={data} studentPartyId={studentPartyId}/>
                 }
@@ -97,8 +98,7 @@ function StudentBeforeCount() {
                         approveEvent(true)
                     }}
                 />
-            </form>}
-
+            </div>}
             { message && <p>{message}</p> }
         </>
     )

@@ -6,7 +6,6 @@ import {initialStateDrinks, initialStateKegs, initialStateTanks} from "../../con
 import {postEventInventory} from "../../network/network";
 import {AuthContext} from "../../context/AuthContext";
 
-
 function BeforeCount() {
     const [selectedWeekday, setSelectedWeekday] = useState('');
     const [selectedInkomEvent, setSelectedInkomEvent] = useState('');
@@ -26,15 +25,12 @@ function BeforeCount() {
     const [errorMsg, setErrorMsg] = useState();
     const {user} = useContext(AuthContext)
 
-    // const [disabled, setDisabled] = useState(true)
-
-
     async function onFormSubmit(event) {
         event.preventDefault()
         const eventDetails = {
-            eventId:selectedInkomEvent,
+            eventId: selectedInkomEvent,
             studentPartyId: selectedStudentParty.studentParty,
-            stage : 0,
+            stage: 0,
             submitted: user.id,
             data: {
                 selectedWeekday: selectedWeekday,
@@ -47,15 +43,11 @@ function BeforeCount() {
                 totalKegs: totalKegs,
                 totalTanks: totalTanks
             }
-
         }
-        
         try {
             await postEventInventory(eventDetails)
-        } catch(e) {
-
-            if(e.response.status === 400){
-                // this has already been submitted
+        } catch (e) {
+            if (e.response.status === 400) {
                 setErrorMsg(e.response.data.message)
             }
             console.error(e);
@@ -63,74 +55,55 @@ function BeforeCount() {
         setFormSubmitSucces(true);
     }
 
-    // console.log("DATA DIE VERSTUURD WORD",
-    //     selectedWeekday,
-    //     selectedInkomEvent,
-    //     selectedStudentParty,
-    //     crates,
-    //     bottles,
-    //     kegs,
-    //     tanks,
-    //     totalCrates,
-    //     totalBottles,
-    //     totalKegs,
-    //     totalTanks)
-
-    // function handleDisabled(){
-    //     setDisabled(false)
-    // }
-
     return (
         <>
             {!formSubmitSucces && <form onSubmit={onFormSubmit}>
                 <div className={styles["before-container"]}>
+                    <div className={styles["before-countTable"]}>
+                        <CountTable
+                            nameList="Voor"
+                            selectedWeekday={selectedWeekday}
+                            setSelectedWeekday={setSelectedWeekday}
+                            selectedInkomEvent={selectedInkomEvent}
+                            setSelectedInkomEvent={setSelectedInkomEvent}
+                            selectedStudentParty={selectedStudentParty}
+                            setSelectedStudentParty={setSelectedStudentParty}
 
+                            bottles={bottles}
+                            setBottles={setBottles}
+                            crates={crates}
+                            setCrates={setCrates}
+                            kegs={kegs}
+                            setKegs={setKegs}
+                            tanks={tanks}
+                            setTanks={setTanks}
 
-                    <CountTable
-                        nameList="Voor"
-                        selectedWeekday={selectedWeekday}
-                        setSelectedWeekday={setSelectedWeekday}
-                        selectedInkomEvent={selectedInkomEvent}
-                        setSelectedInkomEvent={setSelectedInkomEvent}
-                        selectedStudentParty={selectedStudentParty}
-                        setSelectedStudentParty={setSelectedStudentParty}
-
-                        bottles={bottles}
-                        setBottles={setBottles}
-                        crates={crates}
-                        setCrates={setCrates}
-                        kegs={kegs}
-                        setKegs={setKegs}
-                        tanks={tanks}
-                        setTanks={setTanks}
-
-                        totalCrates={totalCrates}
-                        setTotalCrates={setTotalCrates}
-                        totalBottles={totalBottles}
-                        setTotalBottles={setTotalBottles}
-                        totalKegs={totalKegs}
-                        setTotalKegs={setTotalKegs}
-                        totalTanks={totalTanks}
-                        setTotalTanks={setTotalTanks}
-                    />
-
-                    <Button
-                        name="Opslaan"
-                        type="submit"
-                        id="buttonSubmit"
-                        disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
-                    />
-                    {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) && <p>Vul de datum, het evenement en de studentenpartij in!</p>}
-
+                            totalCrates={totalCrates}
+                            setTotalCrates={setTotalCrates}
+                            totalBottles={totalBottles}
+                            setTotalBottles={setTotalBottles}
+                            totalKegs={totalKegs}
+                            setTotalKegs={setTotalKegs}
+                            totalTanks={totalTanks}
+                            setTotalTanks={setTotalTanks}
+                        />
+                    </div>
+                    <div className={styles["before-button"]}>
+                        <Button
+                            name="Opslaan"
+                            type="submit"
+                            id="buttonSubmit"
+                            disabled={!selectedWeekday || !selectedInkomEvent || !selectedStudentParty}
+                        />
+                        {(!selectedWeekday || !selectedInkomEvent || !selectedStudentParty) &&
+                        <p>Vul de datum, het evenement en de studentenpartij in!</p>}
+                    </div>
                 </div>
-
             </form>}
             {formSubmitSucces && !errorMsg && <p>De telling is opgeslagen!</p>}
             {formSubmitSucces && errorMsg && <p>{errorMsg}!</p>}
-
-
         </>
-    )
+    );
 }
 
 export default BeforeCount

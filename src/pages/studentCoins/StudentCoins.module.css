@@ -8,4 +8,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 153%;
 }
+
+@media only screen and (min-width: 737px) {
+    .container-studentCoinsButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .coins-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}
+

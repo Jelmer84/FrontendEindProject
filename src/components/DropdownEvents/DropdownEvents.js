@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import Select from "react-select";
 import styles from "./DropdownEvents.module.css";
 
@@ -6,10 +6,10 @@ function DropdownEvents({onValueChange}) {
     const [nameEvent, setNameEvent] = useState();
     const handleNameEventChange = (nameEvent) => {
         setNameEvent(nameEvent);
-        if(onValueChange)
+        if (onValueChange)
             onValueChange(nameEvent)
     };
-    
+
     const options = [
         {"nameEvent": "Pre-INKOM-Party"},
         {"nameEvent": "Opening"},
@@ -23,7 +23,7 @@ function DropdownEvents({onValueChange}) {
         {"nameEvent": "Aqua Lounge"},
         {"nameEvent": "Open Air Cinema"},
         {"nameEvent": "Heineken Night"},
-]
+    ]
 
     return (
         <>
@@ -35,7 +35,6 @@ function DropdownEvents({onValueChange}) {
                 getOptionLabel={name => name.nameEvent}
                 className={styles.dropdown}
             />
-
         </>
     );
 }

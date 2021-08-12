@@ -9,22 +9,18 @@
     font-weight: bold;
 }
 
-.black {
-    background-color: black;
-}
-
 .headerOne {
-    top: 0;
+    top: 200px;
     position: sticky;
 }
 
 .headerTwo {
-    top: 27px;
+    top: 225px;
     position: sticky;
 }
 
 .headerOne, .headerTwo {
-    background-color: #a7d5c1;
+    background-color: red;
     font-weight: bold;
 }
 
@@ -32,6 +28,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media only screen and (min-width: 737px) {
+    .beverage {
+        max-width: 45px;
+        max-height: 45px;
+        display: flex;
+        text-align: center;
+    }
+
+    .text {
+        font-weight: bold;
+    }
+
+    .headerOne {
+        top: 0;
+        position: sticky;
+    }
+
+    .headerTwo {
+        top: 27px;
+        position: sticky;
+    }
+
+    .headerOne, .headerTwo {
+        background-color: #a7d5c1;
+        font-weight: bold;
+    }
+
+    .dropdownLists {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 

@@ -6,7 +6,6 @@ import {AuthContext} from "../../context/AuthContext";
 import {approveEventInventory, fetchEventInventory} from "../../network/network";
 
 function StudentAfterCount() {
-
     const [remarks, toggleRemarks] = useState(false);
     const [contentRemarks, setContentRemarks] = useState()
     const [accepted, setAccepted] = useState(false)
@@ -19,18 +18,14 @@ function StudentAfterCount() {
     const stage = 1;
     const {user} = useContext(AuthContext)
 
-
     useEffect(async ()=>{
         await getEventInventory();
     },[data.def])
 
-
     async function getEventInventory(){
         try {
-
             const {studentID} = user
             const result = await fetchEventInventory(studentID, stage)
-
             if(result.status === 200){
                 setData(JSON.parse(result.data.data))
                 setStudentPartyId(result.data.studentPartyId)
@@ -47,7 +42,6 @@ function StudentAfterCount() {
     }
 
     async function approveEvent(approve) {
-
         try {
             await approveEventInventory({eventId, studentPartyId, approve, stage, studentPartyRemarks: contentRemarks })
             if(approve){
@@ -57,37 +51,19 @@ function StudentAfterCount() {
                 setAccepted(false)
                 setMessage('Go and see the supervisor!')
             }
-
-
         } catch (e) {
             console.error(e)
         }
-
     }
-
-    // // @todo: beide buttons hebben een eigen clickhandler
-    // handleDeny() {
-    //       // maak post request met telling-naam of telling-id waarin de property countAccepted: false wordt gezet.
-    // }
-    //
-    // handleAccept() {
-    //     // maak post request met telling-naam of telling-id waarin de property countAccepted: true wordt gezet.
-    // }
-
-    //@Todo maak een post request voor de remarks, onclick bij accept
-
 
     return (
         <>
-            {!message && <form>
-
+            {!message && <div>
                 {  loading ?
                     <p>loading</p> :
                     <StudentCountTable
-                        nameList="Voor" eventId={eventId} data={data} studentPartyId={studentPartyId}/>
+                        nameList="Na" eventId={eventId} data={data} studentPartyId={studentPartyId}/>
                 }
-                {/*// form hier maken en ook de state variabelen voor alles in het form hier maken*/}
-                {/*// doorgeven aan de submit/cancel button en aan de remarkscontainer*/}
                 <RemarksContainer
                     remarks={remarks}
                     toggleRemarks={toggleRemarks}
@@ -115,9 +91,8 @@ function StudentAfterCount() {
                         approveEvent(true)
                     }}
                 />
-            </form>}
+            </div>}
             {message && <p>{message}</p>}
-
         </>
     );
 } 

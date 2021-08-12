@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "../../components/Totals/Totals.module.css";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import HeaderCrateBottle from "../../components/Totals/HeaderCrateBottle";
 import HeaderAll from "../../components/Totals/HeaderAll";
 import BeverageRow from "../../components/Totals/BeverageRow";
@@ -9,7 +9,7 @@ import BeverageRowKegs from "../../components/Totals/BeverageRowKegs";
 import BeverageRowTank from "../../components/Totals/BeverageRowTank";
 import HeaderInfo from "../../components/Totals/HeaderInfo";
 import InfoRow from "../../components/Totals/InfoRow";
-import calculateAll from '../../helpers/calculateAll/calculateAll';
+import calculateAll from "../../helpers/calculateAll/calculateAll";
 import DropdownEvents from "../../components/DropdownEvents/DropdownEvents";
 import DropdownStudentParty from "../../components/dropdowncount/Studentpartydropdown/DropdownStudentParty";
 import {deleteAllInventory, getAdminTotal} from "../../network/network";
@@ -69,13 +69,13 @@ function Totals() {
     }
 
     async function resetEventData() {
-        if(window.confirm("Weet je absoluut zeker dat je ALLE tellingen wilt verwijderen. Deze handeling kan niet ongedaan worden gemaakt! Ga allen verder als je absoluut zeker bent.")){
-             try {
-                 const result = await deleteAllInventory()
-                 setMessage(result.data.message)
-             }catch (e) {
-                 console.log(e)
-             }
+        if (window.confirm("Weet je absoluut zeker dat je ALLE tellingen wilt verwijderen. Deze handeling kan niet ongedaan worden gemaakt! Ga allen verder als je absoluut zeker bent.")) {
+            try {
+                const result = await deleteAllInventory()
+                setMessage(result.data.message)
+            } catch (e) {
+                console.log(e)
+            }
         }
     }
 
@@ -154,12 +154,10 @@ function Totals() {
                                 calculationOne={tableValues.allCountedDrinks.toFixed(0)}
 
                                 // Verschil in euro's
-                                calculationTwo={(tableValues.differenceCoins*1.90).toFixed(0)}
+                                calculationTwo={(tableValues.differenceCoins * 1.90).toFixed(0)}
 
                                 //Weekdag
                                 calculationThree={combined.weekday}
-
-
                             />
 
                             <InfoRow
@@ -171,7 +169,7 @@ function Totals() {
                                 calculationOne={tableValues.allCountedCoins.toFixed(0)}
 
                                 // Tapverlies S.P. = Verschil in euro's * 2/3'
-                                calculationTwo={(tableValues.differenceEuro * 2/3).toFixed(0)}
+                                calculationTwo={(tableValues.differenceEuro * 2 / 3).toFixed(0)}
 
                                 //Evenement
                                 calculationThree={combined.event}
@@ -206,19 +204,15 @@ function Totals() {
                             <tr>
                                 <th className={styles.headerThree} colSpan={18}>Opmerkingen INKOM</th>
                             </tr>
-
                             <tr>
                                 <td colSpan={18}>{combined.organisationRemarks}</td>
                             </tr>
-
                             <tr>
                                 <th className={styles.headerThree} colSpan={18}>Opmerkingen Studentpartijen</th>
                             </tr>
-
                             <tr>
                                 <td colSpan={18}>{combined.studentPartyRemarks}</td>
                             </tr>
-
                         </>
                         }
                         </tbody>
@@ -237,10 +231,9 @@ function Totals() {
 
             <Button
                 type="button"
-                click={()=>resetEventData()}
+                click={() => resetEventData()}
                 name="Reset Database"
             />
-
         </>
     );
 }
