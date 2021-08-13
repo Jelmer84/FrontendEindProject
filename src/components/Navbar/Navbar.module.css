@@ -60,6 +60,7 @@ img {
     .nav-item {
         list-style: none;
         margin-right: 2rem;
+
     }
 
     .active-link {
@@ -73,6 +74,7 @@ img {
         margin: 5px 5px 0 5px;
     }
 }
+
 
 
 

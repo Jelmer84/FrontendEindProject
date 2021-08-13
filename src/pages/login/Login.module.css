@@ -5,7 +5,7 @@
     width: 150%;
 }
 
-@media only screen and (min-device-width: 900px) {
+@media only screen and (min-device-width: 737px) {
     .login-form {
         display: flex;
         flex-direction: column;

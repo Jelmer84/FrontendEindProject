@@ -46,7 +46,7 @@ function Profile() {
             setError(true);
         }
     };
-
+    
     return (
         <>
             <div className={styles.background}>

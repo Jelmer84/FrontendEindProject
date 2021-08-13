@@ -11,7 +11,7 @@
     width: 153%;
 }
 
-@media only screen and (min-width: 737px) {
+@media only screen and (min-device-width: 737px) {
     .container-studentCoinsButtons {
         display: flex;
         flex-direction: row;

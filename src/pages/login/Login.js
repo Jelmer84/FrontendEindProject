@@ -58,9 +58,6 @@ function Login() {
                     errors={errors}
                 />
 
-                <p>Test123!</p>
-                <p>Superadmin123!</p>
-
                 <Button
                     type="submit"
                     name="Inloggen"

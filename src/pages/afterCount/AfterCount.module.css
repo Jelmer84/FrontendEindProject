@@ -16,7 +16,7 @@
     margin-left: 410px;
 }
 
-@media only screen and (min-width: 737px) {
+@media only screen and (min-device-width: 737px) {
     .after-button {
         display: flex;
         align-items: center;

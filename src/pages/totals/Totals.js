@@ -37,7 +37,7 @@ function Totals() {
     const [selectedStudentParty, setSelectedStudentParty] = useState();
     const [combined, setCombined] = useState({});
     const [loading, setLoading] = useState();
-    const [message, setMessage] = useState('Please select event and student party to view records');
+    const [message, setMessage] = useState('Selecteer een evenement en een studentenpartij om de tabel op te halen.');
     const [hasChanged, setHasChanged] = useState(false)
 
     async function fetchTotal() {

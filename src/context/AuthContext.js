@@ -12,6 +12,7 @@ function AuthContextProvider({children}) {
 
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
+        console.log(JWToken)
         const email = decoded.sub;
         try {
             const result = await fetchUser(email)
