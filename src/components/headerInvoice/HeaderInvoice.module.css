@@ -1,0 +1,8 @@
+.bold {
+    font-weight: bold;
+}
+
+.empty {
+    color: #FFFFFFFF;
+    border-color: transparent;
+}

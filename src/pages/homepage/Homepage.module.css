@@ -10,15 +10,9 @@
     margin: 20px;
 }
 
-@media only screen and (min-device-width: 737px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .text {
-        display: flex;
-        flex-direction: column;
-        margin: 20px;
-    }
+.table{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
 }
 

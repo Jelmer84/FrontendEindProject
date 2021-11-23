@@ -16,6 +16,7 @@ function AuthContextProvider({children}) {
         const email = decoded.sub;
         try {
             const result = await fetchUser(email)
+            console.log(result)
             const data = result.data;
             delete data['password'];
             setUserState({
@@ -47,7 +48,7 @@ function AuthContextProvider({children}) {
     async function loginFunction(JWToken) {
         localStorage.setItem('token', JWToken);
         await fetchUserData(JWToken);
-        history.push("/profile");
+        history.push("/customer");
     }
 
     function logoutFunction() {

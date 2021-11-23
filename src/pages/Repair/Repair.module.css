@@ -1,0 +1,48 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    margin: 5px;
+    border: solid black 2px;
+    border-radius: 1rem;
+    width: 165px;
+    text-align: center;
+}
+
+/*.customButton {*/
+/*    width: 170px;*/
+/*    background-color: transparent;*/
+/*    color: #757575;*/
+/*}*/
+
+
+.error {
+    color: red;
+    margin: 3px 0;
+}
+
+
+.dropdown-containerStatus {
+    margin: 5px;
+    border: solid black 2px;
+    border-radius: 1rem;
+    width: 160px;
+    text-align: center;
+}
+
+.checkbox {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.selectStyle {
+    width: 95%;
+    color: #757575;
+    -webkit-appearance: none;
+    border: transparent;
+    text-align-last: center;
+    border-radius: 1rem;
+}
+

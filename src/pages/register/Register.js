@@ -10,7 +10,6 @@ function Register() {
     const [loading, toggleLoading] = useState(false)
     const [registerSuccess, toggleRegisterSuccess] = useState(false)
     const [role, setRole] = useState([])
-    const [studentID, setStudentID] = useState()
     const history = useHistory();
     const {handleSubmit, formState: {errors}, register, watch} = useForm()
     const password = useRef()
@@ -19,7 +18,6 @@ function Register() {
     async function onSubmit(data) {
         toggleLoading(true)
         data['role'] = role;
-        data['studentID'] = studentID;
         try {
             const result = await registerUser(data)
         } catch (e) {
@@ -35,28 +33,13 @@ function Register() {
             <form className={styles["register-form"]} onSubmit={handleSubmit(onSubmit)}>
                 <InputForm
                     type="text"
-                    name="firstName"
-                    placeholder="Voornaam"
-                    fieldRef={register("firstName",
+                    name="username"
+                    placeholder="Username"
+                    fieldRef={register("username",
                         {
                             required: {
                                 value: true,
-                                message: "Voornaam is verplicht",
-                            }
-                        }
-                    )}
-                    errors={errors}
-                />
-
-                <InputForm
-                    type="text"
-                    name="lastName"
-                    placeholder="Achternaam"
-                    fieldRef={register("lastName",
-                        {
-                            required: {
-                                value: true,
-                                message: "Achternaam is verplicht",
+                                message: "Username is verplicht",
                             }
                         }
                     )}
@@ -83,6 +66,7 @@ function Register() {
 
                 <div className={styles["dropdown-containerRole"]}>
                     <select
+                        className={styles.selectStyle}
                         name="roles"
                         id="roles"
                         defaultValue={"Rol"}
@@ -92,29 +76,10 @@ function Register() {
                         })}
                     >
                         <option value="Rol" disabled hidden>Rol</option>
-                        <option value="user">Studentpartij</option>
-                        <option value="mod">INKOM organisatie</option>
+                        <option value="reg">Register</option>
+                        <option value="mech">Mechanic </option>
                         <option value="admin">Admin</option>
-                    </select>
-                </div>
-
-                <div className={styles["dropdown-containerRole"]}>
-                    <select
-                        name="studentID"
-                        id="studentID"
-                        defaultValue={"Studenten Partij"}
-                        onChange={(event => {
-                            const selectedStudentID = event.target.value
-                            setStudentID(selectedStudentID)
-                        })}
-                    >
-                        <option value="Studenten Partij" disabled hidden>Studenten Partij</option>
-                        <option value="INKOM">INKOM</option>
-                        <option value="S.V. Circumflex">S.V. Circumflex</option>
-                        <option value="S.V. Koko">S.V. Koko</option>
-                        <option value="M.S.V. Tragos">M.S.V. Tragos</option>
-                        <option value="M.S.R.V. Saurus">M.S.R.V. Saurus</option>
-                        <option value="Stichting Onafhankelijk Maastricht">Stichting Onafhankelijk Maastricht</option>
+                        <option value="back">Back Office</option>
                     </select>
                 </div>
 

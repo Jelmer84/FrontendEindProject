@@ -1,0 +1,31 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/*.container, .customButton {*/
+/*    margin: 5px;*/
+/*    border: solid black 2px;*/
+/*    border-radius: 1rem;*/
+/*    width: 165px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.customButton {*/
+/*    width: 170px;*/
+/*    background-color: transparent;*/
+/*    color: #757575;*/
+/*}*/
+
+/*.upload {*/
+/*    display: none;*/
+/*}*/
+
+.error {
+    color: red;
+    margin: 3px 0;
+}
+
+
+
+

@@ -14,60 +14,112 @@ async function registerUser(data){
 axios.interceptors.request.use(function (config) {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     config.headers['Content-Type'] = 'application/json'
+    config.headers['Access-Control-Allow-Origin'] = '*'
+    console.log(config)
     return config
 })
 
-async function fetchUser(email) {
-    return axios.get(`${API_URL}users/${email}`)
+async function registerCustomer(data){
+    return axios.post(`${API_URL}customer/create`, data)
 }
 
-function fetchEventInventory(studentID, stage){
-    return axios.get(`${API_URL}inventory/${studentID}/${stage}`)
+async function fetchCustomers(){
+    return axios.get(`${API_URL}customer/all`)
 }
 
-function postEventInventory(eventDetails){
-    return axios.post(`${API_URL}inventory/submit`, eventDetails)
+async function fetchCustomer(id){
+    return axios.get(`${API_URL}customer/id/${id}`)
 }
 
-function approveEventInventory(data){
-    return axios.put(`${API_URL}inventory/approve`, data)
+async function fetchLicensePlate(){
+    return axios.get(`${API_URL}car/all`)
 }
 
-async function fetchSupervisorSummary(supervisorId){
-    return axios.get(`${API_URL}inventory/supervisor-summary/${supervisorId}`)
+async function fetchItems(){
+    return axios.get(`${API_URL}item/all`)
 }
 
-async function deleteAllInventory(){
-    return axios.delete(`${API_URL}inventory`)
+async function fetchServices(){
+    return axios.get(`${API_URL}service/all`)
 }
 
-async function getAdminTotal(eventId, studentPartyId){
-    return axios.get(`${API_URL}admin/inventory/totals/${eventId}/${studentPartyId}`)
+async function registerCar(data){
+    return axios.post(`${API_URL}car/create/${data.customer}`, data)
 }
 
-async function getAdminOverview(eventId, studentPartyId, stage){
-    return axios.get(`${API_URL}admin/inventory/overview/${eventId}/${studentPartyId}/${stage}`)
+async function registerItem(data){
+    return axios.post(`${API_URL}item/create`, data)
 }
 
-async function uploadImage(imageData){
-    return  axios.post(`${API_URL}image`, imageData);
+async function registerService(data){
+    return axios.post(`${API_URL}service/create`, data)
+}
+
+async function uploadPdf(PdfData){
+    return  axios.post(`${API_URL}carpapers/add`, PdfData);
+}
+
+async function registerRepair(customer, data){
+    return axios.post(`${API_URL}repair/create/${customer}`, data)
+}
+
+async function updateStatuses(data){
+    return axios.put(`${API_URL}car/update/statuses`, data)
+}
+
+async function fetchInspectedPayed(){
+    return axios.get(`${API_URL}car/carpage`)
+}
+
+async function fetchInspectionPlannedAwaitingRepair(){
+    return axios.get(`${API_URL}car/repairpage`)
 }
 
 async function getImage(userid){
     return axios.get(`${API_URL}image/${userid}`);
 }
 
+async function uploadImage(imageData){
+    return  axios.post(`${API_URL}image`, imageData);
+}
+
+async function fetchUser(email) {
+    return axios.get(`${API_URL}users/${email}`)
+}
+
+async function deleteItem(id){
+    return axios.delete(`${API_URL}api/item/delete/${id}`)
+}
+
+async function deleteService(id){
+    return axios.delete(`${API_URL}api/service/delete/${id}`)
+}
+
+async function deleteCustomer(id){
+    return axios.delete(`${API_URL}api/customer/delete/${id}`)
+}
+
 export {
     loginUser,
     registerUser,
+    registerCustomer,
+    registerCar,
+    registerItem,
+    registerService,
+    fetchCustomers,
+    uploadPdf,
+    registerRepair,
+    fetchLicensePlate,
+    fetchItems,
+    fetchServices,
+    fetchCustomer,
+    updateStatuses,
+    fetchInspectedPayed,
+    fetchInspectionPlannedAwaitingRepair,
     fetchUser,
-    fetchEventInventory,
-    postEventInventory,
-    approveEventInventory,
-    fetchSupervisorSummary,
-    getAdminTotal,
-    getAdminOverview,
-    deleteAllInventory,
     uploadImage,
-    getImage
+    getImage,
+    deleteItem,
+    deleteService,
+    deleteCustomer
 };

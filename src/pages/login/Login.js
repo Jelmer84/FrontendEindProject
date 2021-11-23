@@ -12,6 +12,7 @@ function Login() {
 
     async function onSubmit(data) {
         try {
+            data['username'] = data.email
             const result = await loginUser(data)
             login(result.data.accessToken)
         } catch (e) {
@@ -25,16 +26,12 @@ function Login() {
                 <InputForm
                     type="text"
                     name="email"
-                    placeholder="E-mail adres"
+                    placeholder="Username"
                     fieldRef={register('email', {
                             required: {
                                 value: true,
-                                message: "E-mail is vereist"
-                            },
-                            pattern: {
-                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message: "Vul een correct E-mail adres in"
-                            },
+                                message: "Username is vereist"
+                            }
                         }
                     )}
                     errors={errors}
@@ -57,7 +54,7 @@ function Login() {
                     )}
                     errors={errors}
                 />
-
+                         <p>Voorbeeld1!</p>
                 <Button
                     type="submit"
                     name="Inloggen"
