@@ -2,10 +2,9 @@ import React, {useEffect, useState} from "react";
 import InputForm from "../../components/InputForm/InputForm";
 import styles from "../customer/Customer.module.css";
 import {useForm} from "react-hook-form";
-import {deleteItem, deleteService, fetchItems, registerItem} from "../../network/network";
+import {deleteItem, fetchItems, registerItem} from "../../network/network";
 import Button from "../../components/Button/Button";
 import logoGarage from "../../assets/logoGarage.png";
-
 
 function Item() {
     const {handleSubmit, formState: {errors}, register} = useForm()
@@ -13,36 +12,32 @@ function Item() {
     const [itemSuccess, toggleItemSuccess] = useState(false)
     const [items, setItems] = useState([])
 
-
     async function onSubmitItem(data) {
         toggleLoading(true)
         console.log(data)
-        // data['customer'] = customer;
         try {
-            const result = await registerItem(data)
+            await registerItem(data)
         } catch (e) {
             console.error(e)
         }
         toggleLoading(false)
         toggleItemSuccess(true)
-        // history.push("/login")
     }
-
 
     useEffect(async () => {
         fetchItems().then((res) => {
             setItems(res.data)
-            console.log(res.data)
         }).catch(console.error)
     }, [])
 
-    async function handleDelete() {
+    async function handleDelete(item) {
         if (window.confirm("Weet je absoluut zeker dit item wilt verwijderen. Deze handeling kan niet ongedaan worden gemaakt! Ga allen verder als je absoluut zeker bent.")) {
             try {
-                await deleteItem()
-
+                const idx = items.findIndex(e => item.id === e.id)
+                items.splice(idx, 1)
+                await deleteItem(item.id)
+                setItems([...items])
             } catch (e) {
-
             }
         }
     }
@@ -135,7 +130,6 @@ function Item() {
                 {loading === true && <p>"Loading ... "</p>}
 
             </form>
-
             <table border="1">
                 <thead>
                 <tr>
@@ -164,7 +158,11 @@ function Item() {
                         <td>
                             <button
                                 type="delete"
-                                onClick={handleDelete}
+                                onClick={
+                                    () => {
+                                        handleDelete(item)
+                                    }
+                                }
                             >Delete item
                             </button>
                         </td>
@@ -173,7 +171,6 @@ function Item() {
 
                 </tbody>
             </table>
-
         </>
     );
 }

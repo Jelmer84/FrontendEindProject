@@ -2,10 +2,9 @@ import React, {useEffect, useState} from "react";
 import InputForm from "../../components/InputForm/InputForm";
 import styles from "../customer/Customer.module.css";
 import {useForm} from "react-hook-form";
-import {deleteItem, deleteService, fetchServices, registerService} from "../../network/network";
+import {deleteService, fetchServices, registerService} from "../../network/network";
 import Button from "../../components/Button/Button";
 import logoGarage from "../../assets/logoGarage.png";
-
 
 function Service() {
     const {handleSubmit, formState: {errors}, register} = useForm()
@@ -13,37 +12,34 @@ function Service() {
     const [actSuccess, toggleActSuccess] = useState(false)
     const [services, setServices] = useState([])
 
-
     async function onSubmitService(data) {
         toggleLoading(true)
         try {
-            const result = await registerService(data)
+            await registerService(data)
         } catch (e) {
             console.error(e)
         }
         toggleLoading(false)
         toggleActSuccess(true)
-        // history.push("/login")
     }
 
     useEffect(async () => {
         fetchServices().then((res) => {
             setServices(res.data)
-            console.log(res.data)
         }).catch(console.error)
     }, [])
 
-    async function handleDelete() {
+    async function handleDelete(service) {
         if (window.confirm("Weet je absoluut zeker deze service wilt verwijderen. Deze handeling kan niet ongedaan worden gemaakt! Ga allen verder als je absoluut zeker bent.")) {
             try {
-                await deleteService()
-
+                const idx = services.findIndex(e => service.id === e.id)
+                services.splice(idx, 1)
+                await deleteService(service.id)
+                setServices([...services])
             } catch (e) {
-
             }
         }
     }
-
 
     return (
         <>
@@ -101,8 +97,6 @@ function Service() {
                 {actSuccess === true &&
                 <p>Handeling is geregisteerd</p>}
                 {loading === true && <p>"Loading ... "</p>}
-
-
             </form>
 
             <table border="1">
@@ -129,12 +123,16 @@ function Service() {
                         <td>
                             <button
                                 type="delete"
-                                onClick={handleDelete}
-                            >Delete service</button>
+                                onClick={
+                                    () => {
+                                        handleDelete(service)
+                                    }
+                                }
+                            >Delete service
+                            </button>
                         </td>
                     </tr>
                 ))}
-
                 </tbody>
             </table>
 
@@ -142,5 +140,5 @@ function Service() {
     );
 }
 
-export default Service
+export default Service;
 

@@ -14,17 +14,19 @@ import Button from "../../components/Button/Button";
 import styles from "../Repair/Repair.module.css";
 import logoGarage from "../../assets/logoGarage.png";
 
+const usedItems = new Set([]);
+const usedServices = new Set([]);
 
 function Repair() {
     const [loading, toggleLoading] = useState(false)
     const [repairSuccess, toggleRepairSuccess] = useState(false)
     const history = useHistory();
     const {handleSubmit, formState: {errors}, register} = useForm()
-    const [status, setStatus] = useState([])
     const [remarks, setRemarks] = useState()
     const [customers, setCustomers] = useState([])
     const [changedStatuses, setChangedStatuses] = useState([])
     const [selected, setSelected] = useState(0)
+    const [selectedCustomer, setSelectedCustomer] = useState(0)
     const [vehicles, setVehicles] = useState([])
     const [items, setItems] = useState([])
     const [services, setServices] = useState([])
@@ -48,53 +50,42 @@ function Repair() {
             setServices(res.data)
         }).catch(console.error)
     }, [])
-    
-    async function onSubmitRepair(data) {
+
+    async function onSubmitRepair(customer) {
         toggleLoading(true)
-        data['customer'] = Number(selected);
-        data['status'] = String(status)
-        data['remarks'] = remarks;
+        const dataX = {
+            licensePlate: selected,
+            remarks,
+            usedItems: [...usedItems],
+            usedServices: [...usedServices]
+        }
         try {
-            const result = await registerRepair(data)
+            await registerRepair(selectedCustomer.id, dataX)
         } catch (e) {
             console.error(e)
         }
         toggleLoading(false)
         toggleRepairSuccess(true)
-        // history.push("/payment")
+        history.push("/payment")
     }
-
 
     async function fetchCarCustomers(data) {
         for (let i = 0; i < data.length; i++) {
             const res = await fetchCustomer(data[i].customerId)
             data[i]['customer'] = res.data
-            //delete data[i]['customerId']
-
         }
-        console.log(data)
         setVehicles(data)
     }
 
     async function handleUpdate() {
-
         try {
             await updateStatuses(changedStatuses)
         } catch (e) {
-
         }
     }
 
     return (
         <>
-            <h2>Hello Repair page</h2>
-            <h2>Reparatie aanmaken</h2>
-            <p>Upon selecting status inspected add €45 to the invoice</p>
-            <p>Couple items to repair</p>
-            <p>Couple acts to repair</p>
-            <p>List of Cars with status Inspection Planned, Awaiting Repair</p>
-
-
             <h2>Reparatie aanmaken</h2>
             <form className={styles["register-form"]} onSubmit={handleSubmit(onSubmitRepair)}>
                 <div className={styles["container"]}>
@@ -103,16 +94,16 @@ function Repair() {
                         name="licensePlate"
                         id="licensePlate"
                         defaultValue={"licensePlate"}
-
                         onChange={(event => {
-                                const selectedLicensePlate = event.target.value
-                                setSelected(selectedLicensePlate)
+                                const selectedVehicle = event.target.value
+                                setSelected(vehicles[selectedVehicle].licensePlate)
+                                setSelectedCustomer(vehicles[selectedVehicle].customer)
                             }
                         )}
                     >
                         <option value="licensePlate" disabled hidden>Kenteken</option>
-                        {vehicles.map(vehicle => (
-                            <option key={vehicle.id} value={vehicle.id}>{vehicle.licensePlate}</option>))}
+                        {vehicles.map((vehicle, idx) => (
+                            <option key={vehicle.id} value={idx}>{vehicle.licensePlate}</option>))}
                     </select>
                 </div>
 
@@ -121,7 +112,18 @@ function Repair() {
                     {items.map((item) => (<div key={item.id}>
                         <label>{item.name}</label>
                         <label> €{item.sellPrice}</label>
-                        <input type="checkbox" {...register("checkbox")} value={item.name}/>
+                        <input type="checkbox" {...register("checkbox")}
+                               onChange={(event => {
+                                   const selectedItem = event.target.checked
+                                   console.log('Item Block: ', selectedItem)
+                                   //setSelectedItem
+                                   if (selectedItem) {
+                                       usedItems.add(item)
+                                   } else {
+                                       console.log('Has', usedItems.has(item))
+                                       usedItems.delete(item)
+                                   }
+                               })}/>
                     </div>))}
                 </div>
 
@@ -130,7 +132,15 @@ function Repair() {
                     {services.map((service) => (<div key={service.id}>
                         <label>{service.name}</label>
                         <label> €{service.sellPrice}</label>
-                        <input type="checkbox" {...register("checkbox")} value={service.name}/>
+                        <input type="checkbox" {...register("checkbox")}
+                               onChange={(event => {
+                                   const selectedService = event.target.checked
+                                   if (selectedService) {
+                                       usedServices.add(service)
+                                   } else {
+                                       usedServices.delete(service)
+                                   }
+                               })}/>
                     </div>))}
                 </div>
 
@@ -201,7 +211,6 @@ function Repair() {
                                         }
                                         statuses.push(x)
                                         setChangedStatuses(statuses)
-                                        //setStatus(selectedStatus)
                                     })}
                                 >
                                     <option value="status" disabled hidden>Status Auto</option>
@@ -214,7 +223,6 @@ function Repair() {
                     </tr>
                 ))}
 
-
                 </tbody>
             </table>
 
@@ -223,31 +231,8 @@ function Repair() {
                 name="Update Status"
                 click={handleUpdate}
             />
-
         </>
     );
 }
 
 export default Repair
-
-
-// <div className={styles["dropdown-containerStatus"]}>
-//     <select
-// name="status"
-// id="status"
-// defaultValue={"status"}
-// onChange={(event => {
-//     const selectedStatus = event.target.value
-//     setStatus([selectedStatus])
-// })}
-// >
-// <option value="status" disabled hidden>Status Auto</option>
-// <option value="inspection">Inspection planned</option>
-// <option value="inspected">Inspected</option>
-// <option value="canceled">Canceled </option>
-// <option value="awaitingRepair">Awaiting Repair </option>
-// <option value="repaired">Repaired</option>
-// <option value="invoiced">invoiced</option>
-// <option value="payed">Payed</option>
-// </select>
-// </div>

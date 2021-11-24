@@ -10,7 +10,8 @@ function HeaderInvoice({percentage, description}) {
             <td>Price ex</td>
             <td>Taxes {percentage}</td>
             <td>Price Total</td>
-        </tr>    );
+        </tr>
+    );
 }
 
 export default HeaderInvoice

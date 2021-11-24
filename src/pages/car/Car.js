@@ -1,25 +1,19 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import InputForm from "../../components/InputForm/InputForm";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {
-    getImage,
     updateStatuses,
     fetchCustomers,
     registerCar,
     uploadPdf,
-    fetchLicensePlate,
     fetchCustomer, fetchInspectedPayed
 } from "../../network/network";
 import Button from "../../components/Button/Button";
 import styles from "./Car.module.css";
-import {AuthContext} from "../../context/AuthContext";
 import logoGarage from "../../assets/logoGarage.png";
 
-
 function Car() {
-    const {user} = useContext(AuthContext)
-
     const [loading, toggleLoading] = useState(false)
     const [carSuccess, toggleCarSuccess] = useState(false)
     const history = useHistory();
@@ -28,41 +22,10 @@ function Car() {
     const [pdfFile, setPdfFile] = useState()
     const [customers, setCustomers] = useState([])
     const [vehicles, setVehicles] = useState([])
-
-
     const [imagePreview, setImagePreview] = useState(null);
     const [error, setError] = useState(false);
-    const [pdfId, setPdfId] = useState(-1);
-    // const [customer, setCustomer] = useState([])
     const [selected, setSelected] = useState(0)
     const [changedStatuses, setChangedStatuses] = useState([])
-
-
-    async function onSubmitCar(data) {
-        toggleLoading(true)
-        data['customer'] = Number(selected);
-        data['status'] = String(status)
-        data.inspectionDate = new Date(data.inspectionDate)
-
-        try {
-            const result = await registerCar(data)
-            sendPdf(pdfFile, data.licensePlate)
-        } catch (e) {
-            console.error(e)
-        }
-        toggleLoading(false)
-        toggleCarSuccess(true)
-        // history.push("/login")
-    }
-
-    async function handleUpdate() {
-
-          try{
-              await updateStatuses(changedStatuses)
-          }catch (e) {
-
-          }
-    }
 
     useEffect(async () => {
         try {
@@ -77,15 +40,34 @@ function Car() {
         }).catch(console.error)
     }, [])
 
+    async function onSubmitCar(data) {
+        toggleLoading(true)
+        data['customer'] = Number(selected);
+        data['status'] = String(status)
+        data.inspectionDate = new Date(data.inspectionDate)
+        try {
+            await registerCar(data)
+            sendPdf(pdfFile, data.licensePlate)
+        } catch (e) {
+            console.error(e)
+        }
+        toggleLoading(false)
+        toggleCarSuccess(true)
+        history.push("/repair")
+    }
+
+    async function handleUpdate() {
+        try {
+            await updateStatuses(changedStatuses)
+        } catch (e) {
+        }
+    }
+
     async function fetchCarCustomers(data) {
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
             const res = await fetchCustomer(data[i].customerId)
             data[i]['customer'] = res.data
-            //delete data[i]['customerId']
-
         }
-        console.log(data)
         setVehicles(data)
     }
 
@@ -94,10 +76,7 @@ function Car() {
             const formData = new FormData()
             formData.append('pdf', pdf)
             formData.append('licensePlate', licensePlate)
-            const result = await uploadPdf(formData)
-            //setPdfId(result.data.id)
-            console.log(result)
-            // setCarId(result.data.car.id)
+            await uploadPdf(formData)
         } catch (e) {
             console.error(e);
         }
@@ -106,29 +85,15 @@ function Car() {
     const handleImageChange = (e) => {
         setError(false)
         const selected = e.target.files[0];
-        //const allowed_types = [".pdf"];
         if (selected) {
             setPdfFile(selected)
-            //let reader = new FileReader()
-            // reader.onloadend = () => {
-            //     setImagePreview(reader.result);
-            //     //sendPdf(reader.result, );
-            //     setPdfFile(formData)
-            // };
-            // reader.readAsDataURL(selected);
         } else {
             setError(true);
         }
     };
 
-
     return (
         <>
-            <h2>Hello Car page</h2>
-            <p>Update Status of Car</p>
-            <p>List of Cars with status Inspected, Payed</p>
-
-
             <h2>Auto beheren</h2>
             <form className={styles["register-form"]} onSubmit={handleSubmit(onSubmitCar)}>
                 <label className={styles.dateLabel}>Datum Keuring</label>
@@ -153,7 +118,6 @@ function Car() {
                         name="customer"
                         id="customer"
                         defaultValue={"customer"}
-
                         onChange={(event => {
                             const selectedCustomer = event.target.value
                             setSelected(selectedCustomer)
@@ -233,7 +197,6 @@ function Car() {
                             <span>Auto papieren Upload</span>
                         </label>
                         {error && <p className={styles.error}>Alleen PDF is toegestaan </p>}
-
                     </>
                 )}
 
@@ -262,7 +225,6 @@ function Car() {
                 <p>Auto is geregisteerd, je wordt nu door gestuurd naar de keuring pagina!</p>}
                 {loading === true && <p>"Loading ... "</p>}
             </form>
-
 
             <table border="1">
                 <thead>
@@ -296,32 +258,27 @@ function Car() {
                                     onChange={(event => {
                                         const selectedStatus = event.target.value
                                         const statuses = changedStatuses;
-                                        //statuses[vehicle.id] = selectedStatus
-                                        const x = {id : vehicle.id, status: selectedStatus}
+                                        const x = {id: vehicle.id, status: selectedStatus}
                                         for (let i = 0; i < statuses; i++) {
-                                            if(statuses[i].id  === vehicle.id){
-                                                statuses[i] =  x;
+                                            if (statuses[i].id === vehicle.id) {
+                                                statuses[i] = x;
                                                 setChangedStatuses(statuses)
                                                 return;
                                             }
                                         }
                                         statuses.push(x)
                                         setChangedStatuses(statuses)
-                                        //setStatus(selectedStatus)
                                     })}
                                 >
                                     <option value="status" disabled hidden>Status Auto</option>
                                     <option value="Canceled">Canceled</option>
                                     <option value="AwaitingRepair">Awaiting Repair</option>
                                     <option value="InspectionPlanned">Inspection planned</option>
-
-
                                 </select>
                             </div>
                         </td>
                     </tr>
                 ))}
-
 
                 </tbody>
             </table>

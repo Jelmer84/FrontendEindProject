@@ -11,18 +11,10 @@
     text-align: center;
 }
 
-/*.customButton {*/
-/*    width: 170px;*/
-/*    background-color: transparent;*/
-/*    color: #757575;*/
-/*}*/
-
-
 .error {
     color: red;
     margin: 3px 0;
 }
-
 
 .dropdown-containerStatus {
     margin: 5px;

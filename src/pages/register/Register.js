@@ -19,7 +19,7 @@ function Register() {
         toggleLoading(true)
         data['role'] = role;
         try {
-            const result = await registerUser(data)
+            await registerUser(data)
         } catch (e) {
             console.error(e)
         }
@@ -77,7 +77,7 @@ function Register() {
                     >
                         <option value="Rol" disabled hidden>Rol</option>
                         <option value="reg">Register</option>
-                        <option value="mech">Mechanic </option>
+                        <option value="mech">Mechanic</option>
                         <option value="admin">Admin</option>
                         <option value="back">Back Office</option>
                     </select>

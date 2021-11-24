@@ -19,6 +19,10 @@ axios.interceptors.request.use(function (config) {
     return config
 })
 
+async function fetchUser(email) {
+    return axios.get(`${API_URL}users/${email}`)
+}
+
 async function registerCustomer(data){
     return axios.post(`${API_URL}customer/create`, data)
 }
@@ -31,36 +35,36 @@ async function fetchCustomer(id){
     return axios.get(`${API_URL}customer/id/${id}`)
 }
 
-async function fetchLicensePlate(){
-    return axios.get(`${API_URL}car/all`)
-}
-
-async function fetchItems(){
-    return axios.get(`${API_URL}item/all`)
-}
-
-async function fetchServices(){
-    return axios.get(`${API_URL}service/all`)
-}
-
 async function registerCar(data){
     return axios.post(`${API_URL}car/create/${data.customer}`, data)
-}
-
-async function registerItem(data){
-    return axios.post(`${API_URL}item/create`, data)
-}
-
-async function registerService(data){
-    return axios.post(`${API_URL}service/create`, data)
 }
 
 async function uploadPdf(PdfData){
     return  axios.post(`${API_URL}carpapers/add`, PdfData);
 }
 
+async function registerItem(data){
+    return axios.post(`${API_URL}item/create`, data)
+}
+
+async function fetchItems(){
+    return axios.get(`${API_URL}item/all`)
+}
+
+async function registerService(data){
+    return axios.post(`${API_URL}service/create`, data)
+}
+
+async function fetchServices(){
+    return axios.get(`${API_URL}service/all`)
+}
+
 async function registerRepair(customer, data){
     return axios.post(`${API_URL}repair/create/${customer}`, data)
+}
+
+async function fetchRepairs(customerId) {
+    return axios.get(`${API_URL}repair/all/${customerId}`)
 }
 
 async function updateStatuses(data){
@@ -75,30 +79,21 @@ async function fetchInspectionPlannedAwaitingRepair(){
     return axios.get(`${API_URL}car/repairpage`)
 }
 
-async function getImage(userid){
-    return axios.get(`${API_URL}image/${userid}`);
-}
-
-async function uploadImage(imageData){
-    return  axios.post(`${API_URL}image`, imageData);
-}
-
-async function fetchUser(email) {
-    return axios.get(`${API_URL}users/${email}`)
+async function fetchRepairedCanceledInvoiced(){
+    return axios.get(`${API_URL}car/paymentpage`)
 }
 
 async function deleteItem(id){
-    return axios.delete(`${API_URL}api/item/delete/${id}`)
+    return axios.delete(`${API_URL}item/delete/${id}`)
 }
 
 async function deleteService(id){
-    return axios.delete(`${API_URL}api/service/delete/${id}`)
+    return axios.delete(`${API_URL}service/delete/${id}`)
 }
 
 async function deleteCustomer(id){
-    return axios.delete(`${API_URL}api/customer/delete/${id}`)
+    return axios.delete(`${API_URL}customer/delete/${id}`)
 }
-
 export {
     loginUser,
     registerUser,
@@ -109,17 +104,17 @@ export {
     fetchCustomers,
     uploadPdf,
     registerRepair,
-    fetchLicensePlate,
     fetchItems,
     fetchServices,
     fetchCustomer,
     updateStatuses,
     fetchInspectedPayed,
     fetchInspectionPlannedAwaitingRepair,
+    fetchRepairedCanceledInvoiced,
     fetchUser,
-    uploadImage,
-    getImage,
     deleteItem,
     deleteService,
-    deleteCustomer
+    deleteCustomer,
+    fetchRepairs
 };
+

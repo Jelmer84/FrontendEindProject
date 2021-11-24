@@ -1,53 +1,37 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import InputForm from "../../components/InputForm/InputForm";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {fetchCustomers, fetchLicensePlate, getImage, registerCustomer} from "../../network/network";
+import {fetchCustomers, registerCustomer} from "../../network/network";
 import Button from "../../components/Button/Button";
 import styles from "./Customer.module.css"
-import {AuthContext} from "../../context/AuthContext";
 import logoGarage from "../../assets/logoGarage.png";
 
-
 function Customer() {
-    const {user} = useContext(AuthContext)
-
     const [loading, toggleLoading] = useState(false)
     const [customerSuccess, toggleCustomerSuccess] = useState(false)
     const history = useHistory();
     const {handleSubmit, formState: {errors}, register} = useForm()
     const [customers, setCustomers] = useState([])
-    const [status, setStatus] = useState(0)
-    const [vehicles, setVehicles] = useState([])
-
-
 
     async function onSubmitCustomer(data) {
         toggleLoading(true)
-        console.log(data)
         try {
-            const result = await registerCustomer(data)
+            await registerCustomer(data)
+            console.log(data)
         } catch (e) {
             console.error(e)
         }
-        toggleLoading(false)
         toggleCustomerSuccess(true)
         history.push("/car")
     }
 
     useEffect(async () => {
-        fetchCustomers().then((res)=> {
+        await fetchCustomers().then((res)=> {
+            console.log({ response: res.data });
             setCustomers(res.data)
         }).catch(console.error)
-
-
-
-
     }, [])
-
-
-
-
 
 
     return (
@@ -171,22 +155,24 @@ function Customer() {
                     <td className={styles.bold}>Postcode</td>
                     <td className={styles.bold}>Email</td>
                     <td className={styles.bold}>Telefoon</td>
-                    <td className={styles.bold}>Kenteken</td>
                 </tr>
 
-                {customers.map ((customer) => (
-                    <tr key={customer.id}>
-                        <td>{customer.name}</td>
-                        <td>{customer.address}</td>
-                        <td>{customer.place}</td>
-                        <td>{customer.zipcode}</td>
-                        <td>{customer.email}</td>
-                        <td>{customer.telephone}</td>
+                {customers && customers.map((customer) => {
+                        console.log( {customer})
+                        return (<tr key={customer.id}>
+                            <td>{customer.name}</td>
+                            <td>{customer.address}</td>
+                            <td>{customer.place}</td>
+                            <td>{customer.zipcode}</td>
+                            <td>{customer.email}</td>
+                            <td>{customer.telephone}</td>
 
-                            {customer.vehicles.map(vehicle => (
-                                <td key={vehicle.id}>{vehicle.licensePlate}</td>))}
-                    </tr>
-                ))}
+                            {customer.vehicles && customer.vehicles.map(vehicle => (
+                                <td key={vehicle.id}>{vehicle.licensePlate}</td>))
+                            }
+                        </tr>)
+                    }
+                )}
 
                 </tbody>
             </table>

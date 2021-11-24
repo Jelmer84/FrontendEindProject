@@ -22,28 +22,32 @@ function HomePage() {
                     </tr>
                     <tr> Dinsdag
                         <td>09:00 - 17:00</td>
-                    </tr><tr> Woensdag
+                    </tr>
+                    <tr> Woensdag
                         <td>09:00 - 17:00</td>
-                    </tr><tr> Donderdag
+                    </tr>
+                    <tr> Donderdag
                         <td>09:00 - 17:00</td>
-                    </tr><tr> Vrijdag
+                    </tr>
+                    <tr> Vrijdag
                         <td>09:00 - 17:00</td>
-                    </tr><tr> Zaterdag
+                    </tr>
+                    <tr> Zaterdag
                         <td>Gesloten</td>
-                    </tr><tr> Zondag
+                    </tr>
+                    <tr> Zondag
                         <td>Gesloten</td>
-                    </tr>                    </tbody>
+                    </tr>
+                    </tbody>
                 </table>
 
                 <div className={styles.text}>
-                <text>Contact: Garagedreef 1</text>
-                <text>telefoon: 030-6351444</text>
-                <text>Postcode: 3991 RR</text>
-                <text>Route:</text>
-                <text>Bij de derde straat linksaf</text>
+                    <text>Contact: Garagedreef 1</text>
+                    <text>telefoon: 030-6351444</text>
+                    <text>Postcode: 3991 RR</text>
+                    <text>Route:</text>
+                    <text>Bij de derde straat linksaf</text>
                 </div>
-   
-
             </div>
         </div>
     );
