@@ -294,14 +294,14 @@ function Payment() {
                         <td className={styles.empty3}></td>
                         <td className={styles.empty3}></td>
                         <td className={styles.bold}>Taxes</td>
-                        <td>{repairs?.grandTotal?.total_tax}</td>
+                        <td>€{repairs?.grandTotal?.total_tax}</td>
                     </tr>
                     <tr>
                         <td className={styles.empty3}></td>
                         <td className={styles.empty3}></td>
                         <td className={styles.empty3}></td>
                         <td className={styles.bold}>Total</td>
-                        <td>{repairs?.grandTotal?.total_price}</td>
+                        <td>€{repairs?.grandTotal?.total_price}</td>
                     </tr>
 
                     </tbody>

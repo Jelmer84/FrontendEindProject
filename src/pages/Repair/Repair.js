@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {
     fetchCustomer,
@@ -20,7 +19,6 @@ const usedServices = new Set([]);
 function Repair() {
     const [loading, toggleLoading] = useState(false)
     const [repairSuccess, toggleRepairSuccess] = useState(false)
-    const history = useHistory();
     const {handleSubmit, formState: {errors}, register} = useForm()
     const [remarks, setRemarks] = useState()
     const [customers, setCustomers] = useState([])
@@ -66,7 +64,6 @@ function Repair() {
         }
         toggleLoading(false)
         toggleRepairSuccess(true)
-        history.push("/payment")
     }
 
     async function fetchCarCustomers(data) {

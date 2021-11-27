@@ -54,7 +54,7 @@ function Login() {
                     )}
                     errors={errors}
                 />
-                         <p>Voorbeeld1!</p>
+
                 <Button
                     type="submit"
                     name="Inloggen"
