@@ -47,7 +47,7 @@ function AuthContextProvider({children}) {
     async function loginFunction(JWToken) {
         localStorage.setItem('token', JWToken);
         await fetchUserData(JWToken);
-        history.push("/customer");
+        history.push("/");
     }
 
     function logoutFunction() {
